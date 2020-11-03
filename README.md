@@ -1,6 +1,6 @@
-# Beat Saber Overlay bsr,no-performance オプション追加版
+# Beat Saber Overlay 改良版
 
-これは、Reselim氏が製作した[Beat Saber Overlay](https://github.com/Reselim/beat-saber-overlay)に、bsr表示(bsr)とスコア表示無し(no-performance)のオプションを追加したバージョンです。
+これは、Reselim氏が製作した[Beat Saber Overlay](https://github.com/Reselim/beat-saber-overlay)に、bsr表示(bsr)とスコア表示無し(no-performance)等のオプションを追加し、機能改善した物です。
 
 Beat SaberをOBS等で配信や録画する時に譜面情報をオーバーレイ表示します。
 
@@ -120,9 +120,4 @@ file:///C:/TOOL/beat-saber-overlay-bsr_no-performance/simple.html?modifiers=bsr
 
 文字サイズなどは`style.css`の以下を修正して下さい。
 ![image](https://rynan4818.github.io/beatsaber-overlay-css.png)
-
-## 正式公開について
-~~上記改造版は本家に[プルリクエスト](https://github.com/Reselim/beat-saber-overlay/pull/15)依頼済みです。[2020/6/6]~~
-
-オリジナルのリポジトリがアーカイブされてしまったので、このままここに置いておきます。
 
