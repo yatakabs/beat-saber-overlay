@@ -109,7 +109,7 @@ file:///C:/TOOL/beat-saber-overlay-bsr_no-performance/simple.html?modifiers=bsr
 | song_time | プレイ中の曲の再生時間に書き換えます。 |
 | song_length | 曲の長さの時間に書き換えます。 |
 | mod | 適用中のmod(IF,BE,DA,GN,FS,SS,NF,NO,NB,NA)情報に書き換えます。 |
-| miss | ミス数(ノーツミス＋爆弾カット)に書き換えます。 |
+| miss | ミス数(ノーツミス)に書き換えます。 |
 | pre_bsr | 一つ前にプレイした譜面のbsr情報を表示します。 |
 | pre_bsr_text | pre_bsrの項目名を起動時に保持し、NJS表示が出来ない場合は表示を消します。　|
 

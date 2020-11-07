@@ -17,7 +17,7 @@ const ui = (() => {
 			if (html_id["score"]) score.innerText = format(data.score);
 			if (html_id["combo"]) combo.innerText = data.combo;
 			if (html_id["rank"])  rank.innerText = data.rank;
-			if (html_id["miss"])  miss.innerText = data.missedNotes + data.hitBombs;
+			if (html_id["miss"])  miss.innerText = data.missedNotes;
 			if (html_id["percentage"]) {
 				percentage.innerText = (data.currentMaxScore > 0 ? (Math.floor((data.score / data.currentMaxScore) * 1000) / 10) : 0) + "%";
 			}
