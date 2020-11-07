@@ -13,28 +13,28 @@ Beat SaberをOBS等で配信や録画する時に譜面情報をオーバーレ�
 - HTTP StatusはRelease v1.11.1以降のバージョンを使用して下さい。(6/28現在 ModAssistantで対応済み)
 - [bs-movie-cut(プレイ動画カットツール）](https://github.com/rynan4818/bs-movie-cut)を使用する場合は、HTTP Status +DatabaseはRelease v2020/06/08以降を使用して下さい。
 
-2. [リリースページ](https://github.com/rynan4818/beat-saber-overlay-noscore/releases)から最新のリリースをダウンロードします。
+2. [リリースページ](https://github.com/rynan4818/beat-saber-overlay/releases)から最新のリリースをダウンロードします。
 
-3. zipを適当なフォルダに解凍します。例: C:\TOOL\beat-saber-overlay-bsr_no-performance\
+3. zipを適当なフォルダに解凍します。例: C:\TOOL\beat-saber-overlay\
 
 4. OBSのソースにブラウザを追加します。
 
 ![image](https://rynan4818.github.io/beatsaber-overlay-noscore-obs-setting1.png)
 
-5. zipを解凍したフォルダ名に合わせてプロパティのURLに `file:///C:/TOOL/beat-saber-overlay-bsr_no-performance/index.html?modifiers=bsr` の様に設定します。また、画面サイズと同じ幅と高さに設定します。 (1280x720 など)
+5. zipを解凍したフォルダ名に合わせてプロパティのURLに `file:///C:/TOOL/beat-saber-overlay/index.html?modifiers=bsr` の様に設定します。また、画面サイズと同じ幅と高さに設定します。 (1280x720 など)
 
 ![image](https://rynan4818.github.io/beatsaber-overlay-bsr-obs-setting.png)
 
 ローカルファイルだと、オプション設定が出来ないのでURL表記で入力する必要があります。解凍したファイルのindex.htmlをブラウザで開いて、アドレス欄からコピー＆ペーストするのが楽です。
 
-6. (オプション) 1080p(1920x1080)の画面サイズの場合,オーバレイ表示を1.5倍に拡大する `scale` 修飾子を使用して下さい。例: `file:///C:/TOOL/beat-saber-overlay-bsr_no-performance/index.html?modifiers=bsr,scale`
+6. (オプション) 1080p(1920x1080)の画面サイズの場合,オーバレイ表示を1.5倍に拡大する `scale` 修飾子を使用して下さい。例: `file:///C:/TOOL/beat-saber-overlay/index.html?modifiers=bsr,scale`
 
 ## オプション
 
 次の様なオプションがURLに設定可能です。
 
 ```
-file:///C:/TOOL/beat-saber-overlay-bsr_no-performance/index.html?modifiers=top,bsr
+file:///C:/TOOL/beat-saber-overlay/index.html?modifiers=top,bsr
 ```
 
 ### `modifiers`
@@ -56,7 +56,11 @@ file:///C:/TOOL/beat-saber-overlay-bsr_no-performance/index.html?modifiers=top,b
 - `no-hidden`
 	* 終了時に表示を消しません。（今回追加）
 
-### `rtl`の表示修正
+### `ip`または`port`
+
+別のマシンのBeat Saber HTTP Statusに接続する場合に設定します。
+
+## `rtl`の表示修正
 
 上記`rtl`オプションを使用すると、下記画像の様に`!`や`.`の表示位置がおかしくなる問題があります。
 
@@ -67,7 +71,7 @@ file:///C:/TOOL/beat-saber-overlay-bsr_no-performance/index.html?modifiers=top,b
 デフォルトで右側表示になります。`rtl`オプション以外はそのまま使用可能です。
 
 ```
-file:///C:/TOOL/beat-saber-overlay-bsr_no-performance/index_rtl.html?modifiers=top,bsr
+file:///C:/TOOL/beat-saber-overlay/index_rtl.html?modifiers=top,bsr
 ```
 ## BSDP-Overlayライクなオーバーレイ
 [DataPuller](https://github.com/kOFReadie/BSDataPuller)の[BSDP-Overlay](https://github.com/kOFReadie/BSDP-Overlay)ライクなオーバーレイ表示用のHTMLとCSSを作成しました。
@@ -81,7 +85,7 @@ file:///C:/TOOL/beat-saber-overlay-bsr_no-performance/index_rtl.html?modifiers=t
 
 参考に、精度・スコア・曲名・bsr表示だけにしたシンプルな表示のhtmlを用意しました。
 ```
-file:///C:/TOOL/beat-saber-overlay-bsr_no-performance/simple.html?modifiers=bsr
+file:///C:/TOOL/beat-saber-overlay/simple.html?modifiers=bsr
 ```
 
 | id | 動作 |
