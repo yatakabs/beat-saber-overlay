@@ -13,7 +13,7 @@ function connect() {
 		var event = events[data.event];
 
 		if (event) {
-			event(data.status, data.time);
+			event(data);
 		}
 	});
 

@@ -21,6 +21,7 @@ const ui = (() => {
 			if (html_id["percentage"]) {
 				percentage.innerText = (data.currentMaxScore > 0 ? (Math.floor((data.score / data.currentMaxScore) * 1000) / 10) : 0) + "%";
 			}
+			if (typeof op_performance !== "undefined") op_performance(data);
 		}
 	})();
 
@@ -60,11 +61,13 @@ const ui = (() => {
 			var percentage = Math.min(delta / duration, 1);
 
 			if (html_id["progress"]) bar.setAttribute("style", `stroke-dashoffset: ${(1 - percentage) * circumference}px`);
+			if (typeof op_timer_update !== "undefined") op_timer_update(time, delta, progress, percentage);
 
 			// Minor optimization
 			if (progress != display) {
 				display = progress;
 				if (html_id["song_time"]) song_time.innerText = format(progress);
+				if (typeof op_timer_update_sec !== "undefined") op_timer_update_sec(time, delta, progress, percentage);
 			}
 		}
 
@@ -215,16 +218,19 @@ const ui = (() => {
 			}
 
 			timer.start(Date.now(), data.length);
+			if (typeof op_beatmap !== "undefined") op_beatmap(data, time, mod_data);
 		}
 	})();
 
 	return {
 		hide() {
 			if (html_id["overlay"]) main.classList.add("hidden");
+			if (typeof op_hide !== "undefined") op_hide();
 		},
 
 		show() {
 			if (html_id["overlay"]) main.classList.remove("hidden");
+			if (typeof op_show !== "undefined") op_show();
 		},
 
 		performance,
