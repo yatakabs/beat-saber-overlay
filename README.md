@@ -83,14 +83,16 @@ file:///C:/TOOL/beat-saber-overlay/index_rtl.html?modifiers=top,bsr
 [bsdp-like-overlay](https://github.com/rynan4818/bsdp-like-overlay)
 
 ## オーバーレイの改造
-スクリプトではHTMLタグの以下のidに対して、プレイに合わせた書き換え動作をします。idは起動時にチェックし、HTML内にidが存在しない場合は書き換えないため、HTMLやCSSを改造して好きなレイアウトや表示項目にすることが出来ます。
+スクリプトでは以下のid属性のHTMLタグに対して、プレイに合わせた書き換え動作をします。HTML内のid属性値は起動時にチェックし、存在しない場合は書き換え動作をしないため、HTMLやCSSを改造して好きなレイアウトや表示項目にすることが出来ます。
 
-参考に、精度・スコア・曲名・bsr表示だけにしたシンプルな表示のhtmlを用意しました。
+初心者向けに改造方法の記事を書きました。 [HTMLを知らない人にも分かる、オーバーレイの改造の仕方を説明してみる](https://note.com/rynan/n/n9a4207b7aed5)
+
+また参考に、精度・スコア・曲名・bsr表示だけにしたシンプルな表示のhtmlを用意してあります。
 ```
 file:///C:/TOOL/beat-saber-overlay/simple.html?modifiers=bsr
 ```
 
-| id | 動作 |
+| id属性値 | 動作 |
 ----|----
 | overlay | プレイ開始時にclass="hidden"を削除、終了時に付与します。 |
 | rank | スコアのランク(SS,S,A,B,C・・・)に書き換えます。 |
