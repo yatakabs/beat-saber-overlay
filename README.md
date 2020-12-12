@@ -10,7 +10,7 @@ Beat SaberをOBS等で配信や録画する時に譜面情報をオーバーレ�
 
 1. [Beat Saber HTTP Status](https://github.com/opl-/beatsaber-http-status) か、拙作の[Beat Saber HTTP Status +Database](https://github.com/rynan4818/beatsaber-http-status-db)をダウンロードしてインストールします。
 
-- **BeatSaber 1.12.1～1.13.0を使用されている方は、12/6現在 HTTP Statusの正式配布がまだされてていません。[こちらのβ版を使用して下さい](https://github.com/opl-/beatsaber-http-status/issues/55#issuecomment-722054828)**
+- **BeatSaber 1.12.1～1.13.0を使用されている方は、12/6現在 HTTP Statusの正式配布がまだされてていません。[こちらのβ版を使用して下さい](https://github.com/opl-/beatsaber-http-status/issues/55#issuecomment-722054828)  また、プレイ動画カットツール用のHTTP Status +Databaseは[こちらで1.12.1～1.13.0対応版を配布しています](https://github.com/rynan4818/beatsaber-http-status-db/issues/1)**
 
 - HTTP StatusはRelease v1.11.1以降のバージョンを使用して下さい。(6/28現在 ModAssistantで対応済み)
 - [bs-movie-cut(プレイ動画カットツール）](https://github.com/rynan4818/bs-movie-cut)を使用する場合は、HTTP Status +DatabaseはRelease v2020/06/08以降を使用して下さい。
