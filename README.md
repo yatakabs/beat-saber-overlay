@@ -120,7 +120,40 @@ file:///C:/TOOL/beat-saber-overlay/simple.html?modifiers=bsr
 | miss | ミス数(ノーツミス)に書き換えます。 |
 | pre_bsr | 一つ前にプレイした譜面のbsr情報を表示します。 |
 | pre_bsr_text | pre_bsrの項目名を起動時に保持し、NJS表示が出来ない場合は表示を消します。　|
+| energy | ライフ値(xxx%)に書き換えます。 |
 
+オプションで以下の関数が存在すれば、呼び出されます。関数のスクリプトは最初に読み込んで下さい。
+
+| 関数(引数) | 説明 |
+----|----
+| op_performance(data,now_energy) | performanceが更新されるタイミングで呼び出されます |
+| op_timer_update(time, delta, progress, percentage) | 曲時間表示が更新されるタイミングで呼び出されます |
+| op_timer_update_sec(time, delta, progress, percentage) | 曲時間表示(秒毎)が更新されるタイミングで呼び出されます |
+| op_beatmap(data) | 譜面情報が更新されるタイミングで呼び出されます |
+| op_hide() | オーバーレイを隠すタイミングで呼び出されます |
+| op_show() | オーバーレイを表示するタイミングで呼び出されます |
+| op_hello(data) | HTTP Status の hello イベント時に呼び出されます |
+| op_songStart(data) | HTTP Status の songStart イベント時に呼び出されます |
+| op_noteCut(data) | HTTP Status の noteCut イベント時に呼び出されます |
+| op_noteFullyCut(data) | HTTP Status の noteFullyCut イベント時に呼び出されます |
+| op_obstacleEnter(data) | HTTP Status の obstacleEnter イベント時に呼び出されます |
+| op_obstacleExit(data) | HTTP Status の obstacleExit イベント時に呼び出されます |
+| op_noteMissed(data) | HTTP Status の noteMissed イベント時に呼び出されます |
+| op_bombCut(data) | HTTP Status の bombCut イベント時に呼び出されます |
+| op_finished(data) | HTTP Status の finished イベント時に呼び出されます |
+| op_failed(data) | HTTP Status の failed イベント時に呼び出されます |
+| op_scoreChanged(data) | HTTP Status の scoreChanged イベント時に呼び出されます |
+| op_pause(data) | HTTP Status の pause イベント時に呼び出されます |
+| op_resume(data) | HTTP Status の resume イベント時に呼び出されます |
+| op_menu(data) | HTTP Status の menu イベント時に呼び出されます |
+
+| 引数 | 説明 |
+----|----
+| data | HTTP Status から送信されるJSONオブジェクトが格納されています |
+| now_energy | ライフ値が格納されています(0～100 実数値[小数点有り]) |
+| delta | 曲の経過時間(msec) |
+| progress | 曲の経過時間(sec) |
+| percentage | 曲の経過割合 |
 ## bsrの表示位置や文字サイズを変更したい場合
 
 表示位置を変更したい場合は`index.html`の以下の部分を修正して下さい。
