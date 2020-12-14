@@ -10,6 +10,8 @@ Beat SaberをOBS等で配信や録画する時に譜面情報をオーバーレ�
 
 1. [Beat Saber HTTP Status](https://github.com/opl-/beatsaber-http-status) か、拙作の[Beat Saber HTTP Status +Database](https://github.com/rynan4818/beatsaber-http-status-db)をダウンロードしてインストールします。
 
+- **BeatSaber 1.12.1～1.13.0を使用されている方は、12/6現在 HTTP Statusの正式配布がまだされてていません。[こちらのβ版を使用して下さい](https://github.com/opl-/beatsaber-http-status/issues/55#issuecomment-722054828)  また、プレイ動画カットツール用のHTTP Status +Databaseは[こちらで1.12.1～1.13.0対応版を配布しています](https://github.com/rynan4818/beatsaber-http-status-db/issues/1)**
+
 - HTTP StatusはRelease v1.11.1以降のバージョンを使用して下さい。(6/28現在 ModAssistantで対応済み)
 - [bs-movie-cut(プレイ動画カットツール）](https://github.com/rynan4818/bs-movie-cut)を使用する場合は、HTTP Status +DatabaseはRelease v2020/06/08以降を使用して下さい。
 
@@ -81,14 +83,16 @@ file:///C:/TOOL/beat-saber-overlay/index_rtl.html?modifiers=top,bsr
 [bsdp-like-overlay](https://github.com/rynan4818/bsdp-like-overlay)
 
 ## オーバーレイの改造
-スクリプトではHTMLタグの以下のidに対して、プレイに合わせた書き換え動作をします。idは起動時にチェックし、HTML内にidが存在しない場合は書き換えないため、HTMLやCSSを改造して好きなレイアウトや表示項目にすることが出来ます。
+スクリプトでは以下のid属性のHTMLタグに対して、プレイに合わせた書き換え動作をします。HTML内のid属性値は起動時にチェックし、存在しない場合は書き換え動作をしないため、HTMLやCSSを改造して好きなレイアウトや表示項目にすることが出来ます。
 
-参考に、精度・スコア・曲名・bsr表示だけにしたシンプルな表示のhtmlを用意しました。
+初心者向けに改造方法の記事を書きました。 [HTMLを知らない人にも分かる、オーバーレイの改造の仕方を説明してみる](https://note.com/rynan/n/n9a4207b7aed5)
+
+また参考に、精度・スコア・曲名・bsr表示だけにしたシンプルな表示のhtmlを用意してあります。
 ```
 file:///C:/TOOL/beat-saber-overlay/simple.html?modifiers=bsr
 ```
 
-| id | 動作 |
+| id属性値 | 動作 |
 ----|----
 | overlay | プレイ開始時にclass="hidden"を削除、終了時に付与します。 |
 | rank | スコアのランク(SS,S,A,B,C・・・)に書き換えます。 |
