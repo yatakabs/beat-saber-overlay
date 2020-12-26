@@ -15,3 +15,7 @@
 #score {
 	transform: translate(2px, 0);
 }
+
+.energy-container {
+	margin: 4px 0 4px auto;
+}

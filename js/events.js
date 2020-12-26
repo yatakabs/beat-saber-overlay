@@ -62,6 +62,11 @@ const events = {
 		if (typeof op_scoreChanged !== "undefined") op_scoreChanged(data);
 	},
 
+	energyChanged(data) {
+		ui.performance(data);
+		if (typeof op_energyChanged !== "undefined") op_energyChanged(data);
+	},
+
 	pause(data) {
 		ui.timer.pause(data.status.beatmap.paused + (Date.now() - data.time));
 		if (typeof op_pause !== "undefined") op_pause(data);

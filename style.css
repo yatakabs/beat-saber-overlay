@@ -74,7 +74,7 @@ body {
 	margin: 2px 0 0 0;
 }
 
-#difficulty, #bpm-group, #njs-group {
+#difficulty, #bpm-group, #njs-group, #mod-group {
 	display: inline-block;
 
 	font-size: 10px;
@@ -83,8 +83,13 @@ body {
 	letter-spacing: 3px;
 }
 
+#mod-group {
+    visibility: hidden;
+    margin: 0 8px;
+}
+
 #bsr-group {
-	display: inline-block;
+	display: none;
 
 	font-size: 18px;
 	font-weight: 800;
@@ -159,7 +164,7 @@ body {
 #performance {
 	display: flex;
 	flex-direction: column;
-	margin: 0 0 20px 0;
+	margin: 0 0 0 0;
 }
 
 .performance-group {
@@ -191,11 +196,38 @@ body {
 	letter-spacing: 2px;
 }
 
+#miss_group {
+    display: none;
+}
+
 /* Animations and state */
 
 #overlay {
 	--show: cubic-bezier(0.19, 1, 0.22, 1) 300ms;
 	--hide: cubic-bezier(0.55, 0.085, 0.68, 0.53) 200ms;
+}
+
+.energy-container {
+    visibility: hidden;
+    margin: 4px 0 4px 0;
+    height: 12px;
+    width: 300px;
+    border-radius: 10px 0px 0px 10px;
+}
+
+.energy-background {
+    height: 10px;
+    background-color: rgba(80, 80, 80, 0.8);
+    border-radius: 5px;
+}
+
+#energy_bar {
+    background-color: white;
+    height: 100%;
+    width: 50%;
+    bottom: 0;
+    transition: all 100ms;
+    border-radius: 5px;
 }
 
 #overlay #beatmap, #overlay #performance > * {

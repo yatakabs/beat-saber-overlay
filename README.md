@@ -1,6 +1,6 @@
 # Beat Saber Overlay 改良版
 
-これは、Reselim氏が製作した[Beat Saber Overlay](https://github.com/Reselim/beat-saber-overlay)に、bsr表示(bsr)とスコア表示無し(no-performance)等のオプションを追加し、機能改善した物です。
+これは、Reselim氏が製作した[Beat Saber Overlay](https://github.com/Reselim/beat-saber-overlay)に各種表示オプションを追加し、機能改善した物です。
 
 Beat SaberをOBS等で配信や録画する時に譜面情報をオーバーレイ表示します。
 
@@ -10,10 +10,9 @@ Beat SaberをOBS等で配信や録画する時に譜面情報をオーバーレ�
 
 1. [Beat Saber HTTP Status](https://github.com/opl-/beatsaber-http-status) か、拙作の[Beat Saber HTTP Status +Database](https://github.com/rynan4818/beatsaber-http-status-db)をダウンロードしてインストールします。
 
-- **BeatSaber 1.12.1～1.13.0を使用されている方は、12/6現在 HTTP Statusの正式配布がまだされてていません。[こちらのβ版を使用して下さい](https://github.com/opl-/beatsaber-http-status/issues/55#issuecomment-722054828)  また、プレイ動画カットツール用のHTTP Status +Databaseは[こちらで1.12.1～1.13.0対応版を配布しています](https://github.com/rynan4818/beatsaber-http-status-db/issues/1)**
-
-- HTTP StatusはRelease v1.11.1以降のバージョンを使用して下さい。(6/28現在 ModAssistantで対応済み)
-- [bs-movie-cut(プレイ動画カットツール）](https://github.com/rynan4818/bs-movie-cut)を使用する場合は、HTTP Status +DatabaseはRelease v2020/06/08以降を使用して下さい。
+- **BeatSaber 1.12.1～1.13.0を使用されている方は、'20/12/26現在 HTTP Statusの正式配布がまだされてていません。**
+	* **HTTP Statusは[こちらのβ版を使用して下さい](https://github.com/opl-/beatsaber-http-status/issues/55#issuecomment-722054828)**
+	* **プレイ動画カットツール用のHTTP Status +Databaseは[こちらで1.12.1～1.13.0対応版を配布しています](https://github.com/rynan4818/beatsaber-http-status-db/releases)**
 
 2. [リリースページ](https://github.com/rynan4818/beat-saber-overlay/releases)から最新のリリースをダウンロードします。
 
@@ -52,15 +51,24 @@ file:///C:/TOOL/beat-saber-overlay/index.html?modifiers=top,bsr
 - `test`
 	* テストのために背景を黒にします。
 - `bsr`
-	* bsrの検索・表示をします。（今回追加）
+	* bsrの検索・表示をします。
+- `miss`
+	* ミス数を表示します。
+- `mod`
+	* Modifierを表示します。(DA,FS等)
+- `energy`
+	* ライフ値バーを表示します
 - `no-performance`
-	* スコア表示を消します。　 （今回追加）
+	* スコア表示を消します。
 - `no-hidden`
-	* 終了時に表示を消しません。（今回追加）
+	* 終了時に表示を消しません。
 
 ### `ip`または`port`
 
 別のマシンのBeat Saber HTTP Statusに接続する場合に設定します。
+```
+file:///C:/TOOL/beat-saber-overlay/index.html?ip=192.168.1.10&port=6557&modifiers=top,bsr
+```
 
 ## `rtl`の表示修正
 
@@ -121,6 +129,8 @@ file:///C:/TOOL/beat-saber-overlay/simple.html?modifiers=bsr
 | pre_bsr | 一つ前にプレイした譜面のbsr情報を表示します。 |
 | pre_bsr_text | pre_bsrの項目名を起動時に保持し、NJS表示が出来ない場合は表示を消します。　|
 | energy | ライフ値(xxx%)に書き換えます。 |
+| energy_bar | ライフ値に応じたwidthスタイル値(xxx%)を設定ます。 |
+| energy_group | No Fail時にvisibilityスタイルをhiddenにします。 |
 
 オプションで以下の関数が存在すれば、呼び出されます。関数のスクリプトは最初に読み込んで下さい。
 
@@ -129,7 +139,8 @@ file:///C:/TOOL/beat-saber-overlay/simple.html?modifiers=bsr
 | op_performance(data,now_energy) | performanceが更新されるタイミングで呼び出されます |
 | op_timer_update(time, delta, progress, percentage) | 曲時間表示が更新されるタイミングで呼び出されます |
 | op_timer_update_sec(time, delta, progress, percentage) | 曲時間表示(秒毎)が更新されるタイミングで呼び出されます |
-| op_beatmap(data) | 譜面情報が更新されるタイミングで呼び出されます |
+| op_beatmap(data,now_map,pre_map) | 譜面情報が更新されるタイミングで呼び出されます |
+| op_beatsaver_res(now_map) | BeatSaverの譜面情報問い合わせのレスポンスがあった場合に呼び出されます |
 | op_hide() | オーバーレイを隠すタイミングで呼び出されます |
 | op_show() | オーバーレイを表示するタイミングで呼び出されます |
 | op_hello(data) | HTTP Status の hello イベント時に呼び出されます |
@@ -143,6 +154,7 @@ file:///C:/TOOL/beat-saber-overlay/simple.html?modifiers=bsr
 | op_finished(data) | HTTP Status の finished イベント時に呼び出されます |
 | op_failed(data) | HTTP Status の failed イベント時に呼び出されます |
 | op_scoreChanged(data) | HTTP Status の scoreChanged イベント時に呼び出されます |
+| op_energyChanged(data) | HTTP Status の energyChanged イベント時に呼び出されます(本家HTTPStatusは未実装) |
 | op_pause(data) | HTTP Status の pause イベント時に呼び出されます |
 | op_resume(data) | HTTP Status の resume イベント時に呼び出されます |
 | op_menu(data) | HTTP Status の menu イベント時に呼び出されます |
@@ -154,6 +166,8 @@ file:///C:/TOOL/beat-saber-overlay/simple.html?modifiers=bsr
 | delta | 曲の経過時間(msec) |
 | progress | 曲の経過時間(sec) |
 | percentage | 曲の経過割合 |
+| now_map | 現在の譜面のBeatSaver API 問い合わせ結果のJSONオブジェクト。但し、op_beatmapの時は前回と同じ譜面のプレイ時のみ格納、それ以外はnull |
+| pre_map | 前回の譜面のBeatSaver API 問い合わせ結果のJSONオブジェクト。 |
 ## bsrの表示位置や文字サイズを変更したい場合
 
 表示位置を変更したい場合は`index.html`の以下の部分を修正して下さい。

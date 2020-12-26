@@ -5,7 +5,7 @@ var pre_bsr_data = null;
 const check_id = ["overlay","rank","percentage","combo","score","progress","performance",
                   "image","title","subtitle","artist","difficulty","bpm","njs","bsr","bsr_text",
                   "mapper","mapper_header","mapper_footer","song_time","song_length","mod","miss",
-                  "pre_bsr","pre_bsr_text","njs_text","energy"]
+                  "pre_bsr","pre_bsr_text","njs_text","energy","energy_bar","energy_group"]
 var html_id = {};
 for (var i = 0, len = check_id.length; i < len; ++i) {
 	if (document.getElementById(check_id[i]) === null) {
@@ -24,26 +24,13 @@ if (html_id["njs_text"])      var njs_text_org = document.getElementById("njs_te
 	const handlers = {
 		modifiers(string) {
 			string.split(",").forEach((modifier) => {
-				if (modifier === "bsr") {
-					bsr_display = true;
-					return;
-				}
 				if (modifier === "no-hidden") {
 					disp_hidden = false;
+					if (html_id["overlay"]) document.getElementById("overlay").classList.remove("hidden");
 					return;
 				}
-				if (modifier === "no-performance") {
-					if (html_id["performance"]) {
-						var dom_obj = document.getElementById("performance");
-						var dom_obj_parent = dom_obj.parentNode;
-						dom_obj_parent.removeChild(dom_obj);
-					}
-					html_id["rank"] = false;
-					html_id["percentage"] = false;
-					html_id["score"] = false;
-					html_id["combo"] = false;
-					html_id["miss"] = false;
-					return;
+				if (modifier === "bsr") {
+					bsr_display = true;
 				}
 				var link = document.createElement("link");
 				

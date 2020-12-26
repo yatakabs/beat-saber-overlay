@@ -1,18 +1,27 @@
 const ui = (() => {
 	if (html_id["overlay"]) var main = document.getElementById("overlay");
-	var now_bsr = null;
+	var now_map = null;
+	var pre_map = null;
+	var pre_songHash = null;
 	var now_energy = 50;
 	var mod_instaFail = false;
 	var mod_batteryEnergy = false;
 	var obstacle_time = 0;
+	var failed = false;
 
 	const performance = (() => {
+		const cut_energy = 1;
+		const misscut_energy = -10;
+		const miss_energy = -15;
+		const drain_energy = -0.13;  //per msec
+		const battery_unit = 25;
 		if (html_id["rank"])       var rank = document.getElementById("rank");
 		if (html_id["percentage"]) var percentage = document.getElementById("percentage");
 		if (html_id["score"])      var score = document.getElementById("score");
 		if (html_id["combo"])      var combo = document.getElementById("combo");
 		if (html_id["miss"])       var miss = document.getElementById("miss");
 		if (html_id["energy"])     var energy = document.getElementById("energy");
+		if (html_id["energy_bar"]) var energy_bar = document.getElementById("energy_bar");
 
 		function format(number) {
 			return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
@@ -28,53 +37,64 @@ const ui = (() => {
 				percentage.innerText = (performance.currentMaxScore > 0 ? (Math.floor((performance.score / performance.currentMaxScore) * 1000) / 10) : 0) + "%";
 			}
 			if (now_energy !== null) {
-				if (data.event === "obstacleEnter") {
-					obstacle_time = data.time;
-				}
-				if (mod_instaFail === false && mod_batteryEnergy === false) {
-					switch(data.event) {
-						case "noteCut":
-							now_energy += 1;
-							break;
-						case "noteMissed":
-							if (data.noteCut.saberType == null) {
-								now_energy -= 15;
-							} else {
-								now_energy -= 10;
-							}
-							break;
-						case "bombCut":
-							now_energy -= 15;
-							break;
-						case "obstacleExit":
-							var delta_t = data.time - obstacle_time;
-							now_energy -= delta_t * 0.13;
-							break;
+				if (typeof performance.energy !== "undefined") {
+					if (data.event === "energyChanged") {
+						now_energy = performance.energy * 100;
 					}
 				} else {
-					switch(data.event) {
-						case "noteMissed":
-						case "bombCut":
-							if (mod_instaFail === true) {
-								now_energy = 0;
-							} else {
-								now_energy -= 25;
-							}
-							break;
-						case "obstacleExit":
-							if (mod_instaFail === true) {
-								now_energy = 0;
-							} else {
+					if (data.event === "obstacleEnter") {
+						obstacle_time = data.time;
+					}
+					if (mod_instaFail === false && mod_batteryEnergy === false) {
+						switch(data.event) {
+							case "noteCut":
+								now_energy += cut_energy;
+								break;
+							case "noteMissed":
+								if (data.noteCut.saberType == null) {
+									now_energy += miss_energy;
+								} else {
+									now_energy += misscut_energy;
+								}
+								break;
+							case "bombCut":
+								now_energy += miss_energy;
+								break;
+							case "obstacleExit":
 								var delta_t = data.time - obstacle_time;
-								now_energy -= parseInt(delta_t * 0.13) * 25;
-							}
-							break;
+								now_energy += delta_t * drain_energy;
+								break;
+						}
+					} else {
+						switch(data.event) {
+							case "noteMissed":
+							case "bombCut":
+								if (mod_instaFail === true) {
+									now_energy = 0;
+								} else {
+									now_energy -= battery_unit;
+								}
+								break;
+							case "obstacleExit":
+								if (mod_instaFail === true) {
+									now_energy = 0;
+								} else {
+									var delta_t = data.time - obstacle_time;
+									now_energy += parseInt(delta_t * drain_energy) * battery_unit;
+								}
+								break;
+						}
 					}
 				}
 				if (now_energy > 100) now_energy = 100;
-				if (data.event === "failed") now_energy = 0;
+				if (data.event === "failed") {
+					now_energy = 0;
+					failed = true;
+				}
 				if (now_energy < 0) now_energy = 0;
+				if (failed) now_energy = 0;
 				if (html_id["energy"]) energy.innerText = Math.round(now_energy) + "%";
+				if (html_id["energy_bar"]) energy_bar.setAttribute("style", `width: ${Math.round(now_energy)}%`);
 			}
 			
 			if (typeof op_performance !== "undefined") op_performance(data,now_energy);
@@ -166,6 +186,8 @@ const ui = (() => {
 	})();
 
 	const beatmap = (() => {
+		const beatsaver_url = 'https://beatsaver.com/api/maps/by-hash/';
+		const request_timeout = 5000; //msec
 		if (html_id["image"])         var cover = document.getElementById("image");
 
 		if (html_id["title"])         var title = document.getElementById("title");
@@ -185,6 +207,7 @@ const ui = (() => {
 		if (html_id["pre_bsr"])       var pre_bsr = document.getElementById("pre_bsr");
 		if (html_id["pre_bsr_text"])  var pre_bsr_text = document.getElementById("pre_bsr_text");
 		if (html_id["energy"])        var energy = document.getElementById("energy");
+		if (html_id["energy_group"])  var energy_group = document.getElementById("energy_group");
 		var httpRequest = new XMLHttpRequest();
 		
 		function format(number) {
@@ -203,11 +226,14 @@ const ui = (() => {
 			var beatmap = data.status.beatmap;
 			var time = data.time;
 			var mod_data = data.status.mod;
+			var visibility = "visible";
+			failed = false;
 			mod_instaFail = mod_data.instaFail;
 			mod_batteryEnergy = mod_data.batteryEnergy;
 			if (mod_instaFail === false && mod_batteryEnergy === false) {
 				if (mod_data.noFail === true) {
 					now_energy = null;
+					visibility = "hidden";
 					if (html_id["energy"]) energy.innerText = "NF";
 				} else {
 					now_energy = 50;
@@ -215,6 +241,7 @@ const ui = (() => {
 			} else {
 				now_energy = 100;
 			}
+			if (html_id["energy_group"]) energy_group.setAttribute("style", `visibility: ${visibility}`);
 			if (beatmap.difficulty === "ExpertPlus") {
 				beatmap.difficulty = "Expert+";
 			}
@@ -225,22 +252,33 @@ const ui = (() => {
 			if (html_id["subtitle"]) subtitle.innerText = beatmap.songSubName;
 			if (html_id["bsr"])      bsr.innerText = '';
 			if (html_id["bsr_text"]) bsr_text.innerText = '';
-			pre_bsr_data = now_bsr;
-			now_bsr = null;
 			
 			httpRequest.onreadystatechange = function() {
-				if(this.readyState == 4 && this.status == 200 && this.response) {
-					now_bsr = this.response.key;
-					if (html_id["bsr"])      bsr.innerText = this.response.key;
-					if (html_id["bsr_text"]) bsr_text.innerText = bsr_text_org;
+				if(this.readyState == 4 && this.status == 200) {
+					now_map = this.response;
+					if (now_map !== null) {
+						if (html_id["bsr"])      bsr.innerText = now_map.key;
+						if (html_id["bsr_text"]) bsr_text.innerText = bsr_text_org;
+					}
+					if (typeof op_beatsaver_res !== "undefined") op_beatsaver_res(now_map);
 				}
 			}
 			
-			if (bsr_display && beatmap.songHash != null && beatmap.songHash.match(/^[0-9A-F]{40}/i)) {
-				httpRequest.open('GET', 'https://beatsaver.com/api/maps/by-hash/' + beatmap.songHash.substr(0, 40), true);
-				httpRequest.timeout = 5000;
-				httpRequest.responseType = 'json';
-				httpRequest.send(null);
+			if (pre_songHash === beatmap.songHash) {
+				if (bsr_display && now_map !== null) {
+					if (html_id["bsr"])      bsr.innerText = now_map.key;
+					if (html_id["bsr_text"]) bsr_text.innerText = bsr_text_org;
+				}
+			} else {
+				pre_songHash = beatmap.songHash;
+				pre_map = now_map;
+				now_map = null;
+				if (bsr_display && beatmap.songHash !== null && beatmap.songHash.match(/^[0-9A-F]{40}/i)) {
+					httpRequest.open('GET', beatsaver_url + beatmap.songHash.substr(0, 40), true);
+					httpRequest.timeout = request_timeout;
+					httpRequest.responseType = 'json';
+					httpRequest.send(null);
+				}
 			}
 			
 			if (html_id["artist"]) artist.innerText = beatmap.songAuthorName;
@@ -272,7 +310,7 @@ const ui = (() => {
 				if (mod_data.disappearingArrows === true) mod_text += "DA,";
 				if (mod_data.ghostNotes === true)         mod_text += "GN,";
 				if (mod_data.songSpeed === "Faster")      mod_text += "FS,";
-				if (mod_data.songSpeed === "Faster")      mod_text += "SS,";
+				if (mod_data.songSpeed === "Slower")      mod_text += "SS,";
 				if (mod_data.noFail === true)             mod_text += "NF,";
 				if (mod_data.obstacles === false)         mod_text += "NO,";
 				if (mod_data.noBombs === true)            mod_text += "NB,";
@@ -285,12 +323,12 @@ const ui = (() => {
 				if (html_id["pre_bsr"])      pre_bsr.innerText = "";
 				if (html_id["pre_bsr_text"]) pre_bsr_text.innerText = "";
 			} else {
-				if (html_id["pre_bsr"])      pre_bsr.innerText = pre_bsr_data;
+				if (html_id["pre_bsr"])      pre_bsr.innerText = pre_map.key;
 				if (html_id["pre_bsr_text"]) pre_bsr_text.innerText = pre_bsr_text_org;
 			}
 
 			timer.start(Date.now(), beatmap.length);
-			if (typeof op_beatmap !== "undefined") op_beatmap(data);
+			if (typeof op_beatmap !== "undefined") op_beatmap(data,now_map,pre_map);
 		}
 	})();
 
