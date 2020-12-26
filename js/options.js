@@ -2,7 +2,7 @@ const query = new URLSearchParams(location.search);
 var bsr_display = false;
 var disp_hidden = true;
 var pre_bsr_data = null;
-const check_id = ["overlay","rank","percentage","combo","score","progress","performance",
+const check_id = ["overlay","rank","percentage","combo","score","progress",
                   "image","title","subtitle","artist","difficulty","bpm","njs","bsr","bsr_text",
                   "mapper","mapper_header","mapper_footer","song_time","song_length","mod","miss",
                   "pre_bsr","pre_bsr_text","njs_text","energy","energy_bar","energy_group"]

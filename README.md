@@ -91,7 +91,7 @@ file:///C:/TOOL/beat-saber-overlay/index_rtl.html?modifiers=top,bsr
 [bsdp-like-overlay](https://github.com/rynan4818/bsdp-like-overlay)
 
 ## オーバーレイの改造
-スクリプトでは以下のid属性のHTMLタグに対して、プレイに合わせた書き換え動作をします。HTML内のid属性値は起動時にチェックし、存在しない場合は書き換え動作をしないため、HTMLやCSSを改造して好きなレイアウトや表示項目にすることが出来ます。
+スクリプトでは特定のid属性値のHTMLタグに対して、プレイに合わせた書き換え動作をします。HTML内のid属性値は起動時にチェックし、存在しない場合は書き換え動作をしないため、HTMLやCSSを改造して好きなレイアウトや表示項目にすることが出来ます。
 
 初心者向けに改造方法の記事を書きました。 [HTMLを知らない人にも分かる、オーバーレイの改造の仕方を説明してみる](https://note.com/rynan/n/n9a4207b7aed5)
 
@@ -100,6 +100,8 @@ file:///C:/TOOL/beat-saber-overlay/index_rtl.html?modifiers=top,bsr
 file:///C:/TOOL/beat-saber-overlay/simple.html?modifiers=bsr
 ```
 
+### HTMLのid属性値に対する動作一覧
+
 | id属性値 | 動作 |
 ----|----
 | overlay | プレイ開始時にclass="hidden"を削除、終了時に付与します。 |
@@ -107,8 +109,7 @@ file:///C:/TOOL/beat-saber-overlay/simple.html?modifiers=bsr
 | percentage | スコアの精度(xx.x%)に書き換えます。 |
 | combo | コンボ数に書き換えます。 |
 | score | スコアに書き換えます。 |
-| progress | 曲のプレイ時間の円グラフを表示します。 |
-| performance | no-performance オプション時に、このタグの内容を削除します。 |
+| progress | 曲のプレイ時間に応じたstroke-dashoffsetスタイル値(半径30pxの円周値px)を設定します。 |
 | image | src属性に曲のカバー画像をセットします。 |
 | title | 曲のタイトルに書き換えます。 |
 | subtitle | 曲のサブタイトル情報に書き換えます。 |
@@ -132,7 +133,12 @@ file:///C:/TOOL/beat-saber-overlay/simple.html?modifiers=bsr
 | energy_bar | ライフ値に応じたwidthスタイル値(xxx%)を設定ます。 |
 | energy_group | No Fail時にvisibilityスタイルをhiddenにします。 |
 
-オプションで以下の関数が存在すれば、呼び出されます。関数のスクリプトは最初に読み込んで下さい。
+### modifiersオプションの追加
+modifiersフォルダにCSSファイルを追加すると、CSSファイル名でmodifiersオプションを指定して読み込める様になります。
+独自スタイルのCSSを作成した場合に任意のCSSファイルを作成することで、オリジナルのOverlayのファイル群を直接改造する必要がなくなるため、アップデートに追従しやすくなったり、他人に配布が容易になります。
+
+### 外部スクリプト起動用オプション関数
+オプションで以下の関数が存在すれば、呼び出されます。外部スクリプトは最初に読み込んで下さい。
 
 | 関数(引数) | 説明 |
 ----|----
@@ -168,6 +174,7 @@ file:///C:/TOOL/beat-saber-overlay/simple.html?modifiers=bsr
 | percentage | 曲の経過割合 |
 | now_map | 現在の譜面のBeatSaver API 問い合わせ結果のJSONオブジェクト。但し、op_beatmapの時は前回と同じ譜面のプレイ時のみ格納、それ以外はnull |
 | pre_map | 前回の譜面のBeatSaver API 問い合わせ結果のJSONオブジェクト。 |
+
 ## bsrの表示位置や文字サイズを変更したい場合
 
 表示位置を変更したい場合は`index.html`の以下の部分を修正して下さい。
