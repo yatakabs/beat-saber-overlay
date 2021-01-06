@@ -10,10 +10,6 @@ Beat SaberをOBS等で配信や録画する時に譜面情報をオーバーレ�
 
 1. [Beat Saber HTTP Status](https://github.com/opl-/beatsaber-http-status) か、拙作の[Beat Saber HTTP Status +Database](https://github.com/rynan4818/beatsaber-http-status-db)をダウンロードしてインストールします。
 
-- **BeatSaber 1.12.1～1.13.0を使用されている方は、'20/12/26現在 HTTP Statusの正式配布がまだされてていません。**
-	* **HTTP Statusは[こちらのβ版を使用して下さい](https://github.com/opl-/beatsaber-http-status/issues/55#issuecomment-722054828)**
-	* **プレイ動画カットツール用のHTTP Status +Databaseは[こちらで1.12.1～1.13.0対応版を配布しています](https://github.com/rynan4818/beatsaber-http-status-db/releases)**
-
 2. [リリースページ](https://github.com/rynan4818/beat-saber-overlay/releases)から最新のリリースをダウンロードします。
 
 3. zipを適当なフォルダに解凍します。例: C:\TOOL\beat-saber-overlay\
