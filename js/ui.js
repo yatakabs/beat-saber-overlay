@@ -22,6 +22,7 @@ const ui = (() => {
 		if (html_id["miss"])       var miss = document.getElementById("miss");
 		if (html_id["energy"])     var energy = document.getElementById("energy");
 		if (html_id["energy_bar"]) var energy_bar = document.getElementById("energy_bar");
+		if (html_id["energy_group"])  var energy_group = document.getElementById("energy_group");
 
 		function format(number) {
 			return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
@@ -34,7 +35,14 @@ const ui = (() => {
 			if (html_id["rank"])  rank.innerText = performance.rank;
 			if (html_id["miss"])  miss.innerText = performance.missedNotes;
 			if (html_id["percentage"]) {
-				percentage.innerText = (performance.currentMaxScore > 0 ? (Math.floor((performance.score / performance.currentMaxScore) * 1000) / 10) : 0) + "%";
+				percentage.innerText = (performance.currentMaxScore > 0 ? (Math.floor((performance.score / performance.currentMaxScore) * 1000) / 10) : 100) + "%";
+			}
+			if (typeof performance.softFailed !== "undefined") {
+				if (performance.softFailed === true) {
+					now_energy = null;
+					if (html_id["energy"]) energy.innerText = "NF";
+					if (html_id["energy_group"]) energy_group.setAttribute("style", "visibility: hidden");
+				}
 			}
 			if (now_energy !== null) {
 				if (typeof performance.energy !== "undefined") {
@@ -224,22 +232,23 @@ const ui = (() => {
 
 		return (data) => {
 			var beatmap = data.status.beatmap;
+			var performance = data.status.performance;
 			var time = data.time;
 			var mod_data = data.status.mod;
 			var visibility = "visible";
 			failed = false;
 			mod_instaFail = mod_data.instaFail;
 			mod_batteryEnergy = mod_data.batteryEnergy;
-			if (mod_instaFail === false && mod_batteryEnergy === false) {
-				if (mod_data.noFail === true) {
-					now_energy = null;
-					visibility = "hidden";
-					if (html_id["energy"]) energy.innerText = "NF";
-				} else {
-					now_energy = 50;
-				}
+			if (mod_data.noFail === true && (typeof performance.softFailed === "undefined")) {
+				now_energy = null;
+				visibility = "hidden";
+				if (html_id["energy"]) energy.innerText = "NF";
 			} else {
-				now_energy = 100;
+				if (mod_instaFail === false && mod_batteryEnergy === false) {
+					now_energy = 50;
+				} else {
+					now_energy = 100;
+				}
 			}
 			if (html_id["energy_group"]) energy_group.setAttribute("style", `visibility: ${visibility}`);
 			if (beatmap.difficulty === "ExpertPlus") {

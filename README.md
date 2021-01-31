@@ -155,6 +155,7 @@ modifiersフォルダにCSSファイルを追加すると、CSSファイル名�
 | op_bombCut(data) | HTTP Status の bombCut イベント時に呼び出されます |
 | op_finished(data) | HTTP Status の finished イベント時に呼び出されます |
 | op_failed(data) | HTTP Status の failed イベント時に呼び出されます |
+| op_softFailed(data) | HTTP Status の softFailed イベント時に呼び出されます |
 | op_scoreChanged(data) | HTTP Status の scoreChanged イベント時に呼び出されます |
 | op_energyChanged(data) | HTTP Status の energyChanged イベント時に呼び出されます(本家HTTPStatusは未実装) |
 | op_pause(data) | HTTP Status の pause イベント時に呼び出されます |

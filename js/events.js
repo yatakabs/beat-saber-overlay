@@ -57,6 +57,11 @@ const events = {
 		if (typeof op_failed !== "undefined") op_failed(data);
 	},
 
+	softFailed(data) {
+		ui.performance(data);
+		if (typeof op_softFailed !== "undefined") op_softFailed(data);
+	},
+
 	scoreChanged(data) {
 		ui.performance(data);
 		if (typeof op_scoreChanged !== "undefined") op_scoreChanged(data);
