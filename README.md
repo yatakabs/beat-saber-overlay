@@ -18,6 +18,7 @@ Beat SaberをOBS等で配信や録画する時に譜面情報をオーバーレ�
 	オプションの `pp` 機能を使用するには、デンバ時計さん版のHTTP Statusと下記のmodも導入する必要があります。
 	- [HttpStatusExtention](https://github.com/denpadokei/HttpStatusExtention)
 
+**※どちらのHTTP StatusもModAssistantにあるwebsocket-sharpのインストールが必須なので入れ忘れに注意して下さい。**
 
 2. [リリースページ](https://github.com/rynan4818/beat-saber-overlay/releases)から最新のリリースをダウンロードします。
 
