@@ -5,7 +5,8 @@ var pre_bsr_data = null;
 const check_id = ["overlay","rank","percentage","combo","score","progress",
                   "image","title","subtitle","artist","difficulty","bpm","njs","bsr","bsr_text",
                   "mapper","mapper_header","mapper_footer","song_time","song_length","mod","miss",
-                  "pre_bsr","pre_bsr_text","njs_text","energy","energy_bar","energy_group"]
+                  "pre_bsr","pre_bsr_text","njs_text","energy","energy_bar","energy_group",
+                  "now_pp","now_pp_text","star","star_text","pp","pp_text"]
 var html_id = {};
 for (var i = 0, len = check_id.length; i < len; ++i) {
 	if (document.getElementById(check_id[i]) === null) {
@@ -16,9 +17,12 @@ for (var i = 0, len = check_id.length; i < len; ++i) {
 }
 if (html_id["mapper_header"]) var mapper_header_org = document.getElementById("mapper_header").textContent;
 if (html_id["mapper_footer"]) var mapper_footer_org = document.getElementById("mapper_footer").textContent;
-if (html_id["bsr_text"])      var bsr_text_org = document.getElementById("bsr_text").textContent;
-if (html_id["pre_bsr_text"])  var pre_bsr_text_org = document.getElementById("pre_bsr_text").textContent;
-if (html_id["njs_text"])      var njs_text_org = document.getElementById("njs_text").textContent;
+if (html_id["bsr_text"])      var bsr_text_org      = document.getElementById("bsr_text").textContent;
+if (html_id["pre_bsr_text"])  var pre_bsr_text_org  = document.getElementById("pre_bsr_text").textContent;
+if (html_id["njs_text"])      var njs_text_org      = document.getElementById("njs_text").textContent;
+if (html_id["now_pp_text"])   var now_pp_text_org   = document.getElementById("now_pp_text").textContent;
+if (html_id["star_text"])     var star_text_org     = document.getElementById("star_text").textContent;
+if (html_id["pp_text"])       var pp_text_org       = document.getElementById("pp_text").textContent;
 
 (() => {
 	const handlers = {
@@ -29,7 +33,7 @@ if (html_id["njs_text"])      var njs_text_org = document.getElementById("njs_te
 					if (html_id["overlay"]) document.getElementById("overlay").classList.remove("hidden");
 					return;
 				}
-				if (modifier === "bsr") {
+				if (modifier === "bsr" || modifier === "all") {
 					bsr_display = true;
 				}
 				var link = document.createElement("link");

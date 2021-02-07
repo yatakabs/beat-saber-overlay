@@ -8,7 +8,16 @@ Beat SaberをOBS等で配信や録画する時に譜面情報をオーバーレ�
 
 ## インストール方法 (OBS)
 
-1. [Beat Saber HTTP Status](https://github.com/opl-/beatsaber-http-status) か、拙作の[Beat Saber HTTP Status +Database](https://github.com/rynan4818/beatsaber-http-status-db)をダウンロードしてインストールします。
+1. Beat Saberからオーバーレイにデータを送信するために下記のmodをインストールしてください。
+	- [Beat Saber HTTP Status](https://github.com/opl-/beatsaber-http-status)　※ModAssistant登録の本家版
+		* ModAssistantにある場合は、そちらからインストールした方が間違いありません。
+
+	ほかに、デンバ時計さん製作のパフォーマンス改善版があります。
+	- [Beat Saber HTTP Status](https://github.com/denpadokei/beatsaber-http-status)
+
+	オプションの `pp` 機能を使用するには、デンバ時計さん版のHTTP Statusと下記のmodも導入する必要があります。
+	- [HttpStatusExtention](https://github.com/denpadokei/HttpStatusExtention)
+
 
 2. [リリースページ](https://github.com/rynan4818/beat-saber-overlay/releases)から最新のリリースをダウンロードします。
 
@@ -54,10 +63,16 @@ file:///C:/TOOL/beat-saber-overlay/index.html?modifiers=top,bsr
 	* Modifierを表示します。(DA,FS等)
 - `energy`
 	* ライフ値バーを表示します
+- `pp`
+	* ランク譜面の時に精度100%のpp値、Star Difficulty、リアルタイムのpp値を表示します。（※１）
+- `all`
+	* `bsr`, `miss`, `mod`, `energy`, `pp` オプションを全て表示します。（※１）
 - `no-performance`
 	* スコア表示を消します。
 - `no-hidden`
 	* 終了時に表示を消しません。
+
+※１：`pp` オプションを表示するには、[HttpStatusExtention](https://github.com/denpadokei/HttpStatusExtention)の導入が必要です。
 
 ### `ip`または`port`
 
@@ -115,7 +130,7 @@ file:///C:/TOOL/beat-saber-overlay/simple.html?modifiers=bsr
 | njs | NJS情報に書き換えます。 |
 | njs_text | NJSの項目名を起動時に保持し、NJS表示が出来ない場合は表示を消します。 |
 | bsr | BeatSaverのkey(bsr)情報に書き換えます。 |
-| bsr_text | bsrの項目名を起動時に保持し、NJS表示が出来ない場合は表示を消します。 |
+| bsr_text | bsrの項目名を起動時に保持し、bsr表示が出来ない場合は表示を消します。 |
 | mapper | 譜面の作者名を表示します。 |
 | mapper_header | 譜面の作者名のヘッダー表示を起動時に保持し、表示出来ない場合は消します。 |
 | mapper_footer | 譜面の作者名のフッター表示を起動時に保持し、表示出来ない場合は消します。 |
@@ -128,6 +143,12 @@ file:///C:/TOOL/beat-saber-overlay/simple.html?modifiers=bsr
 | energy | ライフ値(xxx%)に書き換えます。 |
 | energy_bar | ライフ値に応じたwidthスタイル値(xxx%)を設定ます。 |
 | energy_group | No Fail時にvisibilityスタイルをhiddenにします。 |
+| now_pp | 現在のpp値に書き換えます。 |
+| now_pp_text | now_ppの項目名を起動時に保持し、now_pp表示が出来ない場合は表示を消します。 |
+| star | Star Difficulty値に書き換えます。 |
+| star_text | starの項目名を起動時に保持し、star表示が出来ない場合は表示を消します。 |
+| pp | 精度100%のpp値に書き換えます。 |
+| pp_text | ppの項目名を起動時に保持し、pp表示が出来ない場合は表示を消します。 |
 
 ### modifiersオプションの追加
 modifiersフォルダにCSSファイルを追加すると、CSSファイル名でmodifiersオプションを指定して読み込める様になります。
@@ -171,12 +192,3 @@ modifiersフォルダにCSSファイルを追加すると、CSSファイル名�
 | percentage | 曲の経過割合 |
 | now_map | 現在の譜面のBeatSaver API 問い合わせ結果のJSONオブジェクト。但し、op_beatmapの時は前回と同じ譜面のプレイ時のみ格納、それ以外はnull |
 | pre_map | 前回の譜面のBeatSaver API 問い合わせ結果のJSONオブジェクト。 |
-
-## bsrの表示位置や文字サイズを変更したい場合
-
-表示位置を変更したい場合は`index.html`の以下の部分を修正して下さい。
-![image](https://rynan4818.github.io/beatsaber-overlay-index-html.png)
-
-文字サイズなどは`style.css`の以下を修正して下さい。
-![image](https://rynan4818.github.io/beatsaber-overlay-css.png)
-

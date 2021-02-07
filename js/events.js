@@ -78,7 +78,7 @@ const events = {
 	},
 
 	resume(data) {
-		ui.timer.start(data.status.beatmap.start + (Date.now() - data.time), data.status.beatmap.length);
+		ui.timer.start(data.status.beatmap.start + (Date.now() - data.time), data.status.beatmap.length, false);
 		if (typeof op_resume !== "undefined") op_resume(data);
 	},
 

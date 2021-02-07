@@ -8,6 +8,7 @@ const ui = (() => {
 	var mod_batteryEnergy = false;
 	var obstacle_time = 0;
 	var failed = false;
+	var now_pp_enable = false;
 
 	const performance = (() => {
 		const cut_energy = 1;
@@ -15,14 +16,16 @@ const ui = (() => {
 		const miss_energy = -15;
 		const drain_energy = -0.13;  //per msec
 		const battery_unit = 25;
-		if (html_id["rank"])       var rank = document.getElementById("rank");
-		if (html_id["percentage"]) var percentage = document.getElementById("percentage");
-		if (html_id["score"])      var score = document.getElementById("score");
-		if (html_id["combo"])      var combo = document.getElementById("combo");
-		if (html_id["miss"])       var miss = document.getElementById("miss");
-		if (html_id["energy"])     var energy = document.getElementById("energy");
-		if (html_id["energy_bar"]) var energy_bar = document.getElementById("energy_bar");
-		if (html_id["energy_group"])  var energy_group = document.getElementById("energy_group");
+		if (html_id["rank"])         var rank         = document.getElementById("rank");
+		if (html_id["percentage"])   var percentage   = document.getElementById("percentage");
+		if (html_id["score"])        var score        = document.getElementById("score");
+		if (html_id["combo"])        var combo        = document.getElementById("combo");
+		if (html_id["miss"])         var miss         = document.getElementById("miss");
+		if (html_id["energy"])       var energy       = document.getElementById("energy");
+		if (html_id["energy_bar"])   var energy_bar   = document.getElementById("energy_bar");
+		if (html_id["energy_group"]) var energy_group = document.getElementById("energy_group");
+		if (html_id["now_pp"])       var now_pp       = document.getElementById("now_pp");
+		if (html_id["now_pp_text"])  var now_pp_text  = document.getElementById("now_pp_text");
 
 		function format(number) {
 			return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
@@ -104,6 +107,11 @@ const ui = (() => {
 				if (html_id["energy"]) energy.innerText = Math.round(now_energy) + "%";
 				if (html_id["energy_bar"]) energy_bar.setAttribute("style", `width: ${Math.round(now_energy)}%`);
 			}
+			if (typeof performance.current_pp !== "undefined" && performance.current_pp > 0) now_pp_enable = true;
+			if (now_pp_enable) {
+				if (html_id["now_pp"])     now_pp.innerText = Math.floor(performance.current_pp * 100) / 100;
+				if (html_id["now_pp_text"]) now_pp_text.innerText = now_pp_text_org;
+			}
 			
 			if (typeof op_performance !== "undefined") op_performance(data,now_energy);
 		}
@@ -122,6 +130,7 @@ const ui = (() => {
 		var duration;
 		var length_min;
 		var length_sec;
+		var song_speed;
 
 		var display;
 
@@ -139,7 +148,7 @@ const ui = (() => {
 		function update(time) {
 			time = time || Date.now();
 
-			var delta = time - began;
+			var delta = (time - began) * song_speed;
 
 			var progress = Math.floor(delta / 1000);
 			var percentage = Math.min(delta / duration, 1);
@@ -163,11 +172,11 @@ const ui = (() => {
 		}
 
 		return {
-			start(time, length) {
+			start(time, length, speed) {
 				active = true;
-				
+				if (speed != false) song_speed = speed;
 				began = time;
-				duration = length;
+				duration = length * song_speed;
 
 				length_min = Math.floor(duration / 1000 / 60);
 				length_sec = Math.floor(duration / 1000) % 60;
@@ -196,26 +205,31 @@ const ui = (() => {
 	const beatmap = (() => {
 		const beatsaver_url = 'https://beatsaver.com/api/maps/by-hash/';
 		const request_timeout = 5000; //msec
-		if (html_id["image"])         var cover = document.getElementById("image");
-
-		if (html_id["title"])         var title = document.getElementById("title");
-		if (html_id["subtitle"])      var subtitle = document.getElementById("subtitle");
-		if (html_id["artist"])        var artist = document.getElementById("artist");
+		if (html_id["image"])         var cover         = document.getElementById("image");
+		if (html_id["title"])         var title         = document.getElementById("title");
+		if (html_id["subtitle"])      var subtitle      = document.getElementById("subtitle");
+		if (html_id["artist"])        var artist        = document.getElementById("artist");
 		if (html_id["mapper_header"]) var mapper_header = document.getElementById("mapper_header");
-		if (html_id["mapper"])        var mapper = document.getElementById("mapper");
+		if (html_id["mapper"])        var mapper        = document.getElementById("mapper");
 		if (html_id["mapper_footer"]) var mapper_footer = document.getElementById("mapper_footer");
-
-		if (html_id["difficulty"])    var difficulty = document.getElementById("difficulty");
-		if (html_id["bpm"])           var bpm = document.getElementById("bpm");
-		if (html_id["njs"])           var njs = document.getElementById("njs");
-		if (html_id["njs_text"])      var njs_text = document.getElementById("njs_text");
-		if (html_id["bsr"])           var bsr = document.getElementById("bsr");
-		if (html_id["bsr_text"])      var bsr_text = document.getElementById("bsr_text");
-		if (html_id["mod"])           var mod = document.getElementById("mod");
-		if (html_id["pre_bsr"])       var pre_bsr = document.getElementById("pre_bsr");
-		if (html_id["pre_bsr_text"])  var pre_bsr_text = document.getElementById("pre_bsr_text");
-		if (html_id["energy"])        var energy = document.getElementById("energy");
-		if (html_id["energy_group"])  var energy_group = document.getElementById("energy_group");
+		if (html_id["difficulty"])    var difficulty    = document.getElementById("difficulty");
+		if (html_id["bpm"])           var bpm           = document.getElementById("bpm");
+		if (html_id["njs"])           var njs           = document.getElementById("njs");
+		if (html_id["njs_text"])      var njs_text      = document.getElementById("njs_text");
+		if (html_id["bsr"])           var bsr           = document.getElementById("bsr");
+		if (html_id["bsr_text"])      var bsr_text      = document.getElementById("bsr_text");
+		if (html_id["mod"])           var mod           = document.getElementById("mod");
+		if (html_id["pre_bsr"])       var pre_bsr       = document.getElementById("pre_bsr");
+		if (html_id["pre_bsr_text"])  var pre_bsr_text  = document.getElementById("pre_bsr_text");
+		if (html_id["energy"])        var energy        = document.getElementById("energy");
+		if (html_id["energy_group"])  var energy_group  = document.getElementById("energy_group");
+		if (html_id["star"])          var star          = document.getElementById("star");
+		if (html_id["star_text"])     var star_text     = document.getElementById("star_text");
+		if (html_id["pp"])            var pp            = document.getElementById("pp");
+		if (html_id["pp_text"])       var pp_text       = document.getElementById("pp_text");
+		if (html_id["now_pp"])        var now_pp        = document.getElementById("now_pp");
+		if (html_id["now_pp_text"])   var now_pp_text   = document.getElementById("now_pp_text");
+		
 		var httpRequest = new XMLHttpRequest();
 		
 		function format(number) {
@@ -236,7 +250,9 @@ const ui = (() => {
 			var time = data.time;
 			var mod_data = data.status.mod;
 			var visibility = "visible";
+			now_pp_enable = false;
 			failed = false;
+			timer.start(beatmap.start + (Date.now() - data.time), beatmap.length, mod_data.songSpeedMultiplier);
 			mod_instaFail = mod_data.instaFail;
 			mod_batteryEnergy = mod_data.batteryEnergy;
 			if (mod_data.noFail === true && (typeof performance.softFailed === "undefined")) {
@@ -335,8 +351,26 @@ const ui = (() => {
 				if (html_id["pre_bsr"])      pre_bsr.innerText = pre_map.key;
 				if (html_id["pre_bsr_text"]) pre_bsr_text.innerText = pre_bsr_text_org;
 			}
+			
+			if (typeof beatmap.pp === "undefined" || beatmap.pp === 0) {
+				if (html_id["pp"])      pp.innerText = "";
+				if (html_id["pp_text"]) pp_text.innerText = "";
+			} else {
+				if (html_id["pp"])      pp.innerText = Math.floor(beatmap.pp * 100) / 100;
+				if (html_id["pp_text"]) pp_text.innerText = pp_text_org;
+			}
+			
+			if (typeof beatmap.star === "undefined" || beatmap.star === 0) {
+				if (html_id["star"])      star.innerText = "";
+				if (html_id["star_text"]) star_text.innerText = "";
+			} else {
+				if (html_id["star"])      star.innerText = beatmap.star;
+				if (html_id["star_text"]) star_text.innerText = star_text_org;
+			}
 
-			timer.start(Date.now(), beatmap.length);
+			if (html_id["now_pp"])      now_pp.innerText = "";
+			if (html_id["now_pp_text"]) now_pp_text.innerText = "";
+
 			if (typeof op_beatmap !== "undefined") op_beatmap(data,now_map,pre_map);
 		}
 	})();

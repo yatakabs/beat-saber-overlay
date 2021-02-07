@@ -7,6 +7,10 @@
     direction: ltr;
 }
 
+#pp-group {
+    direction: ltr;
+}
+
 #score {
 	transform: translate(2px, 0);
 }

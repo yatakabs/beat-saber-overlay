@@ -83,6 +83,23 @@ body {
 	letter-spacing: 3px;
 }
 
+#pp-group {
+	display: none;
+
+	font-size: 16px;
+	font-weight: 800;
+	letter-spacing: 3px;
+	margin: 0 8px;
+}
+
+#pp {
+	margin: 0 0 0 8px;
+}
+
+#pp_text {
+	font-size: 10px;
+}
+
 #mod-group {
     visibility: hidden;
     margin: 0 8px;
@@ -198,6 +215,10 @@ body {
 }
 
 #miss_group {
+    display: none;
+}
+
+#now_pp_group {
     display: none;
 }
 
