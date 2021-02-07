@@ -5,6 +5,7 @@
 Beat SaberをOBS等で配信や録画する時に譜面情報をオーバーレイ表示します。
 
 ![preview](https://rynan4818.github.io/beatsaber-overlay-bsr-image.png)
+- 画像はHttpStatusExtentionを使用したフルオプションのサンプルです。
 
 ## インストール方法 (OBS)
 
@@ -15,7 +16,7 @@ Beat SaberをOBS等で配信や録画する時に譜面情報をオーバーレ�
 	ほかに、デンバ時計さん製作のパフォーマンス改善版があります。
 	- [Beat Saber HTTP Status](https://github.com/denpadokei/beatsaber-http-status)
 
-	オプションの `pp` 機能を使用するには、デンバ時計さん版のHTTP Statusと下記のmodも導入する必要があります。
+	オプションの `pp` 機能やカスタム難易度表示を使用するには、デンバ時計さん版のHTTP Statusと下記のmodも導入する必要があります。
 	- [HttpStatusExtention](https://github.com/denpadokei/HttpStatusExtention)
 
 **※どちらのHTTP StatusもModAssistantにあるwebsocket-sharpのインストールが必須なので入れ忘れに注意して下さい。**
