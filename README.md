@@ -19,7 +19,9 @@ Beat SaberをOBS等で配信や録画する時に譜面情報をオーバーレ�
 	オプションの `pp` 機能やカスタム難易度表示を使用するには、デンバ時計さん版のHTTP Statusと下記のmodも導入する必要があります。
 	- [HttpStatusExtention](https://github.com/denpadokei/HttpStatusExtention)
 
-**※どちらのHTTP StatusもModAssistantにあるwebsocket-sharpのインストールが必須なので入れ忘れに注意して下さい。**
+※ModAssistantを使用せずにインストールする場合は、依存modが自動インストールされないので、各modの説明に従ってインストールして下さい
+
+※どちらのHTTP StatusもModAssistantにある**websocket-sharpのインストールが必須**です。入れ忘れる事が多いので注意して下さい。
 
 2. [リリースページ](https://github.com/rynan4818/beat-saber-overlay/releases)から最新のリリースをダウンロードします。
 
@@ -194,3 +196,11 @@ modifiersフォルダにCSSファイルを追加すると、CSSファイル名�
 | percentage | 曲の経過割合 |
 | now_map | 現在の譜面のBeatSaver API 問い合わせ結果のJSONオブジェクト。但し、op_beatmapの時は前回と同じ譜面のプレイ時のみ格納、それ以外はnull |
 | pre_map | 前回の譜面のBeatSaver API 問い合わせ結果のJSONオブジェクト。 |
+
+## その他
+
+他のオーバーレイでは一般的なGitHub Pages等による本オーバーレイの提供は以下を理由にあえて行いません。
+
+- 本家の(Unnamed) Beat Saber OverlayではURL変更等によるトラブルが多かったこと
+- GitHubに繋がらない場合など、ネットワークのトラブル時に使用できないこと
+- 少し手間になるが、ダウンロードしてローカルで表示する使用方法で問題ないこと
