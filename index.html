@@ -32,7 +32,7 @@
 				
 				<span id="score">0</span>
 
-				<div class="energy-container">
+				<div class="energy-container" id="energy_area">
 				    <div class="energy-background" id="energy_group">
 				        <div class="energy" id="energy_bar"></div>
 				    </div>
@@ -57,8 +57,12 @@
 				<div id="meta">
 					<div id="text">
 						<div id="titles">
-							<span id="title">Title</span>
-							<span id="subtitle">Subtitle</span>
+							<div id="title_group">
+								<span id="title">Title</span>
+							</div>
+							<div id="subtitle_group">
+								<span id="subtitle">Subtitle</span>
+							</div>
 						</div>
 
 						<div id="artist-group">
@@ -75,7 +79,9 @@
 						</span>
 					</div>
 					<div>
-						<span id="difficulty">Easy</span>
+						<span id="difficulty-group">
+							<span id="difficulty">Easy</span><span id="label-group"><span id="label_header">(</span><span id="label">customLabel</span><span id="label_footer">)</span></span>
+						</span>
 						<span id="bpm-group">
 							<span id="bpm">0</span><span id="bpm_text"> BPM</span>
 						</span>

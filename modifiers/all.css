@@ -22,3 +22,7 @@
 #now_pp_group {
     display: block;
 }
+
+#label-group {
+	display: inline-block;
+}

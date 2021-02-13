@@ -44,7 +44,7 @@ const ui = (() => {
 				if (performance.softFailed === true) {
 					now_energy = null;
 					if (html_id["energy"]) energy.innerText = "NF";
-					if (html_id["energy_group"]) energy_group.setAttribute("style", "visibility: hidden");
+					if (html_id["energy_group"] && energy_display) energy_group.setAttribute("style", "visibility: hidden");
 				}
 			}
 			if (now_energy !== null) {
@@ -205,30 +205,39 @@ const ui = (() => {
 	const beatmap = (() => {
 		const beatsaver_url = 'https://beatsaver.com/api/maps/by-hash/';
 		const request_timeout = 5000; //msec
-		if (html_id["image"])         var cover         = document.getElementById("image");
-		if (html_id["title"])         var title         = document.getElementById("title");
-		if (html_id["subtitle"])      var subtitle      = document.getElementById("subtitle");
-		if (html_id["artist"])        var artist        = document.getElementById("artist");
-		if (html_id["mapper_header"]) var mapper_header = document.getElementById("mapper_header");
-		if (html_id["mapper"])        var mapper        = document.getElementById("mapper");
-		if (html_id["mapper_footer"]) var mapper_footer = document.getElementById("mapper_footer");
-		if (html_id["difficulty"])    var difficulty    = document.getElementById("difficulty");
-		if (html_id["bpm"])           var bpm           = document.getElementById("bpm");
-		if (html_id["njs"])           var njs           = document.getElementById("njs");
-		if (html_id["njs_text"])      var njs_text      = document.getElementById("njs_text");
-		if (html_id["bsr"])           var bsr           = document.getElementById("bsr");
-		if (html_id["bsr_text"])      var bsr_text      = document.getElementById("bsr_text");
-		if (html_id["mod"])           var mod           = document.getElementById("mod");
-		if (html_id["pre_bsr"])       var pre_bsr       = document.getElementById("pre_bsr");
-		if (html_id["pre_bsr_text"])  var pre_bsr_text  = document.getElementById("pre_bsr_text");
-		if (html_id["energy"])        var energy        = document.getElementById("energy");
-		if (html_id["energy_group"])  var energy_group  = document.getElementById("energy_group");
-		if (html_id["star"])          var star          = document.getElementById("star");
-		if (html_id["star_text"])     var star_text     = document.getElementById("star_text");
-		if (html_id["pp"])            var pp            = document.getElementById("pp");
-		if (html_id["pp_text"])       var pp_text       = document.getElementById("pp_text");
-		if (html_id["now_pp"])        var now_pp        = document.getElementById("now_pp");
-		if (html_id["now_pp_text"])   var now_pp_text   = document.getElementById("now_pp_text");
+		const min_subtitle_width_ratio = 0.2;
+		const subtitle_margin = 8;
+		if (html_id["overlay"])        var overlay        = document.getElementById("overlay");
+		if (html_id["image"])          var cover          = document.getElementById("image");
+		if (html_id["titles"])         var titles         = document.getElementById("titles");
+		if (html_id["title_group"])    var title_group    = document.getElementById("title_group");
+		if (html_id["title"])          var title          = document.getElementById("title");
+		if (html_id["subtitle_group"]) var subtitle_group = document.getElementById("subtitle_group");
+		if (html_id["subtitle"])       var subtitle       = document.getElementById("subtitle");
+		if (html_id["artist"])         var artist         = document.getElementById("artist");
+		if (html_id["mapper_header"])  var mapper_header  = document.getElementById("mapper_header");
+		if (html_id["mapper"])         var mapper         = document.getElementById("mapper");
+		if (html_id["mapper_footer"])  var mapper_footer  = document.getElementById("mapper_footer");
+		if (html_id["difficulty"])     var difficulty     = document.getElementById("difficulty");
+		if (html_id["bpm"])            var bpm            = document.getElementById("bpm");
+		if (html_id["njs"])            var njs            = document.getElementById("njs");
+		if (html_id["njs_text"])       var njs_text       = document.getElementById("njs_text");
+		if (html_id["bsr"])            var bsr            = document.getElementById("bsr");
+		if (html_id["bsr_text"])       var bsr_text       = document.getElementById("bsr_text");
+		if (html_id["mod"])            var mod            = document.getElementById("mod");
+		if (html_id["pre_bsr"])        var pre_bsr        = document.getElementById("pre_bsr");
+		if (html_id["pre_bsr_text"])   var pre_bsr_text   = document.getElementById("pre_bsr_text");
+		if (html_id["energy"])         var energy         = document.getElementById("energy");
+		if (html_id["energy_group"])   var energy_group   = document.getElementById("energy_group");
+		if (html_id["star"])           var star           = document.getElementById("star");
+		if (html_id["star_text"])      var star_text      = document.getElementById("star_text");
+		if (html_id["pp"])             var pp             = document.getElementById("pp");
+		if (html_id["pp_text"])        var pp_text        = document.getElementById("pp_text");
+		if (html_id["now_pp"])         var now_pp         = document.getElementById("now_pp");
+		if (html_id["now_pp_text"])    var now_pp_text    = document.getElementById("now_pp_text");
+		if (html_id["label"])          var label          = document.getElementById("label");
+		if (html_id["label_header"])   var label_header   = document.getElementById("label_header");
+		if (html_id["label_footer"])   var label_footer   = document.getElementById("label_footer");
 		
 		var httpRequest = new XMLHttpRequest();
 		
@@ -266,9 +275,18 @@ const ui = (() => {
 					now_energy = 100;
 				}
 			}
-			if (html_id["energy_group"]) energy_group.setAttribute("style", `visibility: ${visibility}`);
+			if (html_id["energy_group"] && energy_display) energy_group.setAttribute("style", `visibility: ${visibility}`);
 			if (beatmap.difficulty === "ExpertPlus") {
 				beatmap.difficulty = "Expert+";
+			}
+			if (typeof beatmap.customLabel === "undefined" || beatmap.customLabel.trim() === "") {
+				if (html_id["label"])        label.innerText = "";
+				if (html_id["label_header"]) label_header.innerText = "";
+				if (html_id["label_footer"]) label_footer.innerText = "";
+			} else {
+				if (html_id["label"])        label.innerText = beatmap.customLabel;
+				if (html_id["label_header"]) label_header.innerText = label_header_org;
+				if (html_id["label_footer"]) label_footer.innerText = label_footer_org;
 			}
 
 			if (html_id["image"])    cover.setAttribute("src", `data:image/png;base64,${beatmap.songCover}`);
@@ -371,6 +389,50 @@ const ui = (() => {
 			if (html_id["now_pp"])      now_pp.innerText = "";
 			if (html_id["now_pp_text"]) now_pp_text.innerText = "";
 
+			if (html_id["overlay"] && html_id["subtitle"] && html_id["subtitle_group"] && html_id["title"] && html_id["title_group"]) {
+				subtitle_group.style.width = "";
+				subtitle.classList.remove("scroll")
+				title_group.style.width = "";
+				title.classList.remove("scroll")
+				console.log(`doc_offsetWidth = ${document.documentElement.offsetWidth}`);
+				console.log(`overlay.width = ${overlay.getBoundingClientRect().left + overlay.offsetWidth}`);
+				console.log(`subtitle_group.left  = ${subtitle_group.getBoundingClientRect().left}`);
+				console.log(`subtitle_group.offset = ${subtitle_group.offsetWidth}`);
+				console.log(`title_group.left = ${title_group.getBoundingClientRect().left}`);
+				console.log(`title_group.offset = ${title_group.offsetWidth}`);
+				if (document.documentElement.offsetWidth < overlay.getBoundingClientRect().left + overlay.offsetWidth) {
+					if (beatmap.songSubName.trim() === "") {
+						var subtitle_width_down = 0;
+					} else {
+						var subtitle_width_down = overlay.getBoundingClientRect().left + overlay.offsetWidth - document.documentElement.offsetWidth;
+						var change_subtitle_width = subtitle.offsetWidth - subtitle_width_down;
+						console.log(`subtitle_width_down = ${subtitle_width_down}`);
+						if (change_subtitle_width / titles.offsetWidth < min_subtitle_width_ratio) {
+							var before_change_subtitle_width = change_subtitle_width;
+							change_subtitle_width = titles.offsetWidth * min_subtitle_width_ratio;
+							subtitle_width_down -= change_subtitle_width - before_change_subtitle_width;
+							console.log(`subtitle_width_down = ${subtitle_width_down}`);
+						}
+					}
+					console.log("---------------------");
+					if (document.documentElement.offsetWidth < overlay.getBoundingClientRect().left + overlay.offsetWidth - subtitle_width_down) {
+						var title_width_down = overlay.getBoundingClientRect().left + overlay.offsetWidth - subtitle_width_down - document.documentElement.offsetWidth;
+						console.log(`title_width_down = ${title_width_down}`);
+						title_group.style.width = `${title_group.offsetWidth - title_width_down}px`;
+						title.classList.add("scroll")
+						console.log(`title_group.left = ${title_group.getBoundingClientRect().left}`);
+						console.log(`title_group.offset = ${title_group.offsetWidth}`);
+					}
+					if (beatmap.songSubName.trim() !== "") {
+						subtitle_group.style.width = `${change_subtitle_width}px`;
+						subtitle.classList.add("scroll")
+					}
+					console.log(`subtitle_group.left  = ${subtitle_group.getBoundingClientRect().left}`);
+					console.log(`subtitle_group.offset = ${subtitle_group.offsetWidth}`);
+				}
+				console.log(`titles_width = ${title_group.getBoundingClientRect().left + title_group.offsetWidth + subtitle_group.offsetWidth + subtitle_margin}`);
+				console.log(`overlay.width = ${overlay.getBoundingClientRect().left + overlay.offsetWidth}`);
+			}
 			if (typeof op_beatmap !== "undefined") op_beatmap(data,now_map,pre_map);
 		}
 	})();
