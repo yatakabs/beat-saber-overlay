@@ -3,11 +3,43 @@
 	right: 40px;
 }
 
+#title_group {
+    direction: ltr;
+}
+
+#subtitle_group {
+    direction: ltr;
+}
+
+#artist {
+    direction: ltr;
+}
+
+#mapper_header {
+    direction: ltr;
+}
+
+#mapper {
+    direction: ltr;
+}
+
+#mapper_footer {
+    direction: ltr;
+}
+
 #bpm-group {
     direction: ltr;
 }
 
+#njs-group {
+    direction: ltr;
+}
+
 #pp-group {
+    direction: ltr;
+}
+
+#difficulty-group {
     direction: ltr;
 }
 

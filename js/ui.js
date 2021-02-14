@@ -238,6 +238,7 @@ const ui = (() => {
 		if (html_id["label"])          var label          = document.getElementById("label");
 		if (html_id["label_header"])   var label_header   = document.getElementById("label_header");
 		if (html_id["label_footer"])   var label_footer   = document.getElementById("label_footer");
+		if (html_id["meta"])           var meta           = document.getElementById("meta");
 		
 		var httpRequest = new XMLHttpRequest();
 		
@@ -400,39 +401,77 @@ const ui = (() => {
 				console.log(`subtitle_group.offset = ${subtitle_group.offsetWidth}`);
 				console.log(`title_group.left = ${title_group.getBoundingClientRect().left}`);
 				console.log(`title_group.offset = ${title_group.offsetWidth}`);
-				if (document.documentElement.offsetWidth < overlay.getBoundingClientRect().left + overlay.offsetWidth) {
-					if (beatmap.songSubName.trim() === "") {
-						var subtitle_width_down = 0;
-					} else {
-						var subtitle_width_down = overlay.getBoundingClientRect().left + overlay.offsetWidth - document.documentElement.offsetWidth;
-						var change_subtitle_width = subtitle.offsetWidth - subtitle_width_down;
-						console.log(`subtitle_width_down = ${subtitle_width_down}`);
-						if (change_subtitle_width / titles.offsetWidth < min_subtitle_width_ratio) {
-							var before_change_subtitle_width = change_subtitle_width;
-							change_subtitle_width = titles.offsetWidth * min_subtitle_width_ratio;
-							subtitle_width_down -= change_subtitle_width - before_change_subtitle_width;
+				console.log(`meta.left = ${meta.getBoundingClientRect().left}`);
+				console.log(`meta.offset = ${meta.offsetWidth}`);
+				if (overlay.style.direction === "ltr") {
+					if (document.documentElement.offsetWidth < overlay.getBoundingClientRect().left + overlay.offsetWidth) {
+						if (beatmap.songSubName.trim() === "") {
+							var subtitle_width_down = 0;
+						} else {
+							var subtitle_width_down = overlay.getBoundingClientRect().left + overlay.offsetWidth - document.documentElement.offsetWidth;
+							var change_subtitle_width = subtitle.offsetWidth - subtitle_width_down;
 							console.log(`subtitle_width_down = ${subtitle_width_down}`);
+							if (change_subtitle_width / titles.offsetWidth < min_subtitle_width_ratio) {
+								var before_change_subtitle_width = change_subtitle_width;
+								change_subtitle_width = titles.offsetWidth * min_subtitle_width_ratio;
+								subtitle_width_down -= change_subtitle_width - before_change_subtitle_width;
+								console.log(`subtitle_width_down = ${subtitle_width_down}`);
+							}
 						}
+						console.log("---------------------");
+						if (document.documentElement.offsetWidth < overlay.getBoundingClientRect().left + overlay.offsetWidth - subtitle_width_down) {
+							var title_width_down = overlay.getBoundingClientRect().left + overlay.offsetWidth - subtitle_width_down - document.documentElement.offsetWidth;
+							console.log(`title_width_down = ${title_width_down}`);
+							title_group.style.width = `${title_group.offsetWidth - title_width_down}px`;
+							title.classList.add("scroll")
+							console.log(`title_group.left = ${title_group.getBoundingClientRect().left}`);
+							console.log(`title_group.offset = ${title_group.offsetWidth}`);
+						}
+						if (beatmap.songSubName.trim() !== "") {
+							subtitle_group.style.width = `${change_subtitle_width}px`;
+							subtitle.classList.add("scroll")
+						}
+						console.log(`subtitle_group.left  = ${subtitle_group.getBoundingClientRect().left}`);
+						console.log(`subtitle_group.offset = ${subtitle_group.offsetWidth}`);
 					}
-					console.log("---------------------");
-					if (document.documentElement.offsetWidth < overlay.getBoundingClientRect().left + overlay.offsetWidth - subtitle_width_down) {
-						var title_width_down = overlay.getBoundingClientRect().left + overlay.offsetWidth - subtitle_width_down - document.documentElement.offsetWidth;
-						console.log(`title_width_down = ${title_width_down}`);
-						title_group.style.width = `${title_group.offsetWidth - title_width_down}px`;
-						title.classList.add("scroll")
-						console.log(`title_group.left = ${title_group.getBoundingClientRect().left}`);
-						console.log(`title_group.offset = ${title_group.offsetWidth}`);
+				} else {
+					if (meta.getBoundingClientRect().left < 0) {
+						if (beatmap.songSubName.trim() === "") {
+							var subtitle_width_down = 0;
+						} else {
+							var subtitle_width_down = 0 - meta.getBoundingClientRect().left;
+							var change_subtitle_width = subtitle.offsetWidth - subtitle_width_down;
+							console.log(`subtitle_width_down = ${subtitle_width_down}`);
+							if (change_subtitle_width / titles.offsetWidth < min_subtitle_width_ratio) {
+								var before_change_subtitle_width = change_subtitle_width;
+								change_subtitle_width = titles.offsetWidth * min_subtitle_width_ratio;
+								subtitle_width_down -= change_subtitle_width - before_change_subtitle_width;
+								console.log(`subtitle_width_down = ${subtitle_width_down}`);
+							}
+						}
+						console.log("---------------------");
+						if (meta.getBoundingClientRect().left + subtitle_width_down < 0) {
+							var title_width_down = meta.getBoundingClientRect().left + subtitle_width_down;
+							console.log(`title_width_down = ${title_width_down}`);
+							title_group.style.width = `${title_group.offsetWidth - title_width_down}px`;
+							title.classList.add("scroll")
+							console.log(`title_group.left = ${title_group.getBoundingClientRect().left}`);
+							console.log(`title_group.offset = ${title_group.offsetWidth}`);
+						}
+						if (beatmap.songSubName.trim() !== "") {
+							subtitle_group.style.width = `${change_subtitle_width}px`;
+							subtitle.classList.add("scroll")
+						}
+						console.log(`subtitle_group.left  = ${subtitle_group.getBoundingClientRect().left}`);
+						console.log(`subtitle_group.offset = ${subtitle_group.offsetWidth}`);
 					}
-					if (beatmap.songSubName.trim() !== "") {
-						subtitle_group.style.width = `${change_subtitle_width}px`;
-						subtitle.classList.add("scroll")
-					}
-					console.log(`subtitle_group.left  = ${subtitle_group.getBoundingClientRect().left}`);
-					console.log(`subtitle_group.offset = ${subtitle_group.offsetWidth}`);
 				}
+				
 				console.log(`titles_width = ${title_group.getBoundingClientRect().left + title_group.offsetWidth + subtitle_group.offsetWidth + subtitle_margin}`);
 				console.log(`overlay.width = ${overlay.getBoundingClientRect().left + overlay.offsetWidth}`);
-			}
+				console.log(`meta.left = ${meta.getBoundingClientRect().left}`);
+				console.log(`meta.offset = ${meta.offsetWidth}`);
+				}
 			if (typeof op_beatmap !== "undefined") op_beatmap(data,now_map,pre_map);
 		}
 	})();
