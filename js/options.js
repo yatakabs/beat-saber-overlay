@@ -8,7 +8,8 @@ const check_id = ["overlay","rank","percentage","combo","score","progress","ener
                   "mapper","mapper_header","mapper_footer","song_time","song_length","mod","miss",
                   "pre_bsr","pre_bsr_text","njs_text","energy","energy_bar","energy_group",
                   "now_pp","now_pp_text","star","star_text","pp","pp_text","label_header",
-                  "label_footer","label","subtitle_group","title_group","titles","bsr-group","meta"]
+                  "label_footer","label","subtitle_group","title_group","titles","bsr-group","meta",
+                  "beatmap","cover_group"]
 var html_id = {};
 for (var i = 0, len = check_id.length; i < len; ++i) {
 	if (document.getElementById(check_id[i]) === null) {
@@ -60,6 +61,12 @@ if (html_id["label_footer"])  var label_footer_org  = document.getElementById("l
 		handlers.modifiers(location.hash.slice(1));
 	}
 	
-	if (html_id["bsr-group"] && document.getElementById("bsr-group").style.display !== "none") bsr_display = true;
-	if (html_id["energy_area"] && document.getElementById("energy_area").style.visibility !== "hidden") energy_display = true;
+	if (html_id["bsr-group"]) {
+		let a = document.getElementById("bsr-group");
+		if (window.getComputedStyle(a).getPropertyValue("display") !== "none") bsr_display = true;
+	}
+	if (html_id["energy_area"]) {
+		let a = document.getElementById("energy_area");
+		if (window.getComputedStyle(a).getPropertyValue("visibility") !== "hidden") energy_display = true;
+	}
 })();
