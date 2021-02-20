@@ -408,7 +408,7 @@ const ui = (() => {
 				console.log(`title_group.offset = ${dom_title_group.offsetWidth}`);
 				console.log(`meta.left = ${dom_meta.getBoundingClientRect().left}`);
 				console.log(`meta.offset = ${dom_meta.offsetWidth}`);
-				if (window.getComputedStyle(dom_overlay).getPropertyValue('direction') === "rtl") {
+				if (rtl_display) {
 					if (dom_cover_group.offsetWidth + dom_meta.offsetWidth > dom_beatmap.offsetWidth) {
 						if (beatmap.songSubName.trim() === "") {
 							var subtitle_width_down = 0;

@@ -2,6 +2,7 @@ const query = new URLSearchParams(location.search);
 var bsr_display = false;
 var disp_hidden = true;
 var energy_display = false;
+var rtl_display = false;
 var pre_bsr_data = null;
 const check_id = ["overlay","rank","percentage","combo","score","progress","energy_area",
                   "image","title","subtitle","artist","difficulty","bpm","njs","bsr","bsr_text",
@@ -38,6 +39,15 @@ if (html_id["label_footer"])  var label_footer_org  = document.getElementById("l
 					if (html_id["overlay"]) document.getElementById("overlay").classList.remove("hidden");
 					return;
 				}
+				if (modifier === "bsr" || modifier === "all") {
+					bsr_display = true;
+				}
+				if (modifier === "energy" || modifier === "all") {
+					energy_display = true;
+				}
+				if (modifier === "rtl") {
+					rtl_display = true;
+				}
 				var link = document.createElement("link");
 				
 				link.setAttribute("rel", "stylesheet");
@@ -61,12 +71,4 @@ if (html_id["label_footer"])  var label_footer_org  = document.getElementById("l
 		handlers.modifiers(location.hash.slice(1));
 	}
 	
-	if (html_id["bsr-group"]) {
-		let a = document.getElementById("bsr-group");
-		if (window.getComputedStyle(a).getPropertyValue("display") !== "none") bsr_display = true;
-	}
-	if (html_id["energy_area"]) {
-		let a = document.getElementById("energy_area");
-		if (window.getComputedStyle(a).getPropertyValue("visibility") !== "hidden") energy_display = true;
-	}
 })();
