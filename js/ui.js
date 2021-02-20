@@ -44,7 +44,7 @@ const ui = (() => {
 				if (performance.softFailed === true) {
 					now_energy = null;
 					if (html_id["energy"]) energy.innerText = "NF";
-					if (html_id["energy_group"]) energy_group.setAttribute("style", "visibility: hidden");
+					if (html_id["energy_group"] && energy_display) energy_group.setAttribute("style", "visibility: hidden");
 				}
 			}
 			if (now_energy !== null) {
@@ -266,7 +266,7 @@ const ui = (() => {
 					now_energy = 100;
 				}
 			}
-			if (html_id["energy_group"]) energy_group.setAttribute("style", `visibility: ${visibility}`);
+			if (html_id["energy_group"] && energy_display) energy_group.setAttribute("style", `visibility: ${visibility}`);
 			if (beatmap.difficulty === "ExpertPlus") {
 				beatmap.difficulty = "Expert+";
 			}

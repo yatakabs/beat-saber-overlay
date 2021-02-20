@@ -1,8 +1,9 @@
 const query = new URLSearchParams(location.search);
 var bsr_display = false;
 var disp_hidden = true;
+var energy_display = false;
 var pre_bsr_data = null;
-const check_id = ["overlay","rank","percentage","combo","score","progress",
+const check_id = ["overlay","rank","percentage","combo","score","progress","energy_area",
                   "image","title","subtitle","artist","difficulty","bpm","njs","bsr","bsr_text",
                   "mapper","mapper_header","mapper_footer","song_time","song_length","mod","miss",
                   "pre_bsr","pre_bsr_text","njs_text","energy","energy_bar","energy_group",
@@ -35,6 +36,9 @@ if (html_id["pp_text"])       var pp_text_org       = document.getElementById("p
 				}
 				if (modifier === "bsr" || modifier === "all") {
 					bsr_display = true;
+				}
+				if (modifier === "energy" || modifier === "all") {
+					energy_display = true;
 				}
 				var link = document.createElement("link");
 				
