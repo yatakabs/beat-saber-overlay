@@ -11,23 +11,22 @@
     direction: ltr;
 }
 
-#artist-mapper {
+#artist_group {
+}
+
+#bpm_group {
     direction: ltr;
 }
 
-#bpm-group {
+#njs_group {
     direction: ltr;
 }
 
-#njs-group {
+#pp_group {
     direction: ltr;
 }
 
-#pp-group {
-    direction: ltr;
-}
-
-#difficulty-group {
+#difficulty_group {
     direction: ltr;
 }
 

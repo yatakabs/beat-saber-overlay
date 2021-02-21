@@ -51,6 +51,10 @@ body {
 	transform: translate(0, -5px);
 }
 
+#title_subtitle {
+	display: inline-block;
+}
+
 #titles {
 	display: flex;
 	align-items: flex-end;
@@ -69,6 +73,10 @@ body {
 	overflow-y:hidden;
 }
 
+#title_subtitle_space {
+	width: 4px;
+}
+
 #subtitle {
 	white-space : nowrap;
 	font-size: 14px;
@@ -80,10 +88,17 @@ body {
 	overflow-wrap: break-word;
 	overflow-x: hidden;
 	overflow-y:hidden;
-	margin: 0 4px 2px 4px;
+	padding-bottom: 2px;
 }
 
-#artist-mapper {
+#artist_mapper {
+	overflow: hidden;
+	overflow-wrap: break-word;
+	overflow-x: hidden;
+	overflow-y:hidden;
+}
+
+#artist_group {
 	display: inline-block;
 	white-space : nowrap;
 	font-size: 16px;
@@ -91,16 +106,26 @@ body {
 	margin: 2px 0 0 0;
 }
 
-#difficulty-group, #bpm-group, #njs-group, #mod-group {
+#map_info {
 	display: inline-block;
+}
+
+#difficulty_group, #bpm_group, #njs_group, #mod_group {
+	display: inline-block;
+	white-space : nowrap;
 
 	font-size: 10px;
 	font-weight: 800;
 	text-transform: uppercase;
 	letter-spacing: 3px;
+	vertical-align: middle;
 }
 
-#pp-group {
+#bsr_pp {
+	display: inline-block;
+}
+
+#pp_group {
 	display: none;
 
 	font-size: 16px;
@@ -117,12 +142,12 @@ body {
 	font-size: 10px;
 }
 
-#mod-group {
+#mod_group {
     visibility: hidden;
     margin: 0 8px;
 }
 
-#bsr-group {
+#bsr_group {
 	display: none;
 
 	font-size: 18px;
@@ -131,23 +156,31 @@ body {
 	margin: 0 0px;
 }
 
-#difficulty-group {
+#difficulty_group {
 	padding: 4px 5px 4px 8px;
 
 	color: black;
 	background: white;
 	border-radius: 4px;
+	overflow: hidden;
+	overflow-wrap: break-word;
+	overflow-x: hidden;
+	overflow-y:hidden;
 }
 
-#label-group {
+#difficulty_label {
+	white-space : nowrap;
+}
+
+#label_group {
 	display: none;
 }
 
-#bpm-group {
+#bpm_group {
 	margin: 0 8px;
 }
 
-#njs-group {
+#njs_group {
 	margin: 0 0px;
 }
 
@@ -192,7 +225,7 @@ body {
 	stroke-dashoffset: 188.495px;
 }
 
-#progress-text {
+#progress_text {
 	font-size: 16px;
 	font-weight: 600;
 }
@@ -205,18 +238,18 @@ body {
 	margin: 0 0 0 0;
 }
 
-.performance-group {
+.performance_group {
 	margin: 4px 0 0 0;
 }
 
-.performance-group .text {
+.performance_group .text {
 	display: inline-block;
 
 	font-size: 22px;
 	font-weight: 600;
 }
 
-.performance-group .subtext {
+.performance_group .subtext {
 	display: inline-block;
 
 	font-size: 14px;
@@ -258,7 +291,7 @@ body {
 	--hide: cubic-bezier(0.55, 0.085, 0.68, 0.53) 200ms;
 }
 
-.energy-container {
+.energy_container {
     visibility: hidden;
     margin: 4px 0 4px 0;
     height: 12px;
@@ -266,7 +299,7 @@ body {
     border-radius: 10px 0px 0px 10px;
 }
 
-.energy-background {
+.energy_background {
     height: 10px;
     background-color: rgba(80, 80, 80, 0.8);
     border-radius: 5px;

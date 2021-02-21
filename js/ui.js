@@ -206,41 +206,50 @@ const ui = (() => {
 		const beatsaver_url = 'https://beatsaver.com/api/maps/by-hash/';
 		const request_timeout = 5000; //msec
 		const min_subtitle_width_ratio = 0.2;
-		const subtitle_margin = 8;
-		if (html_id["overlay"])        var dom_overlay        = document.getElementById("overlay");
-		if (html_id["image"])          var dom_cover          = document.getElementById("image");
-		if (html_id["titles"])         var dom_titles         = document.getElementById("titles");
-		if (html_id["title_group"])    var dom_title_group    = document.getElementById("title_group");
-		if (html_id["title"])          var dom_title          = document.getElementById("title");
-		if (html_id["subtitle_group"]) var dom_subtitle_group = document.getElementById("subtitle_group");
-		if (html_id["subtitle"])       var dom_subtitle       = document.getElementById("subtitle");
-		if (html_id["artist"])         var dom_artist         = document.getElementById("artist");
-		if (html_id["mapper_header"])  var dom_mapper_header  = document.getElementById("mapper_header");
-		if (html_id["mapper"])         var dom_mapper         = document.getElementById("mapper");
-		if (html_id["mapper_footer"])  var dom_mapper_footer  = document.getElementById("mapper_footer");
-		if (html_id["difficulty"])     var dom_difficulty     = document.getElementById("difficulty");
-		if (html_id["bpm"])            var dom_bpm            = document.getElementById("bpm");
-		if (html_id["njs"])            var dom_njs            = document.getElementById("njs");
-		if (html_id["njs_text"])       var dom_njs_text       = document.getElementById("njs_text");
-		if (html_id["bsr"])            var dom_bsr            = document.getElementById("bsr");
-		if (html_id["bsr_text"])       var dom_bsr_text       = document.getElementById("bsr_text");
-		if (html_id["mod"])            var dom_mod            = document.getElementById("mod");
-		if (html_id["pre_bsr"])        var dom_pre_bsr        = document.getElementById("pre_bsr");
-		if (html_id["pre_bsr_text"])   var dom_pre_bsr_text   = document.getElementById("pre_bsr_text");
-		if (html_id["energy"])         var dom_energy         = document.getElementById("energy");
-		if (html_id["energy_group"])   var dom_energy_group   = document.getElementById("energy_group");
-		if (html_id["star"])           var dom_star           = document.getElementById("star");
-		if (html_id["star_text"])      var dom_star_text      = document.getElementById("star_text");
-		if (html_id["pp"])             var dom_pp             = document.getElementById("pp");
-		if (html_id["pp_text"])        var dom_pp_text        = document.getElementById("pp_text");
-		if (html_id["now_pp"])         var dom_now_pp         = document.getElementById("now_pp");
-		if (html_id["now_pp_text"])    var dom_now_pp_text    = document.getElementById("now_pp_text");
-		if (html_id["label"])          var dom_label          = document.getElementById("label");
-		if (html_id["label_header"])   var dom_label_header   = document.getElementById("label_header");
-		if (html_id["label_footer"])   var dom_label_footer   = document.getElementById("label_footer");
-		if (html_id["meta"])           var dom_meta           = document.getElementById("meta");
-		if (html_id["beatmap"])        var dom_beatmap        = document.getElementById("beatmap");
-		if (html_id["cover_group"])    var dom_cover_group    = document.getElementById("cover_group");
+		if (html_id["overlay"])               var dom_overlay              = document.getElementById("overlay");
+		if (html_id["image"])                 var dom_cover                = document.getElementById("image");
+		if (html_id["titles"])                var dom_titles               = document.getElementById("titles");
+		if (html_id["title_group"])           var dom_title_group          = document.getElementById("title_group");
+		if (html_id["title"])                 var dom_title                = document.getElementById("title");
+		if (html_id["subtitle_group"])        var dom_subtitle_group       = document.getElementById("subtitle_group");
+		if (html_id["subtitle"])              var dom_subtitle             = document.getElementById("subtitle");
+		if (html_id["title_subtitle_space"])  var dom_title_subtitle_space = document.getElementById("title_subtitle_space");
+		if (html_id["artist"])                var dom_artist               = document.getElementById("artist");
+		if (html_id["artist_group"])          var dom_artist_group         = document.getElementById("artist_group");
+		if (html_id["artist_mapper"])         var dom_artist_mapper        = document.getElementById("artist_mapper");
+		if (html_id["mapper_header"])         var dom_mapper_header        = document.getElementById("mapper_header");
+		if (html_id["mapper"])                var dom_mapper               = document.getElementById("mapper");
+		if (html_id["mapper_footer"])         var dom_mapper_footer        = document.getElementById("mapper_footer");
+		if (html_id["difficulty"])            var dom_difficulty           = document.getElementById("difficulty");
+		if (html_id["bpm"])                   var dom_bpm                  = document.getElementById("bpm");
+		if (html_id["njs"])                   var dom_njs                  = document.getElementById("njs");
+		if (html_id["njs_text"])              var dom_njs_text             = document.getElementById("njs_text");
+		if (html_id["bsr"])                   var dom_bsr                  = document.getElementById("bsr");
+		if (html_id["bsr_text"])              var dom_bsr_text             = document.getElementById("bsr_text");
+		if (html_id["mod"])                   var dom_mod                  = document.getElementById("mod");
+		if (html_id["pre_bsr"])               var dom_pre_bsr              = document.getElementById("pre_bsr");
+		if (html_id["pre_bsr_text"])          var dom_pre_bsr_text         = document.getElementById("pre_bsr_text");
+		if (html_id["energy"])                var dom_energy               = document.getElementById("energy");
+		if (html_id["energy_group"])          var dom_energy_group         = document.getElementById("energy_group");
+		if (html_id["star"])                  var dom_star                 = document.getElementById("star");
+		if (html_id["star_text"])             var dom_star_text            = document.getElementById("star_text");
+		if (html_id["pp"])                    var dom_pp                   = document.getElementById("pp");
+		if (html_id["pp_text"])               var dom_pp_text              = document.getElementById("pp_text");
+		if (html_id["now_pp"])                var dom_now_pp               = document.getElementById("now_pp");
+		if (html_id["now_pp_text"])           var dom_now_pp_text          = document.getElementById("now_pp_text");
+		if (html_id["label"])                 var dom_label                = document.getElementById("label");
+		if (html_id["label_header"])          var dom_label_header         = document.getElementById("label_header");
+		if (html_id["label_footer"])          var dom_label_footer         = document.getElementById("label_footer");
+		if (html_id["meta"])                  var dom_meta                 = document.getElementById("meta");
+		if (html_id["beatmap"])               var dom_beatmap              = document.getElementById("beatmap");
+		if (html_id["cover_group"])           var dom_cover_group          = document.getElementById("cover_group");
+		if (html_id["text"])                  var dom_text                 = document.getElementById("text");
+		if (html_id["title_subtitle"])        var dom_title_subtitle       = document.getElementById("title_subtitle");
+		if (html_id["bsr_pp"])                var dom_bsr_pp               = document.getElementById("bsr_pp");
+		if (html_id["bsr_pp_group"])          var dom_bsr_pp_group         = document.getElementById("bsr_pp_group");
+		if (html_id["map_info"])              var dom_map_info             = document.getElementById("map_info");
+		if (html_id["map_info_group"])        var dom_map_info_group       = document.getElementById("map_info_group");
+		if (html_id["difficulty_label"])      var dom_difficulty_label     = document.getElementById("difficulty_label");
 
 		var httpRequest = new XMLHttpRequest();
 		
@@ -392,22 +401,93 @@ const ui = (() => {
 			if (html_id["now_pp"])      dom_now_pp.innerText = "";
 			if (html_id["now_pp_text"]) dom_now_pp_text.innerText = "";
 
-			if (html_id["overlay"] && html_id["subtitle"] && html_id["subtitle_group"] && html_id["title"] && html_id["title_group"]) {
+			if (html_id["overlay"] && html_id["subtitle"] && html_id["subtitle_group"] && html_id["title"] && html_id["title_group"] && html_id["artist_group"]) {
 				dom_subtitle_group.style.width = "";
 				dom_subtitle.classList.remove("scroll")
 				dom_title_group.style.width = "";
 				dom_title.classList.remove("scroll")
+				dom_artist_group.style.width = "";
+				dom_artist_group.classList.remove("scroll")
+				dom_bsr_pp.style.width = "";
+				dom_bsr_pp.classList.remove("scroll")
+				dom_difficulty_label.style.width = "";
+				dom_difficulty_label.classList.remove("scroll")
 				console.log(`doc_offsetWidth = ${document.documentElement.offsetWidth}`);
+				console.log(`overlay.width = ${dom_overlay.getBoundingClientRect().left + dom_overlay.offsetWidth}`);
+				console.log(`titles.width = ${dom_titles.getBoundingClientRect().left + dom_titles.offsetWidth}`);
+				console.log(`titles.left = ${dom_titles.getBoundingClientRect().left}`);
+				console.log(`titles.offsetWidth = ${dom_titles.offsetWidth}`);
+				console.log(`title_group+title-subtitle-space+subtitle_group.offsetWidth = ${dom_title_group.offsetWidth + dom_title_subtitle_space.offsetWidth + dom_subtitle_group.offsetWidth}`);
+				console.log(`artist_group.offsetWidth = ${dom_artist_group.offsetWidth}`);
+				console.log(`artist_group.width = ${dom_artist_group.getBoundingClientRect().left + dom_artist_group.offsetWidth}`);
 				console.log(`beatmap_Width = ${dom_beatmap.offsetWidth}`);
 				console.log(`cover_group_Width = ${dom_cover_group.offsetWidth}`);
 				console.log(`meta_Width = ${dom_meta.offsetWidth}`);
-				console.log(`overlay.width = ${dom_overlay.getBoundingClientRect().left + dom_overlay.offsetWidth}`);
 				console.log(`subtitle_group.left  = ${dom_subtitle_group.getBoundingClientRect().left}`);
 				console.log(`subtitle_group.offset = ${dom_subtitle_group.offsetWidth}`);
 				console.log(`title_group.left = ${dom_title_group.getBoundingClientRect().left}`);
 				console.log(`title_group.offset = ${dom_title_group.offsetWidth}`);
 				console.log(`meta.left = ${dom_meta.getBoundingClientRect().left}`);
 				console.log(`meta.offset = ${dom_meta.offsetWidth}`);
+				// ■lrt時のスクロール判定
+				// (1) ブラウザの表示幅 < #overlayのleft座標+幅 の時に文字スクロール処理をする
+				// (2) #textの幅 - (1)で超えた分 < #title_subtitleの幅 or #artist_groupの幅
+				//     #bsr_pp_groupの幅 - (1)で超えた分 < #bsr_ppの幅
+			  //     #map_info_groupの幅 - (1)で超えた分 < #map_infoの幅
+				//     を満たした物が幅を縮めてスクロール対象
+				// ■rtl時のスクロール判定
+				// (1) #beatmapの幅 < #cover_groupの幅 + #metaの幅 の時に文字スクロール処理をする
+				// (2) スクロール対象判定はltrと同じ処理
+				// ■スクロール方針
+				// ・#title_subtitleは#subtitle_groupを優先でスクロール、min_subtitle_width_ratioの割合以下の場合は#title_groupもスクロール
+				// ・#map_infoは#difficulty_groupをスクロール対象とする。
+				if (rtl_display) {
+					var base_width = dom_beatmap.offsetWidth;
+					var check_width = dom_cover_group.offsetWidth + dom_meta.offsetWidth;
+				} else {
+					var base_width = document.documentElement.offsetWidth;
+					var check_width = dom_overlay.getBoundingClientRect().left + dom_overlay.offsetWidth;
+				}
+				if (base_width < check_width) {
+					var over_width = check_width - base_width;
+					var title_subtitle_over_width = dom_title_subtitle.offsetWidth - dom_text.offsetWidth + over_width;
+					var artist_group_over_width   = dom_artist_group.offsetWidth - dom_artist_mapper.offsetWidth + over_width;
+					var bsr_pp_over_width         = dom_bsr_pp.offsetWidth - dom_bsr_pp_group.offsetWidth + over_width;
+					var map_info_over_width       = dom_map_info.offsetWidth - dom_map_info_group.offsetWidth + over_width;
+					if (title_subtitle_over_width > 0) {
+						if (beatmap.songSubName.trim() === "") {
+							var subtitle_width_down = 0;
+						} else {
+							var subtitle_width_down = title_subtitle_over_width;
+							var change_subtitle_width = dom_subtitle.offsetWidth - subtitle_width_down;
+							if (change_subtitle_width / dom_titles.offsetWidth < min_subtitle_width_ratio) {
+								var before_change_subtitle_width = change_subtitle_width;
+								change_subtitle_width = dom_titles.offsetWidth * min_subtitle_width_ratio;
+								subtitle_width_down -= change_subtitle_width - before_change_subtitle_width;
+							}
+							dom_subtitle_group.style.width = `${change_subtitle_width}px`;
+							dom_subtitle.classList.add("scroll")
+						}
+						if (title_subtitle_over_width - subtitle_width_down > 0) {
+							dom_title_group.style.width = `${dom_title_group.offsetWidth - title_subtitle_over_width + subtitle_width_down}px`;
+							dom_title.classList.add("scroll")
+						}
+					}
+					if (artist_group_over_width > 0) {
+						dom_artist_group.style.width = `${dom_artist_group.offsetWidth - artist_group_over_width}px`;
+						dom_artist_group.classList.add("scroll")
+					}
+					if (bsr_pp_over_width > 0) {
+						dom_bsr_pp.style.width = `${dom_bsr_pp.offsetWidth - bsr_pp_over_width}px`;
+						dom_bsr_pp.classList.add("scroll")
+					}
+					if (map_info_over_width > 0) {
+						dom_difficulty_label.style.width = `${dom_difficulty_label.offsetWidth - map_info_over_width}px`;
+						dom_difficulty_label.classList.add("scroll")
+					}
+				}
+
+				/*
 				if (rtl_display) {
 					if (dom_cover_group.offsetWidth + dom_meta.offsetWidth > dom_beatmap.offsetWidth) {
 						if (beatmap.songSubName.trim() === "") {
@@ -415,29 +495,21 @@ const ui = (() => {
 						} else {
 							var subtitle_width_down = dom_cover_group.offsetWidth + dom_meta.offsetWidth - dom_beatmap.offsetWidth;
 							var change_subtitle_width = dom_subtitle.offsetWidth - subtitle_width_down;
-							console.log(`subtitle_width_down = ${subtitle_width_down}`);
 							if (change_subtitle_width / dom_titles.offsetWidth < min_subtitle_width_ratio) {
 								var before_change_subtitle_width = change_subtitle_width;
 								change_subtitle_width = dom_titles.offsetWidth * min_subtitle_width_ratio;
 								subtitle_width_down -= change_subtitle_width - before_change_subtitle_width;
-								console.log(`subtitle_width_down = ${subtitle_width_down}`);
 							}
 						}
-						console.log("--------2-------------");
 						if (dom_cover_group.offsetWidth + dom_meta.offsetWidth - subtitle_width_down > dom_beatmap.offsetWidth) {
 							var title_width_down = dom_cover_group.offsetWidth + dom_meta.offsetWidth - subtitle_width_down - dom_beatmap.offsetWidth;
-							console.log(`title_width_down = ${title_width_down}`);
 							dom_title_group.style.width = `${dom_title_group.offsetWidth - title_width_down}px`;
 							dom_title.classList.add("scroll")
-							console.log(`title_group.left = ${dom_title_group.getBoundingClientRect().left}`);
-							console.log(`title_group.offset = ${dom_title_group.offsetWidth}`);
 						}
 						if (beatmap.songSubName.trim() !== "") {
 							dom_subtitle_group.style.width = `${change_subtitle_width}px`;
 							dom_subtitle.classList.add("scroll")
 						}
-						console.log(`subtitle_group.left  = ${dom_subtitle_group.getBoundingClientRect().left}`);
-						console.log(`subtitle_group.offset = ${dom_subtitle_group.offsetWidth}`);
 					}
 				} else {
 					if (document.documentElement.offsetWidth < dom_overlay.getBoundingClientRect().left + dom_overlay.offsetWidth) {
@@ -446,33 +518,26 @@ const ui = (() => {
 						} else {
 							var subtitle_width_down = dom_overlay.getBoundingClientRect().left + dom_overlay.offsetWidth - document.documentElement.offsetWidth;
 							var change_subtitle_width = dom_subtitle.offsetWidth - subtitle_width_down;
-							console.log(`subtitle_width_down = ${subtitle_width_down}`);
 							if (change_subtitle_width / dom_titles.offsetWidth < min_subtitle_width_ratio) {
 								var before_change_subtitle_width = change_subtitle_width;
 								change_subtitle_width = dom_titles.offsetWidth * min_subtitle_width_ratio;
 								subtitle_width_down -= change_subtitle_width - before_change_subtitle_width;
-								console.log(`subtitle_width_down = ${subtitle_width_down}`);
 							}
 						}
-						console.log("----------1-----------");
 						if (document.documentElement.offsetWidth < dom_overlay.getBoundingClientRect().left + dom_overlay.offsetWidth - subtitle_width_down) {
 							var title_width_down = dom_overlay.getBoundingClientRect().left + dom_overlay.offsetWidth - subtitle_width_down - document.documentElement.offsetWidth;
-							console.log(`title_width_down = ${title_width_down}`);
 							dom_title_group.style.width = `${dom_title_group.offsetWidth - title_width_down}px`;
 							dom_title.classList.add("scroll")
-							console.log(`title_group.left = ${dom_title_group.getBoundingClientRect().left}`);
-							console.log(`title_group.offset = ${dom_title_group.offsetWidth}`);
 						}
 						if (beatmap.songSubName.trim() !== "") {
 							dom_subtitle_group.style.width = `${change_subtitle_width}px`;
 							dom_subtitle.classList.add("scroll")
 						}
-						console.log(`subtitle_group.left  = ${dom_subtitle_group.getBoundingClientRect().left}`);
-						console.log(`subtitle_group.offset = ${dom_subtitle_group.offsetWidth}`);
 					}
 				}
+				*/
 				
-				console.log(`titles_width = ${dom_title_group.getBoundingClientRect().left + dom_title_group.offsetWidth + dom_subtitle_group.offsetWidth + subtitle_margin}`);
+				console.log(`titles_width = ${dom_title_group.getBoundingClientRect().left + dom_title_group.offsetWidth + dom_subtitle_group.offsetWidth}`);
 				console.log(`overlay.width = ${dom_overlay.getBoundingClientRect().left + dom_overlay.offsetWidth}`);
 				console.log(`meta.left = ${dom_meta.getBoundingClientRect().left}`);
 				console.log(`meta.offset = ${dom_meta.offsetWidth}`);
