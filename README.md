@@ -35,6 +35,9 @@ Beat SaberをOBS等で配信や録画する時に譜面情報をオーバーレ�
 
 ![image](https://rynan4818.github.io/beatsaber-overlay-bsr-obs-setting.png)
 
+- プロパティの幅は意図的に縮めることで、オーバーレイの表示幅を絞ることが可能です。曲名欄、アーティスト・作譜者欄、難易度欄(カスタム難易度表示）が幅を超える場合に文字が自動でスクロールします。
+![image](https://user-images.githubusercontent.com/14249877/108732524-ff016300-7570-11eb-9613-cf4492832740.png)
+
 ローカルファイルだと、オプション設定が出来ないのでURL表記で入力する必要があります。解凍したファイルのindex.htmlをブラウザで開いて、アドレス欄からコピー＆ペーストするのが楽です。
 
 6. (オプション) 1080p(1920x1080)の画面サイズの場合,オーバレイ表示を1.5倍に拡大する `scale` 修飾子を使用して下さい。例: `file:///C:/TOOL/beat-saber-overlay/index.html?modifiers=bsr,scale`
@@ -54,7 +57,7 @@ file:///C:/TOOL/beat-saber-overlay/index.html?modifiers=top,bsr
 - `top`
 	* オーバーレイの表示を上部に配置し、レイアウトを垂直方向に反転します。
 - `rtl`
-	* オーバーレイを右に移動し、右揃えのレイアウトにします。	`!`と`.`の表示に問題があります。（下記参照)
+	* オーバーレイを右に移動し、右揃えのレイアウトにします。
 - `scale`
 	* 1080p(1920x1080)の画面で使用するために、オーバーレイを1.5倍にスケーリングします。
 - `test`
@@ -85,19 +88,6 @@ file:///C:/TOOL/beat-saber-overlay/index.html?modifiers=top,bsr
 file:///C:/TOOL/beat-saber-overlay/index.html?ip=192.168.1.10&port=6557&modifiers=top,bsr
 ```
 
-## `rtl`の表示修正
-
-上記`rtl`オプションを使用すると、下記画像の様に`!`や`.`の表示位置がおかしくなる問題があります。
-
-![image](https://github.com/rynan4818/rynan4818.github.io/blob/master/beatsaber-overlay-rtl2.png?raw=true)
-
-この問題を修正するため、`rtl`オプションの代わりに、`index_rtl.html`を追加しました。
-`index.html`の代わりに`index_rtl.html`に変更して使用してください。
-デフォルトで右側表示になります。`rtl`オプション以外はそのまま使用可能です。
-
-```
-file:///C:/TOOL/beat-saber-overlay/index_rtl.html?modifiers=top,bsr
-```
 ## BSDP-Overlayライクなオーバーレイ
 [DataPuller](https://github.com/kOFReadie/BSDataPuller)の[BSDP-Overlay](https://github.com/kOFReadie/BSDP-Overlay)ライクなオーバーレイ表示用のHTMLとCSSを作成しました。
 
