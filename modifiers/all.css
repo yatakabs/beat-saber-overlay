@@ -1,8 +1,8 @@
-#bsr-group {
+#bsr_group {
 	display: inline-block;
 }
 
-.energy-container {
+.energy_container {
     visibility: visible;
     height: 20px;
 }
@@ -11,14 +11,18 @@
     display: block;
 }
 
-#mod-group {
+#mod_group {
     visibility: visible;
 }
 
-#pp-group {
+#pp_group {
 	display: inline-block;
 }
 
 #now_pp_group {
     display: block;
+}
+
+#label_group {
+	display: inline-block;
 }
