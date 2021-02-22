@@ -28,11 +28,6 @@
     direction: ltr;
 }
 
-#bsr_pp_group {
-	display: inline-block;
-    direction: rtl;
-}
-
 #pp_group {
     direction: ltr;
 }

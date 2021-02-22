@@ -122,20 +122,9 @@ body {
 	vertical-align: middle;
 }
 
-#bsr_pp_group {
-	overflow: hidden;
-	overflow-wrap: break-word;
-	overflow-x: hidden;
-	overflow-y:hidden;
-}
-
-#bsr_pp {
-	display: inline-block;
-	white-space : nowrap;
-}
-
 #pp_group {
 	display: none;
+
 	font-size: 16px;
 	font-weight: 800;
 	letter-spacing: 3px;

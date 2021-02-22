@@ -205,7 +205,7 @@ const ui = (() => {
 	const beatmap = (() => {
 		const beatsaver_url = 'https://beatsaver.com/api/maps/by-hash/';
 		const request_timeout = 5000; //msec
-		const min_subtitle_width_ratio = 0.2;
+		const min_subtitle_width_ratio = 0.3;
 		if (html_id["overlay"])               var dom_overlay              = document.getElementById("overlay");
 		if (html_id["image"])                 var dom_cover                = document.getElementById("image");
 		if (html_id["titles"])                var dom_titles               = document.getElementById("titles");
@@ -245,13 +245,10 @@ const ui = (() => {
 		if (html_id["cover_group"])           var dom_cover_group          = document.getElementById("cover_group");
 		if (html_id["text"])                  var dom_text                 = document.getElementById("text");
 		if (html_id["title_subtitle"])        var dom_title_subtitle       = document.getElementById("title_subtitle");
-		if (html_id["bsr_pp"])                var dom_bsr_pp               = document.getElementById("bsr_pp");
-		if (html_id["bsr_pp_group2"])         var dom_bsr_pp_group2        = document.getElementById("bsr_pp_group2");
 		if (html_id["map_info"])              var dom_map_info             = document.getElementById("map_info");
 		if (html_id["map_info_group"])        var dom_map_info_group       = document.getElementById("map_info_group");
 		if (html_id["difficulty_group"])      var dom_difficulty_group     = document.getElementById("difficulty_group");
 		if (html_id["difficulty_label"])      var dom_difficulty_label     = document.getElementById("difficulty_label");
-		if (html_id["bsr_pp_group"])          var dom_bsr_pp_group         = document.getElementById("bsr_pp_group");
 
 		var httpRequest = new XMLHttpRequest();
 		
@@ -316,29 +313,6 @@ const ui = (() => {
 					if (now_map !== null) {
 						if (html_id["bsr"])      dom_bsr.innerText = now_map.key;
 						if (html_id["bsr_text"]) dom_bsr_text.innerText = bsr_text_org;
-						dom_bsr_pp_group2.style.width = "";
-						dom_bsr_pp.classList.remove("scroll")
-						if (rtl_display) {
-							var base_width = dom_beatmap.offsetWidth;
-							var check_width = dom_cover_group.offsetWidth + dom_meta.offsetWidth;
-							dom_bsr_pp_group.style.display = "inline-block";
-							dom_bsr_pp_group.style.direction = "rtl";
-						} else {
-							var base_width = document.documentElement.offsetWidth;
-							var check_width = dom_overlay.getBoundingClientRect().left + dom_overlay.offsetWidth;
-						}
-						if (base_width < check_width) {
-							var over_width = check_width - base_width;
-							var bsr_pp_over_width         = dom_bsr_pp.offsetWidth - dom_bsr_pp_group2.offsetWidth + over_width;
-							if (bsr_pp_over_width > 0) {
-								dom_bsr_pp_group2.style.width = `${dom_bsr_pp.offsetWidth - bsr_pp_over_width}px`;
-								dom_bsr_pp.classList.add("scroll")
-								if (rtl_display) {
-									dom_bsr_pp_group.style.display = "block";
-									dom_bsr_pp_group.style.direction = "lrt";
-								}
-							}
-						}
 					}
 					if (typeof op_beatsaver_res !== "undefined") op_beatsaver_res(now_map);
 				}
@@ -426,7 +400,6 @@ const ui = (() => {
 			if (html_id["now_pp"])      dom_now_pp.innerText = "";
 			if (html_id["now_pp_text"]) dom_now_pp_text.innerText = "";
 
-			if (html_id["overlay"] && html_id["subtitle"] && html_id["subtitle_group"] && html_id["title"] && html_id["title_group"] && html_id["artist_group"]) {
 				// ■lrt時のスクロール判定
 				// (1) ブラウザの表示幅 < #overlayのleft座標+幅 の時に文字スクロール処理をする
 				// (2) #textの幅 - (1)で超えた分 < #title_subtitleの幅 or #artist_groupの幅
@@ -439,22 +412,23 @@ const ui = (() => {
 				// ■スクロール方針
 				// ・#title_subtitleは#subtitle_groupを優先でスクロール、min_subtitle_width_ratioの割合以下の場合は#title_groupもスクロール
 				// ・#map_infoは#difficulty_groupをスクロール対象とする。
+				if (html_id["overlay"] && html_id["subtitle"] && html_id["subtitle_group"] && html_id["title"]
+						&& html_id["title_group"] && html_id["artist_group"] && html_id["artist_mapper_group"]
+						&& html_id["difficulty_group"] && html_id["difficulty_label"] && html_id["beatmap"]
+						&& html_id["cover_group"] && html_id["artist_mapper"] && html_id["title_subtitle"]
+						&& html_id["map_info"] && html_id["titles"]) {
 				dom_subtitle_group.style.width = "";
 				dom_subtitle.classList.remove("scroll")
 				dom_title_group.style.width = "";
 				dom_title.classList.remove("scroll")
 				dom_artist_mapper_group.style.width = "";
 				dom_artist_group.classList.remove("scroll")
-				dom_bsr_pp_group2.style.width = "";
-				dom_bsr_pp.classList.remove("scroll")
 				dom_difficulty_group.style.width = "";
 				dom_difficulty_label.classList.remove("scroll")
 				if (rtl_display) {
 					var base_width = dom_beatmap.offsetWidth;
 					var check_width = dom_cover_group.offsetWidth + dom_meta.offsetWidth;
 					dom_artist_mapper.style.display = "inline-block";
-					dom_bsr_pp_group.style.display = "inline-block";
-					dom_bsr_pp_group.style.direction = "rtl";
 				} else {
 					var base_width = document.documentElement.offsetWidth;
 					var check_width = dom_overlay.getBoundingClientRect().left + dom_overlay.offsetWidth;
@@ -463,7 +437,6 @@ const ui = (() => {
 					var over_width = check_width - base_width;
 					var title_subtitle_over_width = dom_title_subtitle.offsetWidth - dom_text.offsetWidth + over_width;
 					var artist_group_over_width   = dom_artist_group.offsetWidth - dom_artist_mapper_group.offsetWidth + over_width;
-					var bsr_pp_over_width         = dom_bsr_pp.offsetWidth - dom_bsr_pp_group2.offsetWidth + over_width;
 					var map_info_over_width       = dom_map_info.offsetWidth - dom_map_info_group.offsetWidth + over_width;
 					if (title_subtitle_over_width > 0) {
 						if (beatmap.songSubName.trim() === "") {
@@ -471,9 +444,9 @@ const ui = (() => {
 						} else {
 							var subtitle_width_down = title_subtitle_over_width;
 							var change_subtitle_width = dom_subtitle.offsetWidth - subtitle_width_down;
-							if (change_subtitle_width / dom_titles.offsetWidth < min_subtitle_width_ratio) {
+							if (change_subtitle_width / (dom_titles.offsetWidth - title_subtitle_over_width) < min_subtitle_width_ratio) {
 								var before_change_subtitle_width = change_subtitle_width;
-								change_subtitle_width = dom_titles.offsetWidth * min_subtitle_width_ratio;
+								change_subtitle_width = (dom_titles.offsetWidth - title_subtitle_over_width) * min_subtitle_width_ratio;
 								subtitle_width_down -= change_subtitle_width - before_change_subtitle_width;
 							}
 							dom_subtitle_group.style.width = `${change_subtitle_width}px`;
@@ -489,14 +462,6 @@ const ui = (() => {
 						dom_artist_group.classList.add("scroll")
 						if (rtl_display) {
 							dom_artist_mapper.style.display = "block";
-						}
-					}
-					if (bsr_pp_over_width > 0) {
-						dom_bsr_pp_group2.style.width = `${dom_bsr_pp.offsetWidth - bsr_pp_over_width}px`;
-						dom_bsr_pp.classList.add("scroll")
-						if (rtl_display) {
-							dom_bsr_pp_group.style.display = "block";
-							dom_bsr_pp_group.style.direction = "lrt";
 						}
 					}
 					if (map_info_over_width > 0) {
