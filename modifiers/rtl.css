@@ -11,7 +11,13 @@
     direction: ltr;
 }
 
+#artist_mapper {
+	display: inline-block;
+    direction: ltr;
+}
+
 #artist_group {
+    direction: ltr;
 }
 
 #bpm_group {
@@ -20,6 +26,11 @@
 
 #njs_group {
     direction: ltr;
+}
+
+#bsr_pp_group {
+	display: inline-block;
+    direction: rtl;
 }
 
 #pp_group {

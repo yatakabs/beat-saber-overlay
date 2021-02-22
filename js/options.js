@@ -10,9 +10,9 @@ const check_id = ["overlay","rank","percentage","combo","score","progress","ener
                   "pre_bsr","pre_bsr_text","njs_text","energy","energy_bar","energy_group",
                   "now_pp","now_pp_text","star","star_text","pp","pp_text","label_header",
                   "label_footer","label","subtitle_group","title_group","titles","bsr-group","meta",
-                  "beatmap","cover_group","artist_group","title_subtitle_space","artist_group","text",
-									"title_subtitle","artist_mapper","bsr_pp","bsr_pp_group","map_info","map_info_group",
-									"difficulty_label"]
+                  "beatmap","cover_group","artist_group","artist_group","text","title_subtitle",
+									"artist_mapper_group","bsr_pp","bsr_pp_group2","map_info","map_info_group",
+									"difficulty_group","difficulty_label","artist_mapper","bsr_pp_group"]
 var html_id = {};
 for (var i = 0, len = check_id.length; i < len; ++i) {
 	if (document.getElementById(check_id[i]) === null) {
