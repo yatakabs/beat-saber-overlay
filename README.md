@@ -1,3 +1,4 @@
+## [The English version of the README is here.](README_EN.md)
 # Beat Saber Overlay 改良版
 
 これは、Reselim氏が製作した[Beat Saber Overlay](https://github.com/Reselim/beat-saber-overlay)に各種表示オプションを追加し、機能改善した物です。
@@ -25,19 +26,43 @@ Beat SaberをOBS等で配信や録画する時に譜面情報をオーバーレ�
 
 2. [リリースページ](https://github.com/rynan4818/beat-saber-overlay/releases)から最新のリリースをダウンロードします。
 
-3. zipを適当なフォルダに解凍します。例: C:\TOOL\beat-saber-overlay\
+3. ダウンロードしたzipファイルを適当なフォルダに解凍します。(例: C:\TOOL\beat-saber-overlay)
 
 4. OBSのソースにブラウザを追加します。
 
-![image](https://rynan4818.github.io/beatsaber-overlay-noscore-obs-setting1.png)
+![image](https://rynan4818.github.io/beatsaber-overlay-obs-setting1.png)
 
-5. zipを解凍したフォルダ名に合わせてプロパティのURLに `file:///C:/TOOL/beat-saber-overlay/index.html?modifiers=bsr` の様に設定します。また、画面サイズと同じ幅と高さに設定します。 (1280x720 など)
+5. 追加でブラウザを選択します。
 
-![image](https://rynan4818.github.io/beatsaber-overlay-bsr-obs-setting.png)
+![image](https://rynan4818.github.io/beatsaber-overlay-obs-setting2.png)
 
-ローカルファイルだと、オプション設定が出来ないのでURL表記で入力する必要があります。解凍したファイルのindex.htmlをブラウザで開いて、アドレス欄からコピー＆ペーストするのが楽です。
+6. 適当なソースの名前を設定して、OKを押します。
 
-6. (オプション) 1080p(1920x1080)の画面サイズの場合,オーバレイ表示を1.5倍に拡大する `scale` 修飾子を使用して下さい。例: `file:///C:/TOOL/beat-saber-overlay/index.html?modifiers=bsr,scale`
+![image](https://rynan4818.github.io/beatsaber-overlay-obs-setting3.png)
+
+7. 解凍したzipファイルの中にある、index.html をダブルクリックするか、ChromeやEdgeブラウザで開きます。
+
+![image](https://rynan4818.github.io/beatsaber-overlay-obs-setting4.png)
+
+8. ブラウザのアドレス(URL)欄を選択してコピーします。
+
+![image](https://rynan4818.github.io/beatsaber-overlay-obs-setting5.png)
+
+9. コピーしたアドレスを、OBSのURL欄に貼り付けます。
+   
+   `ローカルファイル`だと、オプション設定が出来ないのでこの様にURL表記で入力する必要があります。
+  
+	画面サイズに合わせてサイズを設定します。(1280x720等)
+  
+   (オプション) 1080p(1920x1080)の画面サイズの場合,オーバレイ表示を1.5倍に拡大する `scale` 修飾子を使用して下さい。例: `file:///C:/TOOL/beat-saber-overlay/index.html?modifiers=bsr,scale`
+
+![image](https://rynan4818.github.io/beatsaber-overlay-obs-setting6.png)
+
+10. 必要に応じて modifiers オプションを追加します。複数のオプションはカンマ(,)で区切ります。
+
+![image](https://rynan4818.github.io/beatsaber-overlay-obs-setting7.png)
+
+11. 幅の設定を画面よりも縮めると、溢れたテキスト欄がスクロールします。
 
 ## オプション
 
