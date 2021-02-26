@@ -59,8 +59,9 @@ Overlay the score information when distributing or recording Beat Saber via OBS.
 
 ![image](https://rynan4818.github.io/beatsaber-overlay-obs-setting7_en.png)
 
-11. If you reduce the width to less than the canvas size, the overflow text will scroll.
+11. If you reduce the width to less than the canvas size, the overflow text(Title, Subtitle, Artist[Mapper], Custom difficulty) will scroll.
 
+![image](https://rynan4818.github.io/beatsaber-overlay-scllol.gif)
 
 ## Options
 
