@@ -16,10 +16,10 @@ Overlay the score information when distributing or recording Beat Saber via OBS.
    There is also a performance-improved version produced by denpadokei.
    - [Beat Saber HTTP Status](https://github.com/denpadokei/beatsaber-http-status)
 
-   To use the optional `pp` feature and the custom difficulty display, you will also need to install denpadokei's version of HTTP Status and the following mods.
+   To use the optional `pp` feature and the custom difficulty display, you will also need to install denpadokei's version of HTTP Status and the HttpStatusExtention.
 	 - [HttpStatusExtention](https://github.com/denpadokei/HttpStatusExtention)
 
-   ※Both versions of HTTP Status require you to install `websocket-sharp` in ModAssistant. Please note that it is often forgotten to install.
+   *Both versions of HTTP Status require you to install `websocket-sharp` in ModAssistant. Please note that it is often forgotten to install.
 
 2. Download the latest release from the [release page](https://github.com/rynan4818/beat-saber-overlay/releases).
 
@@ -27,41 +27,43 @@ Overlay the score information when distributing or recording Beat Saber via OBS.
 
 4. Create a Browser source
 
-![image](https://rynan4818.github.io/beatsaber-overlay-obs-setting1_en.png)
+   ![image](https://rynan4818.github.io/beatsaber-overlay-obs-setting1_en.png)
 
-5. Add the Browser to Sources
+5. In Create new, enter an appropriate name and press OK.
 
-![image](https://rynan4818.github.io/beatsaber-overlay-obs-setting2_en.png)
+   ![image](https://rynan4818.github.io/beatsaber-overlay-obs-setting2_en.png)
 
-6. In Create new, enter an appropriate name and press OK.
+6. Double-click index.html in the unzipped zip file or open it with Chrome or Edge browser.
 
-![image](https://rynan4818.github.io/beatsaber-overlay-obs-setting3_en.png)
+   ![image](https://rynan4818.github.io/beatsaber-overlay-obs-setting3_en.png)
 
-7. Double-click index.html in the unzipped zip file or open it with Chrome or Edge browser.
+7. Copy the address(URL) field of your browser.
 
-![image](https://rynan4818.github.io/beatsaber-overlay-obs-setting4_en.png)
+   ![image](https://rynan4818.github.io/beatsaber-overlay-obs-setting4_en.png)
 
-8. Copy the address(URL) field of your browser.
+8. Paste the copied address into the OBS URL field.
 
-![image](https://rynan4818.github.io/beatsaber-overlay-obs-setting5_en.png)
-
-9. Paste the copied address into the OBS URL field.
+   ![image](https://rynan4818.github.io/beatsaber-overlay-obs-setting5_en.png)
 
    If it is a `Local file`, you cannot set options, so you need to enter it in URL notation like this.
 
    Set the size equal to your canvas size (1280x720, etc.)
 
-   (Optional) For 1080p canvases, add the `scale` modifier (ex. `file:///C:/TOOL/beat-saber-overlay/index.html?modifiers=scale`) to scale the overlay by 1.5x
+   (Optional) For 1080p canvases, add the `scale` modifier to scale the overlay by 1.5x.
 
-![image](https://rynan4818.github.io/beatsaber-overlay-obs-setting6_en.png)
+	    file:///C:/TOOL/beat-saber-overlay/index.html?modifiers=scale
 
-10. Add modifiers options as needed. Separate multiple options with a comma (,).
+9. If necessary, add `?modifiers=` after index.html in the URL to set the options. Separate multiple options with a comma (,).
 
-![image](https://rynan4818.github.io/beatsaber-overlay-obs-setting7_en.png)
+   ![image](https://rynan4818.github.io/beatsaber-overlay-obs-setting6_en.png)
 
-11. If you reduce the width to less than the canvas size, the overflow text(Title, Subtitle, Artist[Mapper], Custom difficulty) will scroll.
+10. The width of the property can be deliberately shrunk to narrow the display width of the overlay.
 
-![image](https://rynan4818.github.io/beatsaber-overlay-scllol.gif)
+    If you reduce the width to less than the canvas size, the overflow text(Title, Subtitle, Artist[Mapper], Custom difficulty) will scroll.
+
+    ![image](https://rynan4818.github.io/beatsaber-overlay-obs-setting7_en.png)
+
+    ![image](https://rynan4818.github.io/beatsaber-overlay-scllol.gif)
 
 ## Options
 
