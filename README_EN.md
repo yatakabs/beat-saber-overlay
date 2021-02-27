@@ -116,3 +116,13 @@ Listen to events from another IP and/or port.
 ```
 file:///C:/TOOL/beat-saber-overlay/index.html?ip=192.168.1.10&port=6557&modifiers=top,bsr
 ```
+
+### Other
+
+We do not provide this overlay via GitHub Pages, etc., which is common for other overlays, for the following reasons.
+
+- There were many troubles with the original (Unnamed) Beat Saber Overlay due to URL changes.
+
+- It is not possible to use it in case of network problems, such as not being able to connect to GitHub.
+
+- It's a bit of a hassle, but there's no problem with downloading and displaying it as a local file.
