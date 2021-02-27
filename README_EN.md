@@ -13,13 +13,19 @@ Overlay the score information when distributing or recording Beat Saber via OBS.
 1. Please install the following mods to send the beat saver data to the overlay.
    - [Beat Saber HTTP Status](https://github.com/opl-/beatsaber-http-status) *Original version of ModAssistant registration
 
+      ![image](https://rynan4818.github.io/beatsaber-overlay-httpstatus.png)
+
    There is also a performance-improved version produced by denpadokei.
    - [Beat Saber HTTP Status](https://github.com/denpadokei/beatsaber-http-status)
+
+      ![image](https://rynan4818.github.io/beatsaber-overlay-denpadokei_en.png)
 
    To use the optional `pp` feature and the custom difficulty display, you will also need to install denpadokei's version of HTTP Status and the HttpStatusExtention.
 	 - [HttpStatusExtention](https://github.com/denpadokei/HttpStatusExtention)
 
    *Both versions of HTTP Status require you to install `websocket-sharp` in ModAssistant. Please note that it is often forgotten to install.
+
+   ![image](https://rynan4818.github.io/beatsaber-overlay-websocket-sharp.png)
 
 2. Download the latest release from the [release page](https://github.com/rynan4818/beat-saber-overlay/releases).
 

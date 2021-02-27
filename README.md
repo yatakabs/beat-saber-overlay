@@ -16,8 +16,12 @@ Beat SaberをOBS等で配信や録画する時に譜面情報をオーバーレ�
 
       ※ModAssistantにある場合は、そちらからインストールした方が間違いありません。
 
+      ![image](https://rynan4818.github.io/beatsaber-overlay-httpstatus.png)
+
 	ほかに、デンバ時計さん製作のパフォーマンス改善版があります。
 	- [Beat Saber HTTP Status](https://github.com/denpadokei/beatsaber-http-status)
+
+      ![image](https://rynan4818.github.io/beatsaber-overlay-denpadokei.png)
 
 	オプションの `pp` 機能やカスタム難易度表示を使用するには、デンバ時計さん版のHTTP StatusとHttpStatusExtentionも導入する必要があります。
 	- [HttpStatusExtention](https://github.com/denpadokei/HttpStatusExtention)
@@ -25,6 +29,8 @@ Beat SaberをOBS等で配信や録画する時に譜面情報をオーバーレ�
    ※ModAssistantを使用せずにインストールする場合は、依存modが自動インストールされないので、各modの説明に従ってインストールして下さい
 
    ※どちらのHTTP StatusもModAssistantにある**websocket-sharpのインストールが必須**です。入れ忘れる事が多いので注意して下さい。
+
+   ![image](https://rynan4818.github.io/beatsaber-overlay-websocket-sharp.png)
 
 2. [リリースページ](https://github.com/rynan4818/beat-saber-overlay/releases)から最新のリリースをダウンロードします。
 
