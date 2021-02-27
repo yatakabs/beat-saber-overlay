@@ -11,6 +11,9 @@ Overlay the score information when distributing or recording Beat Saber via OBS.
 ## Installation (OBS)
 
 1. Please install the following mods to send the beat saver data to the overlay.
+
+   If you are a beginner, we recommend you to install the original version of HTTP Status from ModAssistant, which will automatically install the dependent mods for you.
+
    - [Beat Saber HTTP Status](https://github.com/opl-/beatsaber-http-status) *Original version of ModAssistant registration
 
       ![image](https://rynan4818.github.io/beatsaber-overlay-httpstatus.png)
