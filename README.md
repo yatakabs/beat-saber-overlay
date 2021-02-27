@@ -12,9 +12,10 @@ Beat SaberをOBS等で配信や録画する時に譜面情報をオーバーレ�
 ## インストール方法 (OBS)
 
 1. Beat Saberからオーバーレイにデータを送信するために下記のmodをインストールしてください。
-	- [Beat Saber HTTP Status](https://github.com/opl-/beatsaber-http-status)　※ModAssistant登録のオリジナル版
 
-      ※オリジナル版HTTP StatusをModAssistantからインストールする場合は、依存modは自動的にインストールされるため簡単です。
+   初心者はオリジナル版HTTP StatusをModAssistantからインストールすることをオススメします。ModAssistantを使用する場合は依存modが自動的にインストールされるため簡単です。
+
+   - [Beat Saber HTTP Status](https://github.com/opl-/beatsaber-http-status)　※ModAssistant登録のオリジナル版
 
       ![image](https://rynan4818.github.io/beatsaber-overlay-httpstatus.png)
 
@@ -27,10 +28,7 @@ Beat SaberをOBS等で配信や録画する時に譜面情報をオーバーレ�
 	- [HttpStatusExtention](https://github.com/denpadokei/HttpStatusExtention)
 
    ※手動でインストールする場合は、別途依存modをそれぞれのmodの説明に従ってインストールして下さい。
-
       特にModAssistantにある**websocket-sharpのインストールが必須**です。入れ忘れトラブルが多いので注意して下さい。
-
-      初心者はオリジナル版HTTP StatusをModAssistantからインストールすることをオススメします。
 
    ![image](https://rynan4818.github.io/beatsaber-overlay-websocket-sharp.png)
 
