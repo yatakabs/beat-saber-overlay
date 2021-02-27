@@ -74,6 +74,10 @@ Overlay the score information when distributing or recording Beat Saber via OBS.
 
     ![image](https://rynan4818.github.io/beatsaber-overlay-scllol.gif)
 
+11. Raise the order of the overlay sources to a higher priority than the game sources so that the overlay is superimposed on the game screen.
+
+    ![image](https://rynan4818.github.io/beatsaber-overlay-obs-setting8_en.png)
+
 ## Options
 
 Options are added to the URL query as such:

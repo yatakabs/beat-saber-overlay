@@ -76,6 +76,10 @@ Beat SaberをOBS等で配信や録画する時に譜面情報をオーバーレ�
 
     ![image](https://rynan4818.github.io/beatsaber-overlay-scllol.gif)
 
+11. オーバーレイのソースの順序をゲームのソースよりも優先度を上げて、オーバーレイがゲーム画面に重ねて表示されるようにします。
+
+    ![image](https://rynan4818.github.io/beatsaber-overlay-obs-setting8.png)
+
 ## オプション
 
 次の様なオプションがURLに設定可能です。
