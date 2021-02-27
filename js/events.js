@@ -73,12 +73,24 @@ const events = {
 	},
 
 	pause(data) {
-		ui.timer.pause(data.status.beatmap.paused + (Date.now() - data.time));
+		var ip = query.get("ip");
+		var diff_time = 0;
+		if (ip && ip != "localhost" && ip != "127.0.0.1") {
+			diff_time = Date.now() - data.time;
+			console.log(diff_time);
+		}
+		ui.timer.pause(data.status.beatmap.paused + diff_time);
 		if (typeof op_pause !== "undefined") op_pause(data);
 	},
 
 	resume(data) {
-		ui.timer.start(data.status.beatmap.start + (Date.now() - data.time), data.status.beatmap.length, false);
+		var ip = query.get("ip");
+		var diff_time = 0;
+		if (ip && ip != "localhost" && ip != "127.0.0.1") {
+			diff_time = Date.now() - data.time;
+			console.log(diff_time);
+		}
+		ui.timer.start(data.status.beatmap.start + diff_time, data.status.beatmap.length, false);
 		if (typeof op_resume !== "undefined") op_resume(data);
 	},
 

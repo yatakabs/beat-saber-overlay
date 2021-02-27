@@ -270,9 +270,15 @@ const ui = (() => {
 			var time = data.time;
 			var mod_data = data.status.mod;
 			var visibility = "visible";
+			var ip = query.get("ip");
+			var diff_time = 0;
+			if (ip && ip != "localhost" && ip != "127.0.0.1") {
+				diff_time = Date.now() - data.time;
+				console.log(diff_time);
+			}
 			now_pp_enable = false;
 			failed = false;
-			timer.start(beatmap.start + (Date.now() - data.time), beatmap.length, mod_data.songSpeedMultiplier);
+			timer.start(beatmap.start + diff_time, beatmap.length, mod_data.songSpeedMultiplier);
 			mod_instaFail = mod_data.instaFail;
 			mod_batteryEnergy = mod_data.batteryEnergy;
 			if (mod_data.noFail === true && (typeof performance.softFailed === "undefined")) {
