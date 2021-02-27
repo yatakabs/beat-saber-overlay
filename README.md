@@ -12,9 +12,9 @@ Beat SaberをOBS等で配信や録画する時に譜面情報をオーバーレ�
 ## インストール方法 (OBS)
 
 1. Beat Saberからオーバーレイにデータを送信するために下記のmodをインストールしてください。
-	- [Beat Saber HTTP Status](https://github.com/opl-/beatsaber-http-status)　※ModAssistant登録の本家版
+	- [Beat Saber HTTP Status](https://github.com/opl-/beatsaber-http-status)　※ModAssistant登録のオリジナル版
 
-      ※ModAssistantにある場合は、そちらからインストールした方が間違いありません。
+      ※オリジナル版HTTP StatusをModAssistantからインストールする場合は、依存modは自動的にインストールされるため簡単です。
 
       ![image](https://rynan4818.github.io/beatsaber-overlay-httpstatus.png)
 
@@ -26,9 +26,11 @@ Beat SaberをOBS等で配信や録画する時に譜面情報をオーバーレ�
 	オプションの `pp` 機能やカスタム難易度表示を使用するには、デンバ時計さん版のHTTP StatusとHttpStatusExtentionも導入する必要があります。
 	- [HttpStatusExtention](https://github.com/denpadokei/HttpStatusExtention)
 
-   ※ModAssistantを使用せずにインストールする場合は、依存modが自動インストールされないので、各modの説明に従ってインストールして下さい
+   ※手動でインストールする場合は、別途依存modをそれぞれのmodの説明に従ってインストールして下さい。
 
-   ※どちらのHTTP StatusもModAssistantにある**websocket-sharpのインストールが必須**です。入れ忘れる事が多いので注意して下さい。
+      特にModAssistantにある**websocket-sharpのインストールが必須**です。入れ忘れトラブルが多いので注意して下さい。
+
+      初心者はオリジナル版HTTP StatusをModAssistantからインストールすることをオススメします。
 
    ![image](https://rynan4818.github.io/beatsaber-overlay-websocket-sharp.png)
 
@@ -227,6 +229,6 @@ modifiersフォルダにCSSファイルを追加すると、CSSファイル名�
 
 他のオーバーレイでは一般的なGitHub Pages等による本オーバーレイの提供は以下を理由にあえて行いません。
 
-- 本家の(Unnamed) Beat Saber OverlayではURL変更等によるトラブルが多かったこと
+- オリジナルの(Unnamed) Beat Saber OverlayではURL変更等によるトラブルが多かったこと
 - GitHubに繋がらない場合など、ネットワークのトラブル時に使用できないこと
 - 少し手間になるが、ダウンロードしてローカルで表示する使用方法で問題ないこと
