@@ -126,3 +126,7 @@ We do not provide this overlay via GitHub Pages, etc., which is common for other
 - It is not possible to use it in case of network problems, such as not being able to connect to GitHub.
 
 - It's a bit of a hassle, but there's no problem with downloading and displaying it as a local file.
+
+---
+
+This README has been translated by www.DeepL.com/Translator (free version).
