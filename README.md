@@ -6,23 +6,31 @@
 Beat SaberをOBS等で配信や録画する時に譜面情報をオーバーレイ表示します。
 
 ![preview](https://rynan4818.github.io/beatsaber-overlay-bsr-image.png)
-- 画像はHttpStatusExtentionを使用したフルオプションのサンプルです。
+
+※画像はHttpStatusExtentionを使用したフルオプションのサンプルです。
 
 ## インストール方法 (OBS)
 
 1. Beat Saberからオーバーレイにデータを送信するために下記のmodをインストールしてください。
-	- [Beat Saber HTTP Status](https://github.com/opl-/beatsaber-http-status)　※ModAssistant登録の本家版
-		* ModAssistantにある場合は、そちらからインストールした方が間違いありません。
+
+   初心者はオリジナル版HTTP StatusをModAssistantからインストールすることをオススメします。ModAssistantを使用する場合は依存modが自動的にインストールされるため簡単です。
+
+   - [Beat Saber HTTP Status](https://github.com/opl-/beatsaber-http-status)　※ModAssistant登録のオリジナル版
+
+      ![image](https://rynan4818.github.io/beatsaber-overlay-httpstatus.png)
 
 	ほかに、デンバ時計さん製作のパフォーマンス改善版があります。
 	- [Beat Saber HTTP Status](https://github.com/denpadokei/beatsaber-http-status)
 
-	オプションの `pp` 機能やカスタム難易度表示を使用するには、デンバ時計さん版のHTTP Statusと下記のmodも導入する必要があります。
+      ![image](https://rynan4818.github.io/beatsaber-overlay-denpadokei.png)
+
+	オプションの `pp` 機能やカスタム難易度表示を使用するには、デンバ時計さん版のHTTP StatusとHttpStatusExtentionも導入する必要があります。
 	- [HttpStatusExtention](https://github.com/denpadokei/HttpStatusExtention)
 
-※ModAssistantを使用せずにインストールする場合は、依存modが自動インストールされないので、各modの説明に従ってインストールして下さい
+   ※手動でインストールする場合は、別途依存modをそれぞれのmodの説明に従ってインストールして下さい。
+      特にModAssistantにある**websocket-sharpのインストールが必須**です。入れ忘れトラブルが多いので注意して下さい。
 
-※どちらのHTTP StatusもModAssistantにある**websocket-sharpのインストールが必須**です。入れ忘れる事が多いので注意して下さい。
+   ![image](https://rynan4818.github.io/beatsaber-overlay-websocket-sharp.png)
 
 2. [リリースページ](https://github.com/rynan4818/beat-saber-overlay/releases)から最新のリリースをダウンロードします。
 
@@ -30,48 +38,54 @@ Beat SaberをOBS等で配信や録画する時に譜面情報をオーバーレ�
 
 4. OBSのソースにブラウザを追加します。
 
-![image](https://rynan4818.github.io/beatsaber-overlay-obs-setting1.png)
+   ![image](https://rynan4818.github.io/beatsaber-overlay-obs-setting1.png)
 
-5. 追加でブラウザを選択します。
+5. 新規作成を選択して、適当にソースの名前を設定して、OKを押します。
 
-![image](https://rynan4818.github.io/beatsaber-overlay-obs-setting2.png)
+   ![image](https://rynan4818.github.io/beatsaber-overlay-obs-setting2.png)
 
-6. 適当なソースの名前を設定して、OKを押します。
+6. 解凍したzipファイルの中にある、index.html をダブルクリックするか、ChromeやEdgeブラウザで開きます。
 
-![image](https://rynan4818.github.io/beatsaber-overlay-obs-setting3.png)
+   ![image](https://rynan4818.github.io/beatsaber-overlay-obs-setting3.png)
 
-7. 解凍したzipファイルの中にある、index.html をダブルクリックするか、ChromeやEdgeブラウザで開きます。
+7. ブラウザのアドレス(URL)欄を選択してコピーします。
 
-![image](https://rynan4818.github.io/beatsaber-overlay-obs-setting4.png)
+   ![image](https://rynan4818.github.io/beatsaber-overlay-obs-setting4.png)
 
-8. ブラウザのアドレス(URL)欄を選択してコピーします。
+8. コピーしたアドレスを、OBSのURL欄に貼り付けます。
 
-![image](https://rynan4818.github.io/beatsaber-overlay-obs-setting5.png)
+   ![image](https://rynan4818.github.io/beatsaber-overlay-obs-setting5.png)
 
-9. コピーしたアドレスを、OBSのURL欄に貼り付けます。
-   
-   `ローカルファイル`だと、オプション設定が出来ないのでこの様にURL表記で入力する必要があります。
+   ※`ローカルファイル`だと、オプション設定が出来ないのでこの様にURL表記で入力する必要があります。
   
-	画面サイズに合わせてサイズを設定します。(1280x720等)
+   ※画面サイズに合わせてサイズを設定します。(1280x720等)
   
-   (オプション) 1080p(1920x1080)の画面サイズの場合,オーバレイ表示を1.5倍に拡大する `scale` 修飾子を使用して下さい。例: `file:///C:/TOOL/beat-saber-overlay/index.html?modifiers=bsr,scale`
+   ※(オプション) 1080p(1920x1080)の画面サイズの場合、オーバレイ表示を1.5倍に拡大する `scale` 修飾子を使用して下さい。
 
-![image](https://rynan4818.github.io/beatsaber-overlay-obs-setting6.png)
+         file:///C:/TOOL/beat-saber-overlay/index.html?modifiers=scale
 
-10. 必要に応じて modifiers オプションを追加します。複数のオプションはカンマ(,)で区切ります。
+9. 必要に応じて URLのindex.htmlの後に `?modifiers=` を追加してオプションを設定します。複数のオプションはカンマ(,)で区切ります。
 
-![image](https://rynan4818.github.io/beatsaber-overlay-obs-setting7.png)
+   ![image](https://rynan4818.github.io/beatsaber-overlay-obs-setting6.png)
 
-11. プロパティの幅は意図的に縮めることで、オーバーレイの表示幅を絞ることが可能です。曲名欄、アーティスト・作譜者欄、難易度欄(カスタム難易度表示）が幅を超える場合に文字が自動でスクロールします。
+10. プロパティの幅は意図的に縮めることで、オーバーレイの表示幅を絞ることが可能です。
 
-![image](https://rynan4818.github.io/beatsaber-overlay-scllol.gif)
+    曲名、アーティスト・作譜者、難易度(カスタム難易度）が幅を超える場合に自動でスクロールします。
+
+    ![image](https://rynan4818.github.io/beatsaber-overlay-obs-setting7.png)
+
+    ![image](https://rynan4818.github.io/beatsaber-overlay-scllol.gif)
+
+11. オーバーレイのソースの順序をゲームのソースよりも優先度を上げて、オーバーレイがゲーム画面に重ねて表示されるようにします。
+
+    ![image](https://rynan4818.github.io/beatsaber-overlay-obs-setting8.png)
 
 ## オプション
 
 次の様なオプションがURLに設定可能です。
 
 ```
-file:///C:/TOOL/beat-saber-overlay/index.html?modifiers=top,bsr
+file:///C:/TOOL/beat-saber-overlay/index.html?modifiers=top,all
 ```
 
 ### `modifiers`
@@ -107,7 +121,9 @@ file:///C:/TOOL/beat-saber-overlay/index.html?modifiers=top,bsr
 
 ### `ip`または`port`
 
-別のマシンのBeat Saber HTTP Statusに接続する場合に設定します。
+ゲームとOBSが別のPCの場合に、ゲーム用PCのBeat Saber HTTP Statusに接続する場合に設定します。
+
+オプションは省略すると、ip=localhost 及び port=6557 となります。
 ```
 file:///C:/TOOL/beat-saber-overlay/index.html?ip=192.168.1.10&port=6557&modifiers=top,bsr
 ```
@@ -215,6 +231,6 @@ modifiersフォルダにCSSファイルを追加すると、CSSファイル名�
 
 他のオーバーレイでは一般的なGitHub Pages等による本オーバーレイの提供は以下を理由にあえて行いません。
 
-- 本家の(Unnamed) Beat Saber OverlayではURL変更等によるトラブルが多かったこと
+- オリジナルの(Unnamed) Beat Saber OverlayではURL変更等によるトラブルが多かったこと
 - GitHubに繋がらない場合など、ネットワークのトラブル時に使用できないこと
 - 少し手間になるが、ダウンロードしてローカルで表示する使用方法で問題ないこと
