@@ -1,3 +1,4 @@
+## [The Japanese version of the README is here.](README.md)
 # (improved) Beat Saber Overlay
 
 This is an improved version of Reselim's [Beat Saber Overlay](https://github.com/Reselim/beat-saber-overlay) with various display options.
