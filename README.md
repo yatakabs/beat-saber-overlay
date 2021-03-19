@@ -20,11 +20,11 @@ Beat SaberをOBS等で配信や録画する時に譜面情報をオーバーレ�
       ![image](https://rynan4818.github.io/beatsaber-overlay-httpstatus.png)
 
 	ほかに、デンバ時計さん製作のパフォーマンス改善版があります。
-	- [Beat Saber HTTP Status](https://github.com/denpadokei/beatsaber-http-status)
+	- [HttpSiraStatus](https://github.com/denpadokei/beatsaber-http-status)
 
       ![image](https://rynan4818.github.io/beatsaber-overlay-denpadokei.png)
 
-	オプションの `pp` 機能やカスタム難易度表示を使用するには、デンバ時計さん版のHTTP StatusとHttpStatusExtentionも導入する必要があります。
+	オプションの `pp` 機能やカスタム難易度表示を使用するには、デンバ時計さんのHttpSiraStatusとHttpStatusExtentionも導入する必要があります。
 	- [HttpStatusExtention](https://github.com/denpadokei/HttpStatusExtention)
 
    ※手動でインストールする場合は、別途依存modをそれぞれのmodの説明に従ってインストールして下さい。
