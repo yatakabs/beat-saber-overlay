@@ -128,24 +128,26 @@ file:///C:/TOOL/beat-saber-overlay/index.html?modifiers=top,all
 file:///C:/TOOL/beat-saber-overlay/index.html?ip=192.168.1.10&port=6557&modifiers=top,bsr
 ```
 
+# オーバーレイの改造について
+オーバーレイのスクリプトでは特定のid属性値のHTMLタグに対して、プレイに合わせた書き換え動作をします。
+
+HTML内のid属性値は起動時にチェックし、存在しない場合は書き換え動作をしないため、HTMLやCSSを改造して好きなレイアウトや表示項目にすることが出来ます。
+
+初心者向けに改造方法の記事を書きました。 [HTMLを知らない人にも分かる、オーバーレイの改造の仕方を説明してみる](https://note.com/rynan/n/n9a4207b7aed5)
+
+参考に、精度・スコア・曲名・bsr表示だけにしたシンプルな表示のhtmlを用意してあります。
+```
+file:///C:/TOOL/beat-saber-overlay/simple.html?modifiers=bsr
+```
+
 ## BSDP-Overlayライクなオーバーレイ
-[DataPuller](https://github.com/kOFReadie/BSDataPuller)の[BSDP-Overlay](https://github.com/kOFReadie/BSDP-Overlay)ライクなオーバーレイ表示用のHTMLとCSSを作成しました。
+また、オーバーレイの改造のサンプルとして、[DataPuller](https://github.com/kOFReadie/BSDataPuller)の[BSDP-Overlay](https://github.com/kOFReadie/BSDP-Overlay)ライクなオーバーレイ表示用のHTMLとCSSを作成しました。
 
 以下からダウンロードして、本オーバーレイのインストールフォルダに上書きで追加インストールすることで使用可能です。
 
 [bsdp-like-overlay](https://github.com/rynan4818/bsdp-like-overlay)
 
-## オーバーレイの改造
-スクリプトでは特定のid属性値のHTMLタグに対して、プレイに合わせた書き換え動作をします。HTML内のid属性値は起動時にチェックし、存在しない場合は書き換え動作をしないため、HTMLやCSSを改造して好きなレイアウトや表示項目にすることが出来ます。
-
-初心者向けに改造方法の記事を書きました。 [HTMLを知らない人にも分かる、オーバーレイの改造の仕方を説明してみる](https://note.com/rynan/n/n9a4207b7aed5)
-
-また参考に、精度・スコア・曲名・bsr表示だけにしたシンプルな表示のhtmlを用意してあります。
-```
-file:///C:/TOOL/beat-saber-overlay/simple.html?modifiers=bsr
-```
-
-### HTMLのid属性値に対する動作一覧
+## HTMLのid属性値に対する動作一覧
 
 | id属性値 | 動作 |
 ----|----
@@ -184,12 +186,15 @@ file:///C:/TOOL/beat-saber-overlay/simple.html?modifiers=bsr
 | pp | 精度100%のpp値に書き換えます。 |
 | pp_text | ppの項目名を起動時に保持し、pp表示が出来ない場合は表示を消します。 |
 
-### modifiersオプションの追加
+## modifiersオプションの追加
 modifiersフォルダにCSSファイルを追加すると、CSSファイル名でmodifiersオプションを指定して読み込める様になります。
 独自スタイルのCSSを作成した場合に任意のCSSファイルを作成することで、オリジナルのOverlayのファイル群を直接改造する必要がなくなるため、アップデートに追従しやすくなったり、他人に配布が容易になります。
 
-### 外部スクリプト起動用オプション関数
-オプションで以下の関数が存在すれば、呼び出されます。外部スクリプトは最初に読み込んで下さい。
+## 外部スクリプト起動用オプション関数
+スコアに応じて色を変更するなど、動的にオーバーレイを変化させるにはJavascriptを作成する必要があります。
+
+オリジナルのJSコードに手を付けなくても以下のオプション関数が存在すれば。各イベントで呼び出されます。
+なお、追加するスクリプトは最初に読み込んで下さい。
 
 | 関数(引数) | 説明 |
 ----|----
@@ -219,7 +224,7 @@ modifiersフォルダにCSSファイルを追加すると、CSSファイル名�
 
 | 引数 | 説明 |
 ----|----
-| data | HTTP Status から送信されるJSONオブジェクトが格納されています |
+| data | HTTP Status から送信される[JSONオブジェクト](https://github.com/opl-/beatsaber-http-status/blob/master/protocol.md)が格納されています |
 | now_energy | ライフ値が格納されています(0～100 実数値[小数点有り]) |
 | delta | 曲の経過時間(msec) |
 | progress | 曲の経過時間(sec) |
@@ -227,7 +232,39 @@ modifiersフォルダにCSSファイルを追加すると、CSSファイル名�
 | now_map | 現在の譜面のBeatSaver API 問い合わせ結果のJSONオブジェクト。但し、op_beatmapの時は前回と同じ譜面のプレイ時のみ格納、それ以外はnull |
 | pre_map | 前回の譜面のBeatSaver API 問い合わせ結果のJSONオブジェクト。 |
 
-## その他
+### ランクの色分け表示サンプル
+参考として、ランク表示をCounters+の様にSSは水色、Aは黄緑、Bは黄色、Cは橙、DEは赤にする例を示します。
+
+下記のコードをindex.htmlの`<script src="./js/options.js"></script>`の上の行に挿入して下さい。
+
+	<script type="text/javascript">
+	function op_performance(data,now_energy) {
+	    let rank = document.getElementById("rank");
+	    switch (data.status.performance.rank) {
+	        case "SSS":
+	        case "SS":
+	            rank.style.color = "cyan";
+	            break;
+	        case "S":
+	            rank.style.color = "white";
+	            break;
+	        case "A":
+	            rank.style.color = "lime";
+	            break;
+	        case "B":
+	            rank.style.color = "yellow";
+	            break;
+	        case "C":
+	            rank.style.color = "orange";
+	            break;
+	        case "D":
+	        case "E":
+	            rank.style.color = "red";
+	    }
+	}
+	</script>
+
+# その他
 
 他のオーバーレイでは一般的なGitHub Pages等による本オーバーレイの提供は以下を理由にあえて行いません。
 
