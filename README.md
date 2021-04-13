@@ -110,14 +110,16 @@ file:///C:/TOOL/beat-saber-overlay/index.html?modifiers=top,all
 	* ライフ値バーを表示します
 - `pp`
 	* ランク譜面の時に精度100%のpp値、Star Difficulty、リアルタイムのpp値を表示します。（※１）
+- `label`
+	* カスタム難易度がある場合に、デフォルトの難易度と共に表示します。（※１）
 - `all`
-	* `bsr`, `miss`, `mod`, `energy`, `pp` オプションを全て表示します。（※１）
+	* `bsr`, `miss`, `mod`, `energy`, `pp`, `label` オプションを全て表示します。（※１）
 - `no-performance`
 	* スコア表示を消します。
 - `no-hidden`
 	* 終了時に表示を消しません。
 
-※１：`pp` オプションを表示するには、[HttpStatusExtention](https://github.com/denpadokei/HttpStatusExtention)の導入が必要です。
+※１：`pp`, `label` オプションを表示するには、[HttpStatusExtention](https://github.com/denpadokei/HttpStatusExtention)の導入が必要です。
 
 ### `ip`または`port`
 

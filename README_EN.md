@@ -109,14 +109,16 @@ Multiple modifiers can be seperated with commas.
 	* Show energy bar
 - `pp`
 	* Shows pp points with 100% accuracy, Star Difficulty, and real-time pp points for ranked map.（*1）
+- `label`
+   * Displays the custom difficulty level, if any, along with the default difficulty level.(*1)
 - `all`
-	* `bsr`, `miss`, `mod`, `energy`, `pp` Show all options.（*1）
+	* `bsr`, `miss`, `mod`, `energy`, `pp`, `label` Show all options.（*1）
 - `no-performance`
 	* Hide score display
 - `no-hidden`
 	* Don't hide the overlay when the map ends
 
-*1：To use the `pp` option, you need to install [HttpStatusExtention](https://github.com/denpadokei/HttpStatusExtention).
+*1：To use the `pp` and `label` option, you need to install [HttpStatusExtention](https://github.com/denpadokei/HttpStatusExtention).
 
 ### `ip` and `port`
 
