@@ -128,6 +128,7 @@ file:///C:/TOOL/beat-saber-overlay/index.html?ip=192.168.1.10&port=6557&modifier
 ```
 
 ### Other
+The Japanese README has other explanations, such as additional overlay features and skin changes.
 
 We do not provide this overlay via GitHub Pages, etc., which is common for other overlays, for the following reasons.
 
