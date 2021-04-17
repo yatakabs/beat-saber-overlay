@@ -107,7 +107,7 @@ file:///C:/TOOL/beat-saber-overlay/index.html?modifiers=top,all
 - `mod`
 	* Modifierを表示します。(DA,FS等)
 - `energy`
-	* ライフ値バーを表示します
+	* エナジーバーを表示します
 - `pp`
 	* ランク譜面の時に精度100%のpp値、Star Difficulty、リアルタイムのpp値を表示します。（※１）
 - `label`
@@ -130,7 +130,17 @@ file:///C:/TOOL/beat-saber-overlay/index.html?modifiers=top,all
 file:///C:/TOOL/beat-saber-overlay/index.html?ip=192.168.1.10&port=6557&modifiers=top,bsr
 ```
 
+## 機能追加、表示変更スキン
+オーバーレイに機能追加、表示変更する追加スクリプト、ＣＳＳがあります。
+
+- [BSDP-Overlayライクなオーバーレイ](https://github.com/rynan4818/bsdp-like-overlay) オーバーレイ改造のサンプル
+- [OBSのシーンコントロール](https://github.com/rynan4818/obs-control)
+- [タイトル表示変更、エナジーバーの色変化スキン](https://twitter.com/NullponVR/status/1376585288500191234) ぬるぽんさん製作
+
 # オーバーレイの改造について
+オーバーレイは改造し易くするため、いくつか機能が用意されています。
+
+## HTMLの書き換え対象のid属性の有無チェック
 オーバーレイのスクリプトでは特定のid属性値のHTMLタグに対して、プレイに合わせた書き換え動作をします。
 
 HTML内のid属性値は起動時にチェックし、存在しない場合は書き換え動作をしないため、HTMLやCSSを改造して好きなレイアウトや表示項目にすることが出来ます。
@@ -141,15 +151,6 @@ HTML内のid属性値は起動時にチェックし、存在しない場合は�
 ```
 file:///C:/TOOL/beat-saber-overlay/simple.html?modifiers=bsr
 ```
-
-## BSDP-Overlayライクなオーバーレイ
-また、オーバーレイの改造のサンプルとして、[DataPuller](https://github.com/kOFReadie/BSDataPuller)の[BSDP-Overlay](https://github.com/kOFReadie/BSDP-Overlay)ライクなオーバーレイ表示用のHTMLとCSSを作成しました。
-
-以下からダウンロードして、本オーバーレイのインストールフォルダに上書きで追加インストールすることで使用可能です。
-
-[bsdp-like-overlay](https://github.com/rynan4818/bsdp-like-overlay)
-
-## HTMLのid属性値に対する動作一覧
 
 | id属性値 | 動作 |
 ----|----
@@ -265,6 +266,8 @@ modifiersフォルダにCSSファイルを追加すると、CSSファイル名�
 	    }
 	}
 	</script>
+
+オプション関数は、スクリプト内で１箇所しか使用できませんので、例えば上記の op_performance を他の追加スクリプトでも使用する場合は中身を合成する必要があります。
 
 # その他
 
