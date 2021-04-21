@@ -134,7 +134,8 @@ file:///C:/TOOL/beat-saber-overlay/index.html?ip=192.168.1.10&port=6557&modifier
 オーバーレイに機能追加、表示変更する追加スクリプト、ＣＳＳがあります。
 
 - [BSDP-Overlayライクなオーバーレイ](https://github.com/rynan4818/bsdp-like-overlay) オーバーレイ改造のサンプル
-- [OBSのシーンコントロール](https://github.com/rynan4818/obs-control)
+- [OBS Studioで自動シーン切り替え](https://github.com/rynan4818/obs-control)
+- [Streamlabs OBSで自動シーン切り替え](https://github.com/rynan4818/Streamlabs-obs-control)
 - [タイトル表示変更、エナジーバーの色変化スキン](https://twitter.com/NullponVR/status/1376585288500191234) ぬるぽんさん製作
 
 # オーバーレイの改造について
