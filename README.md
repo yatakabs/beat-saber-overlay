@@ -138,6 +138,8 @@ file:///C:/TOOL/beat-saber-overlay/index.html?ip=192.168.1.10&port=6557&modifier
 - [Streamlabs OBSで自動シーン切り替え](https://github.com/rynan4818/Streamlabs-obs-control)
 - [タイトル表示変更、エナジーバーの色変化スキン](https://twitter.com/NullponVR/status/1376585288500191234) ぬるぽんさん製作
 
+※[XSplit Broadcasterの自動シーン切り替え](https://github.com/rynan4818/BS-AutoSceneChanger) (オーバーレイとは関係ありません)
+
 # オーバーレイの改造について
 オーバーレイは改造し易くするため、いくつか機能が用意されています。
 
