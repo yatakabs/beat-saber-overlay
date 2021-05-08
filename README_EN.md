@@ -1,3 +1,4 @@
+## [The Japanese version of the README is here.](README.md)
 # (improved) Beat Saber Overlay
 
 This is an improved version of Reselim's [Beat Saber Overlay](https://github.com/Reselim/beat-saber-overlay) with various display options.
@@ -19,11 +20,11 @@ Overlay the score information when distributing or recording Beat Saber via OBS.
       ![image](https://rynan4818.github.io/beatsaber-overlay-httpstatus.png)
 
    There is also a performance-improved version produced by denpadokei.
-   - [Beat Saber HTTP Status](https://github.com/denpadokei/beatsaber-http-status)
+   - [HttpSiraStatus](https://github.com/denpadokei/beatsaber-http-status)
 
       ![image](https://rynan4818.github.io/beatsaber-overlay-denpadokei_en.png)
 
-   To use the optional `pp` feature and the custom difficulty display, you will also need to install denpadokei's version of HTTP Status and the HttpStatusExtention.
+   To use the optional `pp` feature and the custom difficulty display, you will also need to install denpadokei's version of HttpSiraStatus and the HttpStatusExtention.
 	 - [HttpStatusExtention](https://github.com/denpadokei/HttpStatusExtention)
 
    *Both versions of HTTP Status require you to install `websocket-sharp` in ModAssistant. Please note that it is often forgotten to install.
@@ -108,14 +109,16 @@ Multiple modifiers can be seperated with commas.
 	* Show energy bar
 - `pp`
 	* Shows pp points with 100% accuracy, Star Difficulty, and real-time pp points for ranked map.（*1）
+- `label`
+   * Displays the custom difficulty level, if any, along with the default difficulty level.(*1)
 - `all`
-	* `bsr`, `miss`, `mod`, `energy`, `pp` Show all options.（*1）
+	* `bsr`, `miss`, `mod`, `energy`, `pp`, `label` Show all options.（*1）
 - `no-performance`
 	* Hide score display
 - `no-hidden`
 	* Don't hide the overlay when the map ends
 
-*1：To use the `pp` option, you need to install [HttpStatusExtention](https://github.com/denpadokei/HttpStatusExtention).
+*1：To use the `pp` and `label` option, you need to install [HttpStatusExtention](https://github.com/denpadokei/HttpStatusExtention).
 
 ### `ip` and `port`
 
@@ -125,6 +128,7 @@ file:///C:/TOOL/beat-saber-overlay/index.html?ip=192.168.1.10&port=6557&modifier
 ```
 
 ### Other
+The [Japanese README](https://github.com/rynan4818/beat-saber-overlay/blob/master/README.md#%E6%A9%9F%E8%83%BD%E8%BF%BD%E5%8A%A0%E8%A1%A8%E7%A4%BA%E5%A4%89%E6%9B%B4%E3%82%B9%E3%82%AD%E3%83%B3) has other explanations, such as additional overlay features and skin changes.
 
 We do not provide this overlay via GitHub Pages, etc., which is common for other overlays, for the following reasons.
 

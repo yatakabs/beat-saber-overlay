@@ -20,11 +20,11 @@ Beat SaberをOBS等で配信や録画する時に譜面情報をオーバーレ�
       ![image](https://rynan4818.github.io/beatsaber-overlay-httpstatus.png)
 
 	ほかに、デンバ時計さん製作のパフォーマンス改善版があります。
-	- [Beat Saber HTTP Status](https://github.com/denpadokei/beatsaber-http-status)
+	- [HttpSiraStatus](https://github.com/denpadokei/beatsaber-http-status)
 
       ![image](https://rynan4818.github.io/beatsaber-overlay-denpadokei.png)
 
-	オプションの `pp` 機能やカスタム難易度表示を使用するには、デンバ時計さん版のHTTP StatusとHttpStatusExtentionも導入する必要があります。
+	オプションの `pp` 機能やカスタム難易度表示を使用するには、デンバ時計さんのHttpSiraStatusとHttpStatusExtentionも導入する必要があります。
 	- [HttpStatusExtention](https://github.com/denpadokei/HttpStatusExtention)
 
    ※手動でインストールする場合は、別途依存modをそれぞれのmodの説明に従ってインストールして下さい。
@@ -107,17 +107,19 @@ file:///C:/TOOL/beat-saber-overlay/index.html?modifiers=top,all
 - `mod`
 	* Modifierを表示します。(DA,FS等)
 - `energy`
-	* ライフ値バーを表示します
+	* エナジーバーを表示します
 - `pp`
 	* ランク譜面の時に精度100%のpp値、Star Difficulty、リアルタイムのpp値を表示します。（※１）
+- `label`
+	* カスタム難易度がある場合に、デフォルトの難易度と共に表示します。（※１）
 - `all`
-	* `bsr`, `miss`, `mod`, `energy`, `pp` オプションを全て表示します。（※１）
+	* `bsr`, `miss`, `mod`, `energy`, `pp`, `label` オプションを全て表示します。（※１）
 - `no-performance`
 	* スコア表示を消します。
 - `no-hidden`
 	* 終了時に表示を消しません。
 
-※１：`pp` オプションを表示するには、[HttpStatusExtention](https://github.com/denpadokei/HttpStatusExtention)の導入が必要です。
+※１：`pp`, `label` オプションを表示するには、[HttpStatusExtention](https://github.com/denpadokei/HttpStatusExtention)の導入が必要です。
 
 ### `ip`または`port`
 
@@ -128,24 +130,30 @@ file:///C:/TOOL/beat-saber-overlay/index.html?modifiers=top,all
 file:///C:/TOOL/beat-saber-overlay/index.html?ip=192.168.1.10&port=6557&modifiers=top,bsr
 ```
 
-## BSDP-Overlayライクなオーバーレイ
-[DataPuller](https://github.com/kOFReadie/BSDataPuller)の[BSDP-Overlay](https://github.com/kOFReadie/BSDP-Overlay)ライクなオーバーレイ表示用のHTMLとCSSを作成しました。
+## 機能追加、表示変更スキン
+オーバーレイに機能追加、表示変更する追加スクリプト、ＣＳＳがあります。
 
-以下からダウンロードして、本オーバーレイのインストールフォルダに上書きで追加インストールすることで使用可能です。
+- [BSDP-Overlayライクなオーバーレイ](https://github.com/rynan4818/bsdp-like-overlay) オーバーレイ改造のサンプル
+- [OBS Studioで自動シーン切り替え](https://github.com/rynan4818/obs-control)
+- [Streamlabs OBSで自動シーン切り替え](https://github.com/rynan4818/Streamlabs-obs-control)
+- [タイトル表示変更、エナジーバーの色変化スキン](https://twitter.com/NullponVR/status/1376585288500191234) ぬるぽんさん製作
 
-[bsdp-like-overlay](https://github.com/rynan4818/bsdp-like-overlay)
+※[XSplit Broadcasterの自動シーン切り替え](https://github.com/rynan4818/BS-AutoSceneChanger) (オーバーレイとは関係ありません)
 
-## オーバーレイの改造
-スクリプトでは特定のid属性値のHTMLタグに対して、プレイに合わせた書き換え動作をします。HTML内のid属性値は起動時にチェックし、存在しない場合は書き換え動作をしないため、HTMLやCSSを改造して好きなレイアウトや表示項目にすることが出来ます。
+# オーバーレイの改造について
+オーバーレイは改造し易くするため、いくつか機能が用意されています。
+
+## HTMLの書き換え対象のid属性の有無チェック
+オーバーレイのスクリプトでは特定のid属性値のHTMLタグに対して、プレイに合わせた書き換え動作をします。
+
+HTML内のid属性値は起動時にチェックし、存在しない場合は書き換え動作をしないため、HTMLやCSSを改造して好きなレイアウトや表示項目にすることが出来ます。
 
 初心者向けに改造方法の記事を書きました。 [HTMLを知らない人にも分かる、オーバーレイの改造の仕方を説明してみる](https://note.com/rynan/n/n9a4207b7aed5)
 
-また参考に、精度・スコア・曲名・bsr表示だけにしたシンプルな表示のhtmlを用意してあります。
+参考に、精度・スコア・曲名・bsr表示だけにしたシンプルな表示のhtmlを用意してあります。
 ```
 file:///C:/TOOL/beat-saber-overlay/simple.html?modifiers=bsr
 ```
-
-### HTMLのid属性値に対する動作一覧
 
 | id属性値 | 動作 |
 ----|----
@@ -184,12 +192,15 @@ file:///C:/TOOL/beat-saber-overlay/simple.html?modifiers=bsr
 | pp | 精度100%のpp値に書き換えます。 |
 | pp_text | ppの項目名を起動時に保持し、pp表示が出来ない場合は表示を消します。 |
 
-### modifiersオプションの追加
+## modifiersオプションの追加
 modifiersフォルダにCSSファイルを追加すると、CSSファイル名でmodifiersオプションを指定して読み込める様になります。
 独自スタイルのCSSを作成した場合に任意のCSSファイルを作成することで、オリジナルのOverlayのファイル群を直接改造する必要がなくなるため、アップデートに追従しやすくなったり、他人に配布が容易になります。
 
-### 外部スクリプト起動用オプション関数
-オプションで以下の関数が存在すれば、呼び出されます。外部スクリプトは最初に読み込んで下さい。
+## 外部スクリプト起動用オプション関数
+スコアに応じて色を変更するなど、動的にオーバーレイを変化させるにはJavascriptを作成する必要があります。
+
+オリジナルのJSコードに手を付けなくても以下のオプション関数が存在すれば。各イベントで呼び出されます。
+なお、追加するスクリプトは最初に読み込んで下さい。
 
 | 関数(引数) | 説明 |
 ----|----
@@ -219,15 +230,49 @@ modifiersフォルダにCSSファイルを追加すると、CSSファイル名�
 
 | 引数 | 説明 |
 ----|----
-| data | HTTP Status から送信されるJSONオブジェクトが格納されています |
+| data | HTTP Status から送信される[JSONオブジェクト](https://github.com/opl-/beatsaber-http-status/blob/master/protocol.md)が格納されています |
 | now_energy | ライフ値が格納されています(0～100 実数値[小数点有り]) |
 | delta | 曲の経過時間(msec) |
 | progress | 曲の経過時間(sec) |
 | percentage | 曲の経過割合 |
-| now_map | 現在の譜面のBeatSaver API 問い合わせ結果のJSONオブジェクト。但し、op_beatmapの時は前回と同じ譜面のプレイ時のみ格納、それ以外はnull |
+| now_map | 現在の譜面のBeatSaver API 問い合わせ結果の[JSONオブジェクト](https://beatsaver.com/api/maps/by-hash/071048B302300C07788D8422D05F7CCDF457FE40)。但し、op_beatmapの時は前回と同じ譜面のプレイ時のみ格納、それ以外はnull |
 | pre_map | 前回の譜面のBeatSaver API 問い合わせ結果のJSONオブジェクト。 |
 
-## その他
+### ランクの色分け表示サンプル
+参考として、ランク表示をCounters+の様にSSは水色、Aは黄緑、Bは黄色、Cは橙、DEは赤にする例を示します。
+
+下記のコードをindex.htmlの`<script src="./js/options.js"></script>`の上の行に挿入して下さい。
+
+	<script type="text/javascript">
+	function op_performance(data,now_energy) {
+	    let rank = document.getElementById("rank");
+	    switch (data.status.performance.rank) {
+	        case "SSS":
+	        case "SS":
+	            rank.style.color = "cyan";
+	            break;
+	        case "S":
+	            rank.style.color = "white";
+	            break;
+	        case "A":
+	            rank.style.color = "lime";
+	            break;
+	        case "B":
+	            rank.style.color = "yellow";
+	            break;
+	        case "C":
+	            rank.style.color = "orange";
+	            break;
+	        case "D":
+	        case "E":
+	            rank.style.color = "red";
+	    }
+	}
+	</script>
+
+オプション関数は、スクリプト内で１箇所しか使用できませんので、例えば上記の op_performance を他の追加スクリプトでも使用する場合は中身を合成する必要があります。
+
+# その他
 
 他のオーバーレイでは一般的なGitHub Pages等による本オーバーレイの提供は以下を理由にあえて行いません。
 
