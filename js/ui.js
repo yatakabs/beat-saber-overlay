@@ -38,7 +38,11 @@ const ui = (() => {
       if (html_id["rank"])  rank.innerText = performance.rank;
       if (html_id["miss"])  miss.innerText = performance.missedNotes;
       if (html_id["percentage"]) {
-        percentage.innerText = (performance.currentMaxScore > 0 ? (Math.floor((performance.score / performance.currentMaxScore) * 1000) / 10) : 100) + "%";
+        if (typeof performance.relativeScore !== "undefined") {
+          percentage.innerText = ((performance.relativeScore * 100).toFixed(2)) + "%";
+        } else {
+          percentage.innerText = (performance.currentMaxScore > 0 ? (performance.score / performance.currentMaxScore * 100).toFixed(2) : "100.00") + "%";
+        }
       }
       if (typeof performance.softFailed !== "undefined") {
         if (performance.softFailed === true) {
