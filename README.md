@@ -196,37 +196,38 @@ file:///C:/TOOL/beat-saber-overlay/simple.html?modifiers=bsr
 modifiersフォルダにCSSファイルを追加すると、CSSファイル名でmodifiersオプションを指定して読み込める様になります。
 独自スタイルのCSSを作成した場合に任意のCSSファイルを作成することで、オリジナルのOverlayのファイル群を直接改造する必要がなくなるため、アップデートに追従しやすくなったり、他人に配布が容易になります。
 
-## 外部スクリプト起動用オプション関数
+## 外部スクリプト起動用オプション配列
 スコアに応じて色を変更するなど、動的にオーバーレイを変化させるにはJavascriptを作成する必要があります。
 
-オリジナルのJSコードに手を付けなくても以下のオプション関数が存在すれば。各イベントで呼び出されます。
-なお、追加するスクリプトは最初に読み込んで下さい。
+オリジナルのJSコードに手を付けなくても以下のオプション配列の要素として関数を追加すると。各イベントで呼び出されます。
 
-| 関数(引数) | 説明 |
-----|----
-| op_performance(data,now_energy) | performanceが更新されるタイミングで呼び出されます |
-| op_timer_update(time, delta, progress, percentage) | 曲時間表示が更新されるタイミングで呼び出されます |
-| op_timer_update_sec(time, delta, progress, percentage) | 曲時間表示(秒毎)が更新されるタイミングで呼び出されます |
-| op_beatmap(data,now_map,pre_map) | 譜面情報が更新されるタイミングで呼び出されます |
-| op_beatsaver_res(now_map) | BeatSaverの譜面情報問い合わせのレスポンスがあった場合に呼び出されます |
-| op_hide() | オーバーレイを隠すタイミングで呼び出されます |
-| op_show() | オーバーレイを表示するタイミングで呼び出されます |
-| op_hello(data) | HTTP Status の hello イベント時に呼び出されます |
-| op_songStart(data) | HTTP Status の songStart イベント時に呼び出されます |
-| op_noteCut(data) | HTTP Status の noteCut イベント時に呼び出されます |
-| op_noteFullyCut(data) | HTTP Status の noteFullyCut イベント時に呼び出されます |
-| op_obstacleEnter(data) | HTTP Status の obstacleEnter イベント時に呼び出されます |
-| op_obstacleExit(data) | HTTP Status の obstacleExit イベント時に呼び出されます |
-| op_noteMissed(data) | HTTP Status の noteMissed イベント時に呼び出されます |
-| op_bombCut(data) | HTTP Status の bombCut イベント時に呼び出されます |
-| op_finished(data) | HTTP Status の finished イベント時に呼び出されます |
-| op_failed(data) | HTTP Status の failed イベント時に呼び出されます |
-| op_softFailed(data) | HTTP Status の softFailed イベント時に呼び出されます |
-| op_scoreChanged(data) | HTTP Status の scoreChanged イベント時に呼び出されます |
-| op_energyChanged(data) | HTTP Status の energyChanged イベント時に呼び出されます(本家HTTPStatusは未実装) |
-| op_pause(data) | HTTP Status の pause イベント時に呼び出されます |
-| op_resume(data) | HTTP Status の resume イベント時に呼び出されます |
-| op_menu(data) | HTTP Status の menu イベント時に呼び出されます |
+なお、追加するスクリプトは最初(options.jsより前、startup.jsより後)に読み込んで下さい。
+
+| 配列 | (引数) | 説明 |
+----|----|----
+| ex_performance | (data,now_energy) | performanceが更新されるタイミングで呼び出されます |
+| ex_timer_update | (time, delta, progress, percentage) | 曲時間表示が更新されるタイミングで呼び出されます |
+| ex_timer_update_sec | (time, delta, progress, percentage) | 曲時間表示(秒毎)が更新されるタイミングで呼び出されます |
+| ex_beatmap | (data,now_map,pre_map) | 譜面情報が更新されるタイミングで呼び出されます |
+| ex_beatsaver_res | (now_map) | BeatSaverの譜面情報問い合わせのレスポンスがあった場合に呼び出されます |
+| ex_hide | () | オーバーレイを隠すタイミングで呼び出されます |
+| ex_show | () | オーバーレイを表示するタイミングで呼び出されます |
+| ex_hello | (data) | HTTP Status の hello イベント時に呼び出されます |
+| ex_songStart | (data) | HTTP Status の songStart イベント時に呼び出されます |
+| ex_noteCut | (data) | HTTP Status の noteCut イベント時に呼び出されます |
+| ex_noteFullyCut | (data) | HTTP Status の noteFullyCut イベント時に呼び出されます |
+| ex_obstacleEnter | (data) | HTTP Status の obstacleEnter イベント時に呼び出されます |
+| ex_obstacleExit | (data) | HTTP Status の obstacleExit イベント時に呼び出されます |
+| ex_noteMissed | (data) | HTTP Status の noteMissed イベント時に呼び出されます |
+| ex_bombCut | (data) | HTTP Status の bombCut イベント時に呼び出されます |
+| ex_finished | (data) | HTTP Status の finished イベント時に呼び出されます |
+| ex_failed | (data) | HTTP Status の failed イベント時に呼び出されます |
+| ex_softFailed | (data) | HTTP Status の softFailed イベント時に呼び出されます |
+| ex_scoreChanged | (data) | HTTP Status の scoreChanged イベント時に呼び出されます |
+| ex_energyChanged | (data) | HTTP Status の energyChanged イベント時に呼び出されます(本家HTTPStatusは未実装) |
+| ex_pause | (data) | HTTP Status の pause イベント時に呼び出されます |
+| ex_resume | (data) | HTTP Status の resume イベント時に呼び出されます |
+| ex_menu | (data) | HTTP Status の menu イベント時に呼び出されます |
 
 | 引数 | 説明 |
 ----|----
@@ -244,7 +245,7 @@ modifiersフォルダにCSSファイルを追加すると、CSSファイル名�
 下記のコードをindex.htmlの`<script src="./js/options.js"></script>`の上の行に挿入して下さい。
 
 	<script type="text/javascript">
-	function op_performance(data,now_energy) {
+	ex_performance.push((data,now_energy) => {
 	    let rank = document.getElementById("rank");
 	    switch (data.status.performance.rank) {
 	        case "SSS":
@@ -267,10 +268,14 @@ modifiersフォルダにCSSファイルを追加すると、CSSファイル名�
 	        case "E":
 	            rank.style.color = "red";
 	    }
-	}
+	});
 	</script>
 
-オプション関数は、スクリプト内で１箇所しか使用できませんので、例えば上記の op_performance を他の追加スクリプトでも使用する場合は中身を合成する必要があります。
+[Release v2021/02/22](https://github.com/rynan4818/beat-saber-overlay/releases/tag/v2021%2F02%2F22)以前のオプション関数(op_*)も互換性維持のため読み込むようになっています。
+
+ただし、オプション関数はスクリプト全体で１箇所しか使用できないため、他のスクリプトと競合する場合は関数を合成する必要があります。
+
+オプション配列の場合は、そういった問題はありませんので今後は配列に関数を追加して使用して下さい。
 
 # その他
 

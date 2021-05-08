@@ -117,7 +117,7 @@ const ui = (() => {
         if (html_id["now_pp_text"]) now_pp_text.innerText = now_pp_text_org;
       }
       
-      if (typeof op_performance !== "undefined") op_performance(data,now_energy);
+      ex_performance.forEach(ex => ex(data,now_energy));
     }
   })();
   
@@ -158,13 +158,13 @@ const ui = (() => {
       var percentage = Math.min(delta / duration, 1);
       
       if (html_id["progress"]) bar.setAttribute("style", `stroke-dashoffset: ${(1 - percentage) * circumference}px`);
-      if (typeof op_timer_update !== "undefined") op_timer_update(time, delta, progress, percentage);
+      ex_timer_update.forEach(ex => ex(time, delta, progress, percentage));
       
       // Minor optimization
       if (progress != display) {
         display = progress;
         if (html_id["song_time"]) song_time.innerText = format(progress);
-        if (typeof op_timer_update_sec !== "undefined") op_timer_update_sec(time, delta, progress, percentage);
+        ex_timer_update_sec.forEach(ex => ex(time, delta, progress, percentage));
       }
     }
     
@@ -324,7 +324,7 @@ const ui = (() => {
             if (html_id["bsr"])      dom_bsr.innerText = now_map.key;
             if (html_id["bsr_text"]) dom_bsr_text.innerText = bsr_text_org;
           }
-          if (typeof op_beatsaver_res !== "undefined") op_beatsaver_res(now_map);
+          ex_beatsaver_res.forEach(ex => ex(now_map));
         }
       }
       
@@ -480,19 +480,19 @@ const ui = (() => {
           }
         }
       }
-      if (typeof op_beatmap !== "undefined") op_beatmap(data,now_map,pre_map);
+      ex_beatmap.forEach(ex => ex(data,now_map,pre_map));
     }
   })();
   
   return {
     hide() {
       if (html_id["overlay"]) main.classList.add("hidden");
-      if (typeof op_hide !== "undefined") op_hide();
+      ex_hide.forEach(ex => ex());
     },
     
     show() {
       if (html_id["overlay"]) main.classList.remove("hidden");
-      if (typeof op_show !== "undefined") op_show();
+      ex_show.forEach(ex => ex());
     },
     
     performance,

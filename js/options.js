@@ -32,6 +32,76 @@ if (html_id["pp_text"])       var pp_text_org       = document.getElementById("p
 if (html_id["label_header"])  var label_header_org  = document.getElementById("label_header").textContent;
 if (html_id["label_footer"])  var label_footer_org  = document.getElementById("label_footer").textContent;
 
+if (typeof op_performance !== "undefined") ex_performance.push((data,now_energy) => {
+  op_performance(data,now_energy);
+});
+if (typeof op_timer_update !== "undefined") ex_timer_update.push((time, delta, progress, percentage) => {
+  op_timer_update(time, delta, progress, percentage);
+});
+if (typeof op_timer_update_sec !== "undefined") ex_timer_update_sec.push((time, delta, progress, percentage) => {
+  op_timer_update_sec(time, delta, progress, percentage);
+});
+if (typeof op_beatmap !== "undefined") ex_beatmap.push((data,now_map,pre_map) => {
+  op_beatmap(data,now_map,pre_map);
+});
+if (typeof op_beatsaver_res !== "undefined") ex_beatsaver_res.push((now_map) => {
+  op_beatsaver_res(now_map);
+});
+if (typeof op_hide !== "undefined") ex_hide.push(() => {
+  op_hide();
+});
+if (typeof op_show !== "undefined") ex_show.push(() => {
+  op_show();
+});
+if (typeof op_hello !== "undefined") ex_hello.push((data) => {
+  op_hello(data);
+});
+if (typeof op_songStart !== "undefined") ex_songStart.push((data) => {
+  op_songStart(data);
+});
+if (typeof op_noteCut !== "undefined") ex_noteCut.push((data) => {
+  op_noteCut(data);
+});
+if (typeof op_noteFullyCut !== "undefined") ex_noteFullyCut.push((data) => {
+  op_noteFullyCut(data);
+});
+if (typeof op_obstacleEnter !== "undefined") ex_obstacleEnter.push((data) => {
+  op_obstacleEnter(data);
+});
+if (typeof op_obstacleExit !== "undefined") ex_obstacleExit.push((data) => {
+  op_obstacleExit(data);
+});
+if (typeof op_noteMissed !== "undefined") ex_noteMissed.push((data) => {
+  op_noteMissed(data);
+});
+if (typeof op_bombCut !== "undefined") ex_bombCut.push((data) => {
+  op_bombCut(data);
+});
+if (typeof op_finished !== "undefined") ex_finished.push((data) => {
+  op_finished(data);
+});
+if (typeof op_failed !== "undefined") ex_failed.push((data) => {
+  op_failed(data);
+});
+if (typeof op_softFailed !== "undefined") ex_softFailed.push((data) => {
+  op_softFailed(data);
+});
+if (typeof op_scoreChanged !== "undefined") ex_scoreChanged.push((data) => {
+  op_scoreChanged(data);
+});
+if (typeof op_energyChanged !== "undefined") ex_energyChanged.push((data) => {
+  op_energyChanged(data);
+});
+if (typeof op_pause !== "undefined") ex_pause.push((data) => {
+  op_pause(data);
+});
+if (typeof op_resume !== "undefined") ex_resume.push((data) => {
+  op_resume(data);
+});
+if (typeof op_menu !== "undefined") ex_menu.push((data) => {
+  op_menu(data);
+});
+
 (() => {
   const handlers = {
     modifiers(string) {
