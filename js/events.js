@@ -7,79 +7,79 @@ const events = {
 			ui.performance(data);
 			ui.show();
 		}
-		if (typeof op_hello !== "undefined") op_hello(data);
+		ex_hello.forEach(ex => ex(data));
 	},
 
 	songStart(data) {
 		ui.beatmap(data);
 		ui.performance(data);
 		ui.show();
-		if (typeof op_songStart !== "undefined") op_songStart(data);
+		ex_songStart.forEach(ex => ex(data));
 	},
 
 	noteCut(data) {
 		ui.performance(data);
-		if (typeof op_noteCut !== "undefined") op_noteCut(data);
+		ex_noteCut.forEach(ex => ex(data));
 	},
 
 	noteFullyCut(data) {
 		ui.performance(data);
-		if (typeof op_noteFullyCut !== "undefined") op_noteFullyCut(data);
+		ex_noteFullyCut.forEach(ex => ex(data));
 	},
 
 	obstacleEnter(data) {
 		ui.performance(data);
-		if (typeof op_obstacleEnter !== "undefined") op_obstacleEnter(data);
+		ex_obstacleEnter.forEach(ex => ex(data));
 	},
 
 	obstacleExit(data) {
 		ui.performance(data);
-		if (typeof op_obstacleExit !== "undefined") op_obstacleExit(data);
+		ex_obstacleExit.forEach(ex => ex(data));
 	},
 
 	noteMissed(data) {
 		ui.performance(data);
-		if (typeof op_noteMissed !== "undefined") op_noteMissed(data);
+		ex_noteMissed.forEach(ex => ex(data));
 	},
 
 	bombCut(data) {
 		ui.performance(data);
-		if (typeof op_bombCut !== "undefined") op_bombCut(data);
+		ex_bombCut.forEach(ex => ex(data));
 	},
 
 	finished(data) {
 		ui.performance(data);
-		if (typeof op_finished !== "undefined") op_finished(data);
+		ex_finished.forEach(ex => ex(data));
 	},
 
 	failed(data) {
 		ui.performance(data);
-		if (typeof op_failed !== "undefined") op_failed(data);
+		ex_failed.forEach(ex => ex(data));
 	},
 
 	softFailed(data) {
 		ui.performance(data);
-		if (typeof op_softFailed !== "undefined") op_softFailed(data);
+		ex_softFailed.forEach(ex => ex(data));
 	},
 
 	scoreChanged(data) {
 		ui.performance(data);
-		if (typeof op_scoreChanged !== "undefined") op_scoreChanged(data);
+		ex_scoreChanged.forEach(ex => ex(data));
 	},
 
 	energyChanged(data) {
 		ui.performance(data);
-		if (typeof op_energyChanged !== "undefined") op_energyChanged(data);
+		ex_energyChanged.forEach(ex => ex(data));
 	},
 
 	pause(data) {
 		ui.timer.pause(data.status.beatmap.paused + (Date.now() - data.time));
-		if (typeof op_pause !== "undefined") op_pause(data);
+		ex_pause.forEach(ex => ex(data));
 	},
 
 	resume(data) {
 		ui.timer.start(data.status.beatmap.start + (Date.now() - data.time), data.status.beatmap.length, false);
-		if (typeof op_resume !== "undefined") op_resume(data);
+		ex_resume.forEach(ex => ex(data));
 	},
 
 	menu(data) {
@@ -87,6 +87,6 @@ const events = {
 		if (disp_hidden) {
 			ui.hide();
 		}
-		if (typeof op_menu !== "undefined") op_menu(data);
+		ex_menu.forEach(ex => ex(data));
 	}
 }
