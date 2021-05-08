@@ -11,15 +11,15 @@ const check_id = ["overlay","rank","percentage","combo","score","progress","ener
                   "now_pp","now_pp_text","star","star_text","pp","pp_text","label_header",
                   "label_footer","label","subtitle_group","title_group","titles","bsr-group","meta",
                   "beatmap","cover_group","artist_group","artist_group","text","title_subtitle",
-									"artist_mapper_group","map_info","map_info_group","difficulty_group",
-									"difficulty_label","artist_mapper"]
+                  "artist_mapper_group","map_info","map_info_group","difficulty_group",
+                  "difficulty_label","artist_mapper"]
 var html_id = {};
 for (var i = 0, len = check_id.length; i < len; ++i) {
-	if (document.getElementById(check_id[i]) === null) {
-		html_id[check_id[i]] = false;
-	} else {
-		html_id[check_id[i]] = true;
-	}
+  if (document.getElementById(check_id[i]) === null) {
+    html_id[check_id[i]] = false;
+  } else {
+    html_id[check_id[i]] = true;
+  }
 }
 if (html_id["mapper_header"]) var mapper_header_org = document.getElementById("mapper_header").textContent;
 if (html_id["mapper_footer"]) var mapper_footer_org = document.getElementById("mapper_footer").textContent;
@@ -33,44 +33,44 @@ if (html_id["label_header"])  var label_header_org  = document.getElementById("l
 if (html_id["label_footer"])  var label_footer_org  = document.getElementById("label_footer").textContent;
 
 (() => {
-	const handlers = {
-		modifiers(string) {
-			string.split(",").forEach((modifier) => {
-				if (modifier === "no-hidden") {
-					disp_hidden = false;
-					if (html_id["overlay"]) document.getElementById("overlay").classList.remove("hidden");
-					return;
-				}
-				if (modifier === "bsr" || modifier === "all") {
-					bsr_display = true;
-				}
-				if (modifier === "energy" || modifier === "all") {
-					energy_display = true;
-				}
-				if (modifier === "rtl") {
-					rtl_display = true;
-				}
-				var link = document.createElement("link");
-				
-				link.setAttribute("rel", "stylesheet");
-				link.setAttribute("href", `./modifiers/${modifier}.css`);
-		
-				document.head.appendChild(link);
-			});
-		}
-	};
-
-	Object.keys(handlers).forEach((key) => {
-		var value = query.get(key);
-
-		if (value) {
-			handlers[key](value);
-		}
-	});
-	
-	if (location.hash) {
-		// Legacy URL hash support
-		handlers.modifiers(location.hash.slice(1));
-	}
-	
+  const handlers = {
+    modifiers(string) {
+      string.split(",").forEach((modifier) => {
+        if (modifier === "no-hidden") {
+          disp_hidden = false;
+          if (html_id["overlay"]) document.getElementById("overlay").classList.remove("hidden");
+          return;
+        }
+        if (modifier === "bsr" || modifier === "all") {
+          bsr_display = true;
+        }
+        if (modifier === "energy" || modifier === "all") {
+          energy_display = true;
+        }
+        if (modifier === "rtl") {
+          rtl_display = true;
+        }
+        var link = document.createElement("link");
+        
+        link.setAttribute("rel", "stylesheet");
+        link.setAttribute("href", `./modifiers/${modifier}.css`);
+        
+        document.head.appendChild(link);
+      });
+    }
+  };
+  
+  Object.keys(handlers).forEach((key) => {
+    var value = query.get(key);
+    
+    if (value) {
+      handlers[key](value);
+    }
+  });
+  
+  if (location.hash) {
+    // Legacy URL hash support
+    handlers.modifiers(location.hash.slice(1));
+  }
+  
 })();
