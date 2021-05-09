@@ -113,7 +113,7 @@ const ui = (() => {
       }
       if (typeof performance.current_pp !== "undefined" && performance.current_pp > 0) now_pp_enable = true;
       if (now_pp_enable) {
-        if (html_id["now_pp"])     now_pp.innerText = Math.floor(performance.current_pp * 100) / 100;
+        if (html_id["now_pp"])     now_pp.innerText = performance.current_pp.toFixed(2);
         if (html_id["now_pp_text"]) now_pp_text.innerText = now_pp_text_org;
       }
       
