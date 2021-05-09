@@ -271,7 +271,7 @@ modifiersフォルダにCSSファイルを追加すると、CSSファイル名�
 	});
 	</script>
 
-[Release v2021/02/22](https://github.com/rynan4818/beat-saber-overlay/releases/tag/v2021%2F02%2F22)以前のオプション関数(op_*)も互換性維持のため読み込むようになっています。
+[Release v2021/02/22](https://github.com/rynan4818/beat-saber-overlay/tree/12c8cafa54663e6aec81bde5e1db008000e3444a#%E5%A4%96%E9%83%A8%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%97%E3%83%88%E8%B5%B7%E5%8B%95%E7%94%A8%E3%82%AA%E3%83%97%E3%82%B7%E3%83%A7%E3%83%B3%E9%96%A2%E6%95%B0)以前のオプション関数(op_*)も互換性維持のため読み込むようになっています。
 
 ただし、オプション関数はスクリプト全体で１箇所しか使用できないため、他のスクリプトと競合する場合は関数を合成する必要があります。
 
