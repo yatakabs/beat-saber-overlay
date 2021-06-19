@@ -50,8 +50,8 @@
    HTTPStatusとHttpSiraStatusは競合して同時に使用できませんので、インストールされている場合はファイルを削除してください。
 
 ## HttpSiraStatus使用時に、`BeatSaberHTTPStatus.dll` をインストールしていませんか？
-   上記と同じ理由です。インストールされている場合は、ModAssistantでアンインストールしてください。
-   ModAssistantにBeatSaberHTTPStatusが未登録の場合は、ファイルを直接削除してください。
+   上記と同じ理由です。インストールされている場合は、ModAssistantでHTTPStatusをアンインストールしてください。
+   ModAssistantにHTTPStatusが未登録の場合は、ファイルを直接削除してください。
 
 ## OBSのソース設定で、オーバーレイのレイヤがBeatSaberのゲーム画面より上にありますか？
    ![image](https://rynan4818.github.io/beatsaber-overlay-obs-setting8.png)
