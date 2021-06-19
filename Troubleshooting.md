@@ -2,6 +2,9 @@
 
 オーバーレイが表示されない場合、ほとんどの場合はModの導入に問題があります。
 
+※この説明では Mod とは、BeatSaberの `Plugins` や `Libs` に入れるファイル群のことを指します。
+オーバーレイは厳密にはBeatSaberと直接関わらないため Mod とは違いツール扱いです。
+
 ## 必要なファイルがフォルダにあるか確認してください
 
 ### HTTPStatus使用時
@@ -44,19 +47,21 @@
 ※websocket-sharpについては、ModAssistantに未登録な場合は[BEATMODS](https://beatmods.com/#/mods)で、1つ前の`Game Version`から`websocket-sharp`を`Download Zip`してインストールも可能です。websocket-sharpはBeatSaberのアップデートと無関係なため旧Game Version用を使用しても通常は問題ありません。
 
 ## HTTPStatus使用時に、`HttpSiraStatus.dll` や `HttpStatusExtention.dll`をインストールしていませんか？
-   インストールされている場合は、ファイルを削除してください。
+   HTTPStatusとHttpSiraStatusは競合して同時に使用できませんので、インストールされている場合はファイルを削除してください。
 
 ## HttpSiraStatus使用時に、`BeatSaberHTTPStatus.dll` をインストールしていませんか？
-   インストールされている場合は、ModAssistantでアンインストールしてください。
+   上記と同じ理由です。インストールされている場合は、ModAssistantでアンインストールしてください。
    ModAssistantにBeatSaberHTTPStatusが未登録の場合は、ファイルを直接削除してください。
 
-## オーバーレイのOBSの設定で、オーバーレイのレイヤがBeatSaberのゲーム画面より上にありますか？
+## OBSのソース設定で、オーバーレイのレイヤがBeatSaberのゲーム画面より上にありますか？
+   ![image](https://rynan4818.github.io/beatsaber-overlay-obs-setting8.png)
 
-## オーバーレイのOBSの設定で、オーバーレイのURLは正しいですか？
-   URL欄をブラウザにコピーして開いたときに、BeatSaberをプレイしたらカバー画像などが表示されますか？
+## OBSのソースのオーバーレイの設定で、オーバーレイのURLは正しいですか？
+   URL欄をコピーしてブラウザのアドレスから開いてみてください、`ファイルにアクセスできませんでした`等表示される場合はURL表記が間違っていますので見直してください。
+   URLが正常な場合は真っ白な画面になりますが、BeatSaberをプレイするとカバー画像が表示されます。真っ白な画面のまま、カバー画像が表示されない場合はModがおかしいです。
 
 ## オーバーレイの追加スクリプトを導入した場合は、正しく設定していますか？
-   追加スクリプトの無い、デフォルトのオーバーレイで動作するか確認してください。
+   まずは追加スクリプトの無い、デフォルトのオーバーレイで動作するか確認してください。追加スクリプトは対象とするオーバーレイのバージョンが指定されている場合があります。基本的にはオーバーレイを最新版にすればＯＫですが、追加スクリプトの作り方によっては特定のオーバーレイのバージョンのみで動作する可能性もあります。追加スクリプトのマニュアルをよく読んで確認してください。
 
 ## それでも正しくオーバーレイが表示されない場合
 [Beat Saber HTTP Status Checker](https://rynan4818.github.io/http_status_check.html)をブラウザで開いた状態でBeatSaberをプレイしてください。
