@@ -22,18 +22,16 @@
 | Libs     | websocket-sharp.dll      |      |
 | Plugins  | HttpSiraStatus.dll       |      |
 | ↑       | SiraUtil.dll             |      |
-| ↑       | SiraUtil.xml             | *1   |
 | ↑       | websocket-sharp.manifest |      |
 | ↑       | BS_Utils.dll             |      |
-| ↑       | HttpStatusExtention.dll  | *2  |
-| ↑       | SongCore.dll             | *3  |
-| ↑       | SongDataCore.dll         | *3 |
+| ↑       | HttpStatusExtention.dll  | *1  |
+| ↑       | SongCore.dll             | *2  |
+| ↑       | SongDataCore.dll         | *2 |
 
 | 備考 | |
 -------|----
-| *1| ModAssistantを使用した場合にインストールされるが、無くても動作する。 |
-| *2| HttpStatusExtention.dllのインストールは任意。無くても良い。 |
-| *3| HttpStatusExtention.dllを入れた場合は必須。                 |
+| *1| HttpStatusExtention.dllのインストールは任意。無くても良い。 |
+| *2| HttpStatusExtention.dllを入れた場合は必須。                 |
 
 
 以下のファイルはModAssistantを使用してインストールしてください。BeatSaberアップデート直後の場合は無い場合もありますが、これらは基幹Modと呼ばれるため、多くの場合は数日以内にリリースされます。ModAssistantに登録されるまでお待ち下さい。
