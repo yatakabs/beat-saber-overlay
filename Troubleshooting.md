@@ -5,6 +5,12 @@
 ※この説明では Mod とは、BeatSaberの `Plugins` や `Libs` に入れるファイル群のことを指します。
 オーバーレイは厳密にはBeatSaberと直接関わらないため Mod とは違いツール扱いです。
 
+## 導入したmodのバージョンが、BeatSaberのバージョンに対応しているか確認してください
+
+[動作確認環境](https://github.com/rynan4818/beat-saber-overlay/wiki)
+
+※modのバージョンはDLLファイルのプロパティの詳細で確認できます。
+
 ## 必要なファイルがフォルダにあるか確認してください
 
 ### HTTPStatus使用時
