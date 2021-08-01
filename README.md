@@ -3,7 +3,7 @@
 
 これは、Reselim氏が製作した[Beat Saber Overlay](https://github.com/Reselim/beat-saber-overlay)に各種表示オプションを追加し、機能改善した物です。
 
-Beat SaberをOBS等で配信や録画する時に譜面情報をオーバーレイ表示します。
+Beat SaberをOBS等で配信や録画する時に、曲名やスコアなどの譜面情報をオーバーレイ表示します。
 
 ![preview](https://rynan4818.github.io/beatsaber-overlay-bsr-image.png)
 
