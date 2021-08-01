@@ -30,6 +30,8 @@ Overlay the score information when distributing or recording Beat Saber via OBS.
    *Both versions of HTTP Status require you to install `websocket-sharp` in ModAssistant. Please note that it is often forgotten to install.
 
    ![image](https://rynan4818.github.io/beatsaber-overlay-websocket-sharp.png)
+   
+   *We have confirmed that the overlay works with [this version](https://github.com/rynan4818/beat-saber-overlay/wiki) of the mod.
 
 2. Download the latest release from the [release page](https://github.com/rynan4818/beat-saber-overlay/releases).
 
