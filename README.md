@@ -31,6 +31,8 @@ Beat SaberをOBS等で配信や録画する時に、曲名やスコアなどの�
       特にModAssistantにある**websocket-sharpのインストールが必須**です。入れ忘れトラブルが多いので注意して下さい。
 
    ![image](https://rynan4818.github.io/beatsaber-overlay-websocket-sharp.png)
+   
+   ※オーバーレイの動作確認は、この[modのバージョン](https://github.com/rynan4818/beat-saber-overlay/wiki)で確認しています。
 
 2. [リリースページ](https://github.com/rynan4818/beat-saber-overlay/releases)から最新のリリースをダウンロードします。
 
