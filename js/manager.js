@@ -1,5 +1,5 @@
 function connect() {
-  var ip = query.get("ip") || "localhost";
+  var ip = query.get("ip") || "127.0.0.1";
   var port = query.get("port") || 6557;
   
   var socket = new WebSocket(`ws://${ip}:${port}/socket`);

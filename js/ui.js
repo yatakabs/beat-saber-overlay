@@ -7,7 +7,6 @@ const ui = (() => {
   var mod_instaFail = false;
   var mod_batteryEnergy = false;
   var obstacle_time = 0;
-  var failed = false;
   var now_pp_enable = false;
   
   const performance = (() => {
@@ -102,12 +101,8 @@ const ui = (() => {
           }
         }
         if (now_energy > 100) now_energy = 100;
-        if (data.event === "failed") {
-          now_energy = 0;
-          failed = true;
-        }
+        if (data.event === "failed") now_energy = 0;
         if (now_energy < 0) now_energy = 0;
-        if (failed) now_energy = 0;
         if (html_id["energy"]) energy.innerText = Math.round(now_energy) + "%";
         if (html_id["energy_bar"]) energy_bar.setAttribute("style", `width: ${Math.round(now_energy)}%`);
       }
@@ -207,7 +202,7 @@ const ui = (() => {
   })();
   
   const beatmap = (() => {
-    const beatsaver_url = 'https://beatsaver.com/api/maps/by-hash/';
+    const beatsaver_url = 'https://beatsaver.com/api/maps/hash/';
     const request_timeout = 5000; //msec
     const min_subtitle_width_ratio = 0.3;
     if (html_id["overlay"])               var dom_overlay              = document.getElementById("overlay");
@@ -281,7 +276,6 @@ const ui = (() => {
         console.log(diff_time);
       }
       now_pp_enable = false;
-      failed = false;
       timer.start(beatmap.start + diff_time, beatmap.length, mod_data.songSpeedMultiplier);
       mod_instaFail = mod_data.instaFail;
       mod_batteryEnergy = mod_data.batteryEnergy;
@@ -321,7 +315,7 @@ const ui = (() => {
         if(this.readyState == 4 && this.status == 200) {
           now_map = this.response;
           if (now_map !== null) {
-            if (html_id["bsr"])      dom_bsr.innerText = now_map.key;
+            if (html_id["bsr"])      dom_bsr.innerText = now_map.id;
             if (html_id["bsr_text"]) dom_bsr_text.innerText = bsr_text_org;
           }
           ex_beatsaver_res.forEach(ex => ex(now_map));
@@ -330,7 +324,7 @@ const ui = (() => {
       
       if (pre_songHash === beatmap.songHash) {
         if (bsr_display && now_map !== null) {
-          if (html_id["bsr"])      dom_bsr.innerText = now_map.key;
+          if (html_id["bsr"])      dom_bsr.innerText = now_map.id;
           if (html_id["bsr_text"]) dom_bsr_text.innerText = bsr_text_org;
         }
       } else {
