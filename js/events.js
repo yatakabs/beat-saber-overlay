@@ -72,6 +72,16 @@ const events = {
     ex_energyChanged.forEach(ex => ex(data));
   },
   
+  beatmapEvent(data) {
+    if (typeof data.status.performance !== "undefined") {
+      var song_time = data.status.performance.currentSongTime;
+      if (typeof song_time !== "undefined") {
+        ui.timer.song_time_update(song_time);
+      }
+    }
+    ex_beatmapEvent.forEach(ex => ex(data));
+  },
+  
   pause(data) {
     var ip = query.get("ip");
     var diff_time = 0;

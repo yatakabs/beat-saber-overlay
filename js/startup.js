@@ -21,3 +21,4 @@ let ex_energyChanged = [];
 let ex_pause = [];
 let ex_resume = [];
 let ex_menu = [];
+let ex_beatmapEvent = [];

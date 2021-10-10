@@ -235,6 +235,7 @@ modifiersフォルダにCSSファイルを追加すると、CSSファイル名�
 | ex_pause | (data) | HTTP Status の pause イベント時に呼び出されます |
 | ex_resume | (data) | HTTP Status の resume イベント時に呼び出されます |
 | ex_menu | (data) | HTTP Status の menu イベント時に呼び出されます |
+| ex_beatmapEvent | (data) | HTTP Status の beatmapEvent イベント時に呼び出されます |
 
 | 引数 | 説明 |
 ----|----
