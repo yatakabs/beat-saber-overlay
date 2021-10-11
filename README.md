@@ -244,7 +244,7 @@ modifiersフォルダにCSSファイルを追加すると、CSSファイル名�
 | delta | 曲の経過時間(msec) |
 | progress | 曲の経過時間(sec) |
 | percentage | 曲の経過割合 |
-| now_map | 現在の譜面のBeatSaver API 問い合わせ結果の[JSONオブジェクト](https://beatsaver.com/api/maps/by-hash/071048B302300C07788D8422D05F7CCDF457FE40)。但し、op_beatmapの時は前回と同じ譜面のプレイ時のみ格納、それ以外はnull |
+| now_map | 現在の譜面のBeatSaver API 問い合わせ結果の[JSONオブジェクト](https://beatsaver.com/api/maps/hash/071048B302300C07788D8422D05F7CCDF457FE40)。但し、op_beatmapの時は前回と同じ譜面のプレイ時のみ格納、それ以外はnull |
 | pre_map | 前回の譜面のBeatSaver API 問い合わせ結果のJSONオブジェクト。 |
 
 ### ランクの色分け表示サンプル
