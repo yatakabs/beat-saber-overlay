@@ -244,7 +244,7 @@ modifiersフォルダにCSSファイルを追加すると、CSSファイル名�
 | delta | 曲の経過時間(msec) |
 | progress | 曲の経過時間(sec) |
 | percentage | 曲の経過割合 |
-| now_map | 現在の譜面のBeatSaver API 問い合わせ結果の[JSONオブジェクト](https://beatsaver.com/api/maps/hash/071048B302300C07788D8422D05F7CCDF457FE40)。但し、op_beatmapの時は前回と同じ譜面のプレイ時のみ格納、それ以外はnull |
+| now_map | 現在の譜面のBeatSaver API 問い合わせ結果の[JSONオブジェクト](https://beatsaver.com/api/maps/hash/071048B302300C07788D8422D05F7CCDF457FE40)。但し、ex_beatmapの時は前回と同じ譜面のプレイ時のみ格納、それ以外はnull |
 | pre_map | 前回の譜面のBeatSaver API 問い合わせ結果のJSONオブジェクト。 |
 
 ### ランクの色分け表示サンプル
@@ -289,6 +289,7 @@ modifiersフォルダにCSSファイルを追加すると、CSSファイル名�
 
 他のオーバーレイでは一般的なGitHub Pages等による本オーバーレイの提供は以下を理由にあえて行いません。
 
+- 本オーバーレイはオプションスクリプト追加機能や、ユーザでの改造を推奨する設計のため
 - オリジナルの(Unnamed) Beat Saber OverlayではURL変更等によるトラブルが多かったこと
 - GitHubに繋がらない場合など、ネットワークのトラブル時に使用できないこと
 - 少し手間になるが、ダウンロードしてローカルで表示する使用方法で問題ないこと
