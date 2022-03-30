@@ -15,6 +15,9 @@ const ui = (() => {
     const miss_energy = -15;
     const drain_energy = -0.13;  //per msec
     const battery_unit = 25;
+    const element_cut_energy = 0.2;
+    const element_misscut_energy = -2.5;
+    const element_miss_energy = -3;
     if (html_id["rank"])         var rank         = document.getElementById("rank");
     if (html_id["percentage"])   var percentage   = document.getElementById("percentage");
     if (html_id["score"])        var score        = document.getElementById("score");
