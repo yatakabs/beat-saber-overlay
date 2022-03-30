@@ -227,6 +227,7 @@ modifiersフォルダにCSSファイルを追加すると、CSSファイル名�
 | ex_obstacleExit | (data) | HTTP Status の obstacleExit イベント時に呼び出されます |
 | ex_noteMissed | (data) | HTTP Status の noteMissed イベント時に呼び出されます |
 | ex_bombCut | (data) | HTTP Status の bombCut イベント時に呼び出されます |
+| ex_bombMissed | (data) | HTTP Status の bombMissed イベント時に呼び出されます |
 | ex_finished | (data) | HTTP Status の finished イベント時に呼び出されます |
 | ex_failed | (data) | HTTP Status の failed イベント時に呼び出されます |
 | ex_softFailed | (data) | HTTP Status の softFailed イベント時に呼び出されます |
@@ -236,6 +237,8 @@ modifiersフォルダにCSSファイルを追加すると、CSSファイル名�
 | ex_resume | (data) | HTTP Status の resume イベント時に呼び出されます |
 | ex_menu | (data) | HTTP Status の menu イベント時に呼び出されます |
 | ex_beatmapEvent | (data) | HTTP Status の beatmapEvent イベント時に呼び出されます |
+| ex_noteSpawned | (data) | HTTP Status の noteSpawned イベント時に呼び出されます |
+| ex_other | (data) | HTTP Status の other イベント時に呼び出されます |
 
 | 引数 | 説明 |
 ----|----
