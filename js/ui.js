@@ -210,7 +210,7 @@ const ui = (() => {
   })();
   
   const beatmap = (() => {
-    const beatsaver_url = 'https://beatsaver.com/api/maps/hash/';
+    const beatsaver_url = 'https://api.beatsaver.com/maps/hash/';
     const request_timeout = 5000; //msec
     const min_subtitle_width_ratio = 0.3;
     if (html_id["overlay"])               var dom_overlay              = document.getElementById("overlay");
