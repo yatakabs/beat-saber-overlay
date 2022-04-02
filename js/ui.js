@@ -397,7 +397,7 @@ const ui = (() => {
         if (html_id["pp"])      dom_pp.innerText = "";
         if (html_id["pp_text"]) dom_pp_text.innerText = "";
       } else {
-        if (html_id["pp"])      dom_pp.innerText = Math.floor(beatmap.pp * 100) / 100;
+        if (html_id["pp"])      dom_pp.innerText = beatmap.pp.toFixed(2);
         if (html_id["pp_text"]) dom_pp_text.innerText = pp_text_org;
       }
       
@@ -405,7 +405,7 @@ const ui = (() => {
         if (html_id["star"])      dom_star.innerText = "";
         if (html_id["star_text"]) dom_star_text.innerText = "";
       } else {
-        if (html_id["star"])      dom_star.innerText = beatmap.star;
+        if (html_id["star"])      dom_star.innerText = beatmap.star.toFixed(2);
         if (html_id["star_text"]) dom_star_text.innerText = star_text_org;
       }
       
