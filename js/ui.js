@@ -15,6 +15,9 @@ const ui = (() => {
     const miss_energy = -15;
     const drain_energy = -0.13;  //per msec
     const battery_unit = 25;
+    const element_cut_energy = 0.2;
+    const element_misscut_energy = -2.5;
+    const element_miss_energy = -3;
     if (html_id["rank"])         var rank         = document.getElementById("rank");
     if (html_id["percentage"])   var percentage   = document.getElementById("percentage");
     if (html_id["score"])        var score        = document.getElementById("score");
@@ -207,7 +210,7 @@ const ui = (() => {
   })();
   
   const beatmap = (() => {
-    const beatsaver_url = 'https://beatsaver.com/api/maps/hash/';
+    const beatsaver_url = 'https://api.beatsaver.com/maps/hash/';
     const request_timeout = 5000; //msec
     const min_subtitle_width_ratio = 0.3;
     if (html_id["overlay"])               var dom_overlay              = document.getElementById("overlay");
@@ -394,7 +397,7 @@ const ui = (() => {
         if (html_id["pp"])      dom_pp.innerText = "";
         if (html_id["pp_text"]) dom_pp_text.innerText = "";
       } else {
-        if (html_id["pp"])      dom_pp.innerText = Math.floor(beatmap.pp * 100) / 100;
+        if (html_id["pp"])      dom_pp.innerText = beatmap.pp.toFixed(2);
         if (html_id["pp_text"]) dom_pp_text.innerText = pp_text_org;
       }
       
@@ -402,7 +405,7 @@ const ui = (() => {
         if (html_id["star"])      dom_star.innerText = "";
         if (html_id["star_text"]) dom_star_text.innerText = "";
       } else {
-        if (html_id["star"])      dom_star.innerText = beatmap.star;
+        if (html_id["star"])      dom_star.innerText = beatmap.star.toFixed(2);
         if (html_id["star_text"]) dom_star_text.innerText = star_text_org;
       }
       

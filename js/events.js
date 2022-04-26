@@ -47,6 +47,11 @@ const events = {
     ex_bombCut.forEach(ex => ex(data));
   },
   
+  bombMissed(data) {
+    ui.performance(data);
+    ex_bombMissed.forEach(ex => ex(data));
+  },
+  
   finished(data) {
     ui.performance(data);
     ex_finished.forEach(ex => ex(data));
@@ -70,6 +75,14 @@ const events = {
   energyChanged(data) {
     ui.performance(data);
     ex_energyChanged.forEach(ex => ex(data));
+  },
+  
+  noteSpawned(data) {
+    ex_noteSpawned.forEach(ex => ex(data));
+  },
+  
+  other(data) {
+    ex_other.forEach(ex => ex(data));
   },
   
   beatmapEvent(data) {

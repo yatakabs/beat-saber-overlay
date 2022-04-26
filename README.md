@@ -227,6 +227,7 @@ modifiersフォルダにCSSファイルを追加すると、CSSファイル名�
 | ex_obstacleExit | (data) | HTTP Status の obstacleExit イベント時に呼び出されます |
 | ex_noteMissed | (data) | HTTP Status の noteMissed イベント時に呼び出されます |
 | ex_bombCut | (data) | HTTP Status の bombCut イベント時に呼び出されます |
+| ex_bombMissed | (data) | HTTP Status の bombMissed イベント時に呼び出されます |
 | ex_finished | (data) | HTTP Status の finished イベント時に呼び出されます |
 | ex_failed | (data) | HTTP Status の failed イベント時に呼び出されます |
 | ex_softFailed | (data) | HTTP Status の softFailed イベント時に呼び出されます |
@@ -236,6 +237,8 @@ modifiersフォルダにCSSファイルを追加すると、CSSファイル名�
 | ex_resume | (data) | HTTP Status の resume イベント時に呼び出されます |
 | ex_menu | (data) | HTTP Status の menu イベント時に呼び出されます |
 | ex_beatmapEvent | (data) | HTTP Status の beatmapEvent イベント時に呼び出されます |
+| ex_noteSpawned | (data) | HTTP Status の noteSpawned イベント時に呼び出されます |
+| ex_other | (data) | HTTP Status の other イベント時に呼び出されます |
 
 | 引数 | 説明 |
 ----|----
@@ -244,7 +247,7 @@ modifiersフォルダにCSSファイルを追加すると、CSSファイル名�
 | delta | 曲の経過時間(msec) |
 | progress | 曲の経過時間(sec) |
 | percentage | 曲の経過割合 |
-| now_map | 現在の譜面のBeatSaver API 問い合わせ結果の[JSONオブジェクト](https://beatsaver.com/api/maps/hash/071048B302300C07788D8422D05F7CCDF457FE40)。但し、op_beatmapの時は前回と同じ譜面のプレイ時のみ格納、それ以外はnull |
+| now_map | 現在の譜面のBeatSaver API 問い合わせ結果の[JSONオブジェクト](https://beatsaver.com/api/maps/hash/071048B302300C07788D8422D05F7CCDF457FE40)。但し、ex_beatmapの時は前回と同じ譜面のプレイ時のみ格納、それ以外はnull |
 | pre_map | 前回の譜面のBeatSaver API 問い合わせ結果のJSONオブジェクト。 |
 
 ### ランクの色分け表示サンプル
@@ -289,6 +292,7 @@ modifiersフォルダにCSSファイルを追加すると、CSSファイル名�
 
 他のオーバーレイでは一般的なGitHub Pages等による本オーバーレイの提供は以下を理由にあえて行いません。
 
+- 本オーバーレイはオプションスクリプト追加機能や、ユーザでの改造を推奨する設計のため
 - オリジナルの(Unnamed) Beat Saber OverlayではURL変更等によるトラブルが多かったこと
 - GitHubに繋がらない場合など、ネットワークのトラブル時に使用できないこと
 - 少し手間になるが、ダウンロードしてローカルで表示する使用方法で問題ないこと
