@@ -11,6 +11,10 @@
 		<script src="./js/startup.js"></script>
 		<div id="overlay" class="hidden">
 			<div id="performance">
+				<div class="performance_group" style="display: block;font-size: 34px;font-weight: 700;line-height: 41px;">
+					<span id="head_distance">0.0m</span>
+				</div>
+				
 				<div class="performance_group" id="now_pp_group">
 					<span class="text" id="now_pp">0</span>
 					<span class="subtext" id="now_pp_text">pp</span>
@@ -109,7 +113,25 @@
 				</div>
 			</div>
 		</div>
-
+		
+<script type="text/javascript">
+	ex_hello.push((data) => {
+		let distance = document.getElementById("head_distance");
+		distance.innerText = "";
+	});
+	
+	ex_other.push((data) => {
+		if (typeof data.other !== "undefined") {
+			if (typeof data.other.HeadDistanceTravelled !== "undefined") {
+				let distance = document.getElementById("head_distance");
+				if (typeof data.other.HeadDistanceTravelled.Distance !== "undefined") {
+					distance.innerText = data.other.HeadDistanceTravelled.Distance.toFixed(3) + "m";
+				}
+			}
+		}
+	});
+</script>
+		
 		<script src="./js/options.js"></script>
 		
 		<script src="./js/ui.js"></script>
