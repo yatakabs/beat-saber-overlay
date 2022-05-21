@@ -130,6 +130,17 @@
 			}
 		}
 	});
+	
+	ex_performance.push((data) => {
+		if(typeof data.status !== "undefined" && typeof data.status.performance !== "undefined") {
+			if (typeof data.status.performance.HeadDistanceTravelled !== "undefined") {
+				let distance = document.getElementById("head_distance");
+				if (typeof data.status.performance.HeadDistanceTravelled.Distance !== "undefined") {
+					distance.innerText = data.status.performance.HeadDistanceTravelled.Distance.toFixed(3) + "m";
+				}
+			}
+		}
+	});
 </script>
 		
 		<script src="./js/options.js"></script>
