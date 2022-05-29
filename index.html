@@ -153,45 +153,55 @@
 	});
 	
 	ex_other.push((data) => {
-		if (typeof data.other !== "undefined") {
-			if (typeof data.other.HeadDistanceTravelled !== "undefined") {
-				let distance = document.getElementById("head_distance");
-				if (typeof data.other.HeadDistanceTravelled.Distance !== "undefined") {
-					latestDistance = data.other.HeadDistanceTravelled.Distance
-					distance.innerText = data.other.HeadDistanceTravelled.Distance.toFixed(4) + "m";
-					isDistanceEnabled = true;
-					return;
+		try {
+			if (typeof data.other !== "undefined") {
+				if (typeof data.other.HeadDistanceTravelled !== "undefined") {
+					let distance = document.getElementById("head_distance");
+					if (typeof data.other.HeadDistanceTravelled.Distance !== "undefined") {
+						latestDistance = data.other.HeadDistanceTravelled.Distance
+						distance.innerText = data.other.HeadDistanceTravelled.Distance.toFixed(4) + "m";
+						isDistanceEnabled = true;
+						return;
+					}
 				}
 			}
+			
+			isDistanceEnabled = false;
 		}
-		
-		isDistanceEnabled = false;
+		finally {
+			updateBp();
+		}
 	});
 	
 	ex_performance.push((data) => {
 		if(typeof data === "undefined" || typeof data.status === "undefined" || typeof data.status.performance === "undefined") { return; }
 		
-		const performance = data.status.performance;
-		
-		if (typeof performance.relativeScore !== "undefined") {
-			latestAccuracy = performance.relativeScore * 100.0;
-		}
-		else {
-			latestAccuracy = performance.currentMaxScore > 0
-				? performance.score / performance.currentMaxScore * 100
-				: 100.00;
-		}
-		
-		if (typeof performance.HeadDistanceTravelled !== "undefined") {
-			let distance = document.getElementById("head_distance");
-			if (typeof performance.HeadDistanceTravelled.Distance !== "undefined") {
-				distance.innerText = performance.HeadDistanceTravelled.Distance.toFixed(4) + "m";
-				isDistanceEnabled = true;
-				return;
+		try {
+			const performance = data.status.performance;
+
+			if (typeof performance.relativeScore !== "undefined") {
+				latestAccuracy = performance.relativeScore * 100.0;
 			}
+			else {
+				latestAccuracy = performance.currentMaxScore > 0
+					? performance.score / performance.currentMaxScore * 100
+					: 100.00;
+			}
+
+			if (typeof performance.HeadDistanceTravelled !== "undefined") {
+				let distance = document.getElementById("head_distance");
+				if (typeof performance.HeadDistanceTravelled.Distance !== "undefined") {
+					distance.innerText = performance.HeadDistanceTravelled.Distance.toFixed(4) + "m";
+					isDistanceEnabled = true;
+					return;
+				}
+			}
+
+			isDistanceEnabled = false;
 		}
-		
-		isDistanceEnabled = false;
+		finally {
+			updateBp();
+		}
 	});
 </script>
 		
