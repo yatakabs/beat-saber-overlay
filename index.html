@@ -15,6 +15,10 @@
 					<span id="head_distance">0.0m</span>
 				</div>
 				
+				<div class="performance_group" id="now_bp_group">
+					<span id="now_bp">100.00bp</span>
+				</div>
+				
 				<div class="performance_group" id="now_pp_group">
 					<span class="text" id="now_pp">0</span>
 					<span class="subtext" id="now_pp_text">pp</span>
@@ -115,9 +119,37 @@
 		</div>
 		
 <script type="text/javascript">
+	var latestDistance = 0.0;
+	var latestAccuracy = 0.0;
+	var isDistanceEnabled = true;
+	
+	function updateBp()
+	{
+		const nowBp = document.getElementById("now_bp");
+		if (!nowBp) { return; }
+		
+		if (isDistanceEnabled) {
+			let bp = latestAccuracy - latestDistance * 10.0;
+			if(latestDistance >= 3.0){
+				bp = bp / 2;
+			}
+			
+			nowBp.innerText = bp.toFixed(2) + "bp";
+		}
+		else{
+			nowBp.innerText = "";
+		}
+	}
+	
 	ex_hello.push((data) => {
-		let distance = document.getElementById("head_distance");
+		latestDistance = 0.0;
+		latestAccuracy = 0.0;
+		
+		const distance = document.getElementById("head_distance");
 		distance.innerText = "";
+		
+		const bp = document.getElementById("now_bp");
+		bp.innerText = "";
 	});
 	
 	ex_other.push((data) => {
@@ -125,21 +157,41 @@
 			if (typeof data.other.HeadDistanceTravelled !== "undefined") {
 				let distance = document.getElementById("head_distance");
 				if (typeof data.other.HeadDistanceTravelled.Distance !== "undefined") {
-					distance.innerText = data.other.HeadDistanceTravelled.Distance.toFixed(3) + "m";
+					latestDistance = data.other.HeadDistanceTravelled.Distance
+					distance.innerText = data.other.HeadDistanceTravelled.Distance.toFixed(4) + "m";
+					isDistanceEnabled = true;
+					return;
 				}
 			}
 		}
+		
+		isDistanceEnabled = false;
 	});
 	
 	ex_performance.push((data) => {
-		if(typeof data.status !== "undefined" && typeof data.status.performance !== "undefined") {
-			if (typeof data.status.performance.HeadDistanceTravelled !== "undefined") {
-				let distance = document.getElementById("head_distance");
-				if (typeof data.status.performance.HeadDistanceTravelled.Distance !== "undefined") {
-					distance.innerText = data.status.performance.HeadDistanceTravelled.Distance.toFixed(3) + "m";
-				}
+		if(typeof data === "undefined" || typeof data.status === "undefined" || typeof data.status.performance === "undefined") { return; }
+		
+		const performance = data.status.performance;
+		
+		if (typeof performance.relativeScore !== "undefined") {
+			latestAccuracy = performance.relativeScore * 100.0;
+		}
+		else {
+			latestAccuracy = performance.currentMaxScore > 0
+				? performance.score / performance.currentMaxScore * 100
+				: 100.00;
+		}
+		
+		if (typeof performance.HeadDistanceTravelled !== "undefined") {
+			let distance = document.getElementById("head_distance");
+			if (typeof performance.HeadDistanceTravelled.Distance !== "undefined") {
+				distance.innerText = performance.HeadDistanceTravelled.Distance.toFixed(4) + "m";
+				isDistanceEnabled = true;
+				return;
 			}
 		}
+		
+		isDistanceEnabled = false;
 	});
 </script>
 		
