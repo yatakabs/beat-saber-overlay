@@ -130,11 +130,22 @@
 		
 		if (isDistanceEnabled) {
 			let bp = latestAccuracy - latestDistance * 10.0;
-			if(latestDistance >= 3.0){
+			let failed = false;
+			
+			if (bp < 0) {
+				bp = 0;
+			}
+			else if (latestDistance >= 3.0) {
 				bp = bp / 2;
+				failed = true;
 			}
 			
-			nowBp.innerText = bp.toFixed(2) + "bp";
+			let bpText = bp.toFixed(2) + "bp";
+			if (failed) {
+				bpText = bpText + " (failed)";
+			}
+			
+			nowBp.innerText = bpText;
 		}
 		else{
 			nowBp.innerText = "";
