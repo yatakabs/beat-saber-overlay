@@ -196,7 +196,7 @@
 		if (typeof performance.HeadDistanceTravelled !== "undefined") {
 			let distance = document.getElementById("head_distance");
 			if (typeof performance.HeadDistanceTravelled.Distance !== "undefined") {
-				distance.innerText = performance.HeadDistanceTravelled.Distance.toFixed(4) + "m";
+				distance.innerText = performance.HeadDistanceTravelled.Distance.toFixed(3) + "m";
 				isDistanceEnabled = true;
 			}
 		}
