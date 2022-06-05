@@ -170,7 +170,7 @@
 				let distance = document.getElementById("head_distance");
 				if (typeof data.other.HeadDistanceTravelled.Distance !== "undefined") {
 					latestDistance = data.other.HeadDistanceTravelled.Distance
-					distance.innerText = data.other.HeadDistanceTravelled.Distance.toFixed(4) + "m";
+					distance.innerText = data.other.HeadDistanceTravelled.Distance.toFixed(3) + "m";
 					isDistanceEnabled = true;
 				}
 			}
