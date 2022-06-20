@@ -451,7 +451,7 @@ const ui = (() => {
           var artist_group_over_width   = dom_artist_group.offsetWidth - dom_artist_mapper_group.offsetWidth + over_width;
           var map_info_over_width       = dom_map_info.offsetWidth - dom_map_info_group.offsetWidth + over_width;
           if (title_subtitle_over_width > 0) {
-            if (beatmap.songSubName.trim() === "") {
+            if (typeof beatmap.songSubName === "undefined" || beatmap.songSubName === null || beatmap.songSubName.trim() === "") {
               var subtitle_width_down = 0;
             } else {
               var subtitle_width_down = title_subtitle_over_width;
