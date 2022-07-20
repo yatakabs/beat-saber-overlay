@@ -15,12 +15,15 @@ Overlay the score information when distributing or recording Beat Saber via OBS.
 
    If you are a beginner, we recommend you to install the original version of HTTP Status from ModAssistant, which will automatically install the dependent mods for you.
 
-   - [Beat Saber HTTP Status](https://github.com/opl-/beatsaber-http-status) *Original version of ModAssistant registration
+    **As of 2022/7/20, only HttpSiraStatus is supported in BeatSaber 1.20.0 and later versions**
+
+   - [Beat Saber HTTP Status](https://github.com/opl-/beatsaber-http-status) *Original version of ModAssistant registration (Compatible up to BeatSaber 1.19.0
+)
 
       ![image](https://rynan4818.github.io/beatsaber-overlay-httpstatus.png)
 
    There is also a performance-improved version produced by denpadokei.
-   - [HttpSiraStatus](https://github.com/denpadokei/beatsaber-http-status)
+   - [HttpSiraStatus](https://github.com/denpadokei/beatsaber-http-status) (BeatSaber 1.20.0 and later also supported)
 
       ![image](https://rynan4818.github.io/beatsaber-overlay-denpadokei_en.png)
 
