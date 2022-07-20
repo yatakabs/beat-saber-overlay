@@ -11,14 +11,16 @@ Beat SaberをOBS等で配信や録画する時に、曲名やスコアなどの�
 
 ## インストール方法 (OBS)
 
-1. Beat Saberからオーバーレイにデータを送信するためにHTTP StatusかHttpSiraStatusのどちらか一方をインストールしてください。
+1. Beat Saberからオーバーレイにデータを送信するためにHTTP StatusかHttpSiraStatusのどちらか一方をインストールしてください。<br>
    (HTTP StatusとHttpSiraStatusを同時にインストールすると競合するため動作しません)
+   
+   **2022/7/20現在、BeatSaber1.20.0以降のバージョンではHttpSiraStatusのみ対応しています**
 
-   - [Beat Saber HTTP Status](https://github.com/opl-/beatsaber-http-status)　※ModAssistant登録のオリジナル版 (2022/4/29現在 BeatSaber1.19.1まで対応)
+   - [Beat Saber HTTP Status](https://github.com/opl-/beatsaber-http-status)　※ModAssistant登録のオリジナル版 (2022/7/20現在 BeatSaber1.19.1まで対応)
 
       ![image](https://rynan4818.github.io/beatsaber-overlay-httpstatus.png)
 
-	- [HttpSiraStatus](https://github.com/denpadokei/beatsaber-http-status)  ※デンバ時計さん製作の改良版 (2022/4/29現在 BeatSaber1.20.0以降の方はこちらのみ対応)
+	- [HttpSiraStatus](https://github.com/denpadokei/beatsaber-http-status)  ※デンバ時計さん製作の改良版 (2022/7/20現在 BeatSaber1.20.0以降の方はこちらのみ対応)
 
       ![image](https://rynan4818.github.io/beatsaber-overlay-denpadokei.png)
 
