@@ -11,26 +11,23 @@ Beat SaberをOBS等で配信や録画する時に、曲名やスコアなどの�
 
 ## インストール方法 (OBS)
 
-1. Beat Saberからオーバーレイにデータを送信するためにHTTP StatusかHttpSiraStatusのどちらか一方をインストールしてください。<br>
-   (HTTP StatusとHttpSiraStatusを同時にインストールすると競合するため動作しません)
+1. Beat Saberからオーバーレイにデータを送信するためにHttpSiraStatusをインストールしてください。<br>
    
-   **2022/7/20現在、BeatSaber1.20.0以降のバージョンではHttpSiraStatusのみ対応しています**
+    - [HttpSiraStatus](https://github.com/denpadokei/beatsaber-http-status)
 
-   - [Beat Saber HTTP Status](https://github.com/opl-/beatsaber-http-status)　※ModAssistant登録のオリジナル版 (2022/7/20現在 BeatSaber1.19.1まで対応)
-
-      ![image](https://rynan4818.github.io/beatsaber-overlay-httpstatus.png)
-
-	- [HttpSiraStatus](https://github.com/denpadokei/beatsaber-http-status)  ※デンバ時計さん製作の改良版 (2022/7/20現在 BeatSaber1.20.0以降の方はこちらのみ対応)
-
-      ![image](https://rynan4818.github.io/beatsaber-overlay-denpadokei.png)
-
-	オプションの `pp` 機能やカスタム難易度表示を使用するには、HttpSiraStatusとHttpStatusExtentionも導入する必要があります。
+	オプションの `pp` `label` `all`機能を使用するには、HttpStatusExtentionも導入する必要があります。
 	- [HttpStatusExtention](https://github.com/denpadokei/HttpStatusExtention)
 
-   ※HTTPStatus、HttpSiraStatusどちらもModAssistantにある**websocket-sharpのインストールが必須**です。入れ忘れトラブルが多いので注意して下さい。
+   ※HttpSiraStatusはModAssistantにある**websocket-sharpのインストールが必須**です。入れ忘れトラブルが多いので注意して下さい。
 
-   ![image](https://rynan4818.github.io/beatsaber-overlay-websocket-sharp.png)
+   ![image](https://user-images.githubusercontent.com/14249877/194671405-950cdf45-1e9c-4fb3-b198-15404a5145eb.png)
+
+   ModAssistantに登録が無い場合は[BEATMODS](https://beatmods.com/#/mods)で、Game Versionを`Any`にして`websocket-sharp`を検索してダウンロードして下さい。
+
+   ![image](https://user-images.githubusercontent.com/14249877/194671490-6ef3e6e9-de3f-4ff7-8e36-40a22145e2e9.png)
    
+   ※websocket-sharpはBeatSaberのバージョンに関係なく動作するので、HttpSiraStatusが対応していれば古いバージョンでも動作します。
+
    ※オーバーレイの動作確認は、この[modのバージョン](https://github.com/rynan4818/beat-saber-overlay/wiki)で確認しています。
 
 2. [リリースページ](https://github.com/rynan4818/beat-saber-overlay/releases)から最新のリリースをダウンロードします。
