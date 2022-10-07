@@ -13,27 +13,21 @@ Overlay the score information when distributing or recording Beat Saber via OBS.
 
 1. Please install the following mods to send the beat saver data to the overlay.
 
-   If you are a beginner, we recommend you to install the original version of HTTP Status from ModAssistant, which will automatically install the dependent mods for you.
+   - [HttpSiraStatus](https://github.com/denpadokei/beatsaber-http-status)
 
-    **As of 2022/7/20, only HttpSiraStatus is supported in BeatSaber 1.20.0 and later versions**
+   To use the optional `pp`,`label`,`all` feature, you must also install HttpStatusExtention.
+   - [HttpStatusExtention](https://github.com/denpadokei/HttpStatusExtention)
 
-   - [Beat Saber HTTP Status](https://github.com/opl-/beatsaber-http-status) *Original version of ModAssistant registration (Compatible up to BeatSaber 1.19.0
-)
+   *HttpSiraStatus requires **websocket-sharp** to be installed in ModAssistant. Note that it is often forgotten to install.
 
-      ![image](https://rynan4818.github.io/beatsaber-overlay-httpstatus.png)
+   ![image](https://user-images.githubusercontent.com/14249877/194671405-950cdf45-1e9c-4fb3-b198-15404a5145eb.png)
 
-   There is also a performance-improved version produced by denpadokei.
-   - [HttpSiraStatus](https://github.com/denpadokei/beatsaber-http-status) (BeatSaber 1.20.0 and later also supported)
-
-      ![image](https://rynan4818.github.io/beatsaber-overlay-denpadokei_en.png)
-
-   To use the optional `pp` feature and the custom difficulty display, you will also need to install denpadokei's version of HttpSiraStatus and the HttpStatusExtention.
-	 - [HttpStatusExtention](https://github.com/denpadokei/HttpStatusExtention)
-
-   *Both versions of HTTP Status require you to install `websocket-sharp` in ModAssistant. Please note that it is often forgotten to install.
-
-   ![image](https://rynan4818.github.io/beatsaber-overlay-websocket-sharp.png)
+   If you are not registered in ModAssistant, go to [BEATMODS](https://beatmods.com/#/mods), set Game Version to `Any` and search for `websocket-sharp` to download.
    
+   ![image](https://user-images.githubusercontent.com/14249877/194671490-6ef3e6e9-de3f-4ff7-8e36-40a22145e2e9.png)
+   
+   *websocket-sharp works regardless of BeatSaber version, so it will work with older versions as long as HttpSiraStatus is supported.
+
    *We have confirmed that the overlay works with [this version](https://github.com/rynan4818/beat-saber-overlay/wiki) of the mod.
 
 2. Download the latest release from the [release page](https://github.com/rynan4818/beat-saber-overlay/releases).
