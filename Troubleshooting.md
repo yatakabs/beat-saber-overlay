@@ -13,26 +13,17 @@
 
 ## 必要なファイルがフォルダにあるか確認してください
 
-### HTTPStatus使用時
-| フォルダ | ファイル                 |
------------|---------------------------
-| Libs     | websocket-sharp.dll      |
-| Plugins  | BeatSaberHTTPStatus.dll  |
-| ↑       | websocket-sharp.manifest |
-| ↑       | BS_Utils.dll             |
-
-
-### HttpSiraStatus使用時
 | フォルダ | ファイル                 | 備考 |
 -----------|--------------------------|-------
 | Libs     | websocket-sharp.dll      |      |
+| ↑        | SongDetailsCache.dll     | *2   |
 | Plugins  | HttpSiraStatus.dll       |      |
 | ↑       | SiraUtil.dll             |      |
 | ↑       | websocket-sharp.manifest |      |
 | ↑       | BS_Utils.dll             |      |
 | ↑       | HttpStatusExtention.dll  | *1  |
 | ↑       | SongCore.dll             | *2  |
-| ↑       | SongDataCore.dll         | *2 |
+| ↑       | SongDetailsCache.manifest | *2 |
 
 | 備考 | |
 -------|----
@@ -45,18 +36,11 @@
 -----------|---------------
 | BS Utils | BS_Utils.dll |
 | SongCore | SongCore.dll |
-| SongDataCore | SongDataCore.dll |
+| SongDetailsCache | SongDataCore.dll, SongDetailsCache.manifest |
 | SiraUtil | SiraUtil.dll, SiraUtil.xml |
 | websocket-sharp | websocket-sharp.dll, websocket-sharp.manifest |
 
-※websocket-sharpについては、ModAssistantに未登録な場合は[BEATMODS](https://beatmods.com/#/mods)で、1つ前の`Game Version`から`websocket-sharp`を`Download Zip`してインストールも可能です。websocket-sharpはBeatSaberのアップデートと無関係なため旧Game Version用を使用しても通常は問題ありません。
-
-## HTTPStatus使用時に、`HttpSiraStatus.dll` や `HttpStatusExtention.dll`をインストールしていませんか？
-   HTTPStatusとHttpSiraStatusは競合して同時に使用できませんので、インストールされている場合はファイルを削除してください。
-
-## HttpSiraStatus使用時に、`BeatSaberHTTPStatus.dll` をインストールしていませんか？
-   上記と同じ理由です。インストールされている場合は、ModAssistantでHTTPStatusをアンインストールしてください。
-   ModAssistantにHTTPStatusが未登録の場合は、ファイルを直接削除してください。
+※websocket-sharpについては、ModAssistantに未登録な場合は[BEATMODS](https://beatmods.com/#/mods)で、`Game Version`を**Any**にして`Search`から**websocket-sharp**を検索して`Download Zip`してインストールも可能です。websocket-sharpはBeatSaberのアップデートと無関係なため旧Game Version用を使用しても通常は問題ありません。
 
 ## OBSのソース設定で、オーバーレイのレイヤがBeatSaberのゲーム画面より上にありますか？
    ![image](https://rynan4818.github.io/beatsaber-overlay-obs-setting8.png)
@@ -76,5 +60,5 @@
 
 上記が問題ない場合はModのインストールは正常なため、オーバーレイの設定やインストール方法に問題があります。オーバーレイの設定を再度見直してください。
 
-上記が問題ある場合はModに問題があるため、再度Modを確認してください。また、他のModとの競合やBeatSaberのバージョンに対応していないModがある可能性があります。ModAssistantでHTTPStatusまたはHttpSiraStatusの動作に必要な最低限のModのみインストールした状態で動作確認してください。
+上記が問題ある場合はModに問題があるため、再度Modを確認してください。また、他のModとの競合やBeatSaberのバージョンに対応していないModがある可能性があります。HttpSiraStatusの動作に必要な最低限のModのみインストールした状態で動作確認してください。
 
