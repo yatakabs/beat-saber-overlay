@@ -15,6 +15,12 @@ Beat SaberをOBS等で配信や録画する時に、曲名やスコアなどの�
    
     - [HttpSiraStatus](https://github.com/denpadokei/beatsaber-http-status)
 
+       上記からダウンロードして解凍した`HttpSiraStatus.dll`をBeatSaberのインストールフォルダの`Plugins`フォルダにコピーします。
+       
+       ダウンロードするzipファイル名の`bs*.**.**`の部分が自分の使用しているBeatSaberの**バージョンと同じ**か、**小さくて一番新しい**ものを使用してください。
+
+       **`bs*.**.**`のバージョンが使用するBeatSaberのバージョンよりも大きいと動作しませんので注意してください**
+
 	オプションの `pp` `label` `all`機能を使用するには、HttpStatusExtentionも導入する必要があります。
 	- [HttpStatusExtention](https://github.com/denpadokei/HttpStatusExtention)
 
