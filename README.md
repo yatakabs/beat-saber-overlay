@@ -142,6 +142,7 @@ file:///C:/TOOL/beat-saber-overlay/index.html?ip=192.168.1.10&port=6557&modifier
 - [BSDP-Overlayライクなオーバーレイ](https://github.com/rynan4818/bsdp-like-overlay) オーバーレイ改造のサンプル
 - [OBS Studioで自動シーン切り替え](https://github.com/rynan4818/obs-control)
 - [Streamlabs OBSで自動シーン切り替え](https://github.com/rynan4818/Streamlabs-obs-control)
+- [イベントに合わせて音声ファイルを鳴らす](https://github.com/rynan4818/sound-option)
 - [タイトル表示変更、エナジーバーの色変化スキン](https://twitter.com/NullponVR/status/1376585288500191234) ぬるぽんさん製作
 
 ※[XSplit Broadcasterの自動シーン切り替え](https://github.com/rynan4818/BS-AutoSceneChanger) (オーバーレイとは関係ありません)
