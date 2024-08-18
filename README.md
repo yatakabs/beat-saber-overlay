@@ -11,27 +11,29 @@ Beat SaberをOBS等で配信や録画する時に、曲名やスコアなどの�
 
 ## インストール方法 (OBS)
 
-1. Beat Saberからオーバーレイにデータを送信するためにHTTP StatusかHttpSiraStatusのどちらか一方をインストールしてください。
+1. Beat Saberからオーバーレイにデータを送信するためにHttpSiraStatusをインストールしてください。<br>
+   
+    - [HttpSiraStatus](https://github.com/denpadokei/beatsaber-http-status)
 
-   初心者は導入が簡単なModAssistantからHTTP Statusをインストールする方法をオススメします。なお、HTTP StatusとHttpSiraStatusを同時にインストールすると競合するため動作しません。
+       上記からダウンロードして解凍した`HttpSiraStatus.dll`をBeatSaberのインストールフォルダの`Plugins`フォルダにコピーします。
+       
+       ダウンロードするzipファイル名の`bs*.**.**`の部分が自分の使用しているBeatSaberの**バージョンと同じ**か、**小さくて一番新しい**ものを使用してください。
 
-   - [HTTP Status](https://github.com/opl-/beatsaber-http-status)　※ModAssistant登録のオリジナル版
+       **`bs*.**.**`のバージョンが使用するBeatSaberのバージョンよりも大きいと動作しませんので注意してください**
 
-      ![image](https://rynan4818.github.io/beatsaber-overlay-httpstatus.png)
-
-	ほかに、デンバ時計さん製作の改善版があります。
-	- [HttpSiraStatus](https://github.com/denpadokei/beatsaber-http-status)
-
-      ![image](https://rynan4818.github.io/beatsaber-overlay-denpadokei.png)
-
-	オプションの `pp` 機能やカスタム難易度表示を使用するには、デンバ時計さんのHttpSiraStatusとHttpStatusExtentionも導入する必要があります。
+	オプションの `pp` `label` `all`機能を使用するには、HttpStatusExtentionも導入する必要があります。
 	- [HttpStatusExtention](https://github.com/denpadokei/HttpStatusExtention)
 
-   ※手動でインストールする場合は、別途依存modをそれぞれのmodの説明に従ってインストールして下さい。
-      特にModAssistantにある**websocket-sharpのインストールが必須**です。入れ忘れトラブルが多いので注意して下さい。
+   ※HttpSiraStatusはModAssistantにある**websocket-sharpのインストールが必須**です。入れ忘れトラブルが多いので注意して下さい。
 
-   ![image](https://rynan4818.github.io/beatsaber-overlay-websocket-sharp.png)
+   ![image](https://user-images.githubusercontent.com/14249877/194671405-950cdf45-1e9c-4fb3-b198-15404a5145eb.png)
+
+   ModAssistantに登録が無い場合は[BEATMODS](https://beatmods.com/#/mods)で、Game Versionを`Any`にして`websocket-sharp`を検索してダウンロードして下さい。
+
+   ![image](https://user-images.githubusercontent.com/14249877/194671490-6ef3e6e9-de3f-4ff7-8e36-40a22145e2e9.png)
    
+   ※websocket-sharpはBeatSaberのバージョンに関係なく動作するので、HttpSiraStatusが対応していれば古いバージョンでも動作します。
+
    ※オーバーレイの動作確認は、この[modのバージョン](https://github.com/rynan4818/beat-saber-overlay/wiki)で確認しています。
 
 2. [リリースページ](https://github.com/rynan4818/beat-saber-overlay/releases)から最新のリリースをダウンロードします。
@@ -140,6 +142,7 @@ file:///C:/TOOL/beat-saber-overlay/index.html?ip=192.168.1.10&port=6557&modifier
 - [BSDP-Overlayライクなオーバーレイ](https://github.com/rynan4818/bsdp-like-overlay) オーバーレイ改造のサンプル
 - [OBS Studioで自動シーン切り替え](https://github.com/rynan4818/obs-control)
 - [Streamlabs OBSで自動シーン切り替え](https://github.com/rynan4818/Streamlabs-obs-control)
+- [イベントに合わせて音声ファイルを鳴らす](https://github.com/rynan4818/sound-option)
 - [タイトル表示変更、エナジーバーの色変化スキン](https://twitter.com/NullponVR/status/1376585288500191234) ぬるぽんさん製作
 
 ※[XSplit Broadcasterの自動シーン切り替え](https://github.com/rynan4818/BS-AutoSceneChanger) (オーバーレイとは関係ありません)
@@ -151,9 +154,10 @@ file:///C:/TOOL/beat-saber-overlay/index.html?ip=192.168.1.10&port=6557&modifier
 オーバーレイは改造し易くするため、いくつか機能が用意されています。
 
 ## HTMLの書き換え対象のid属性の有無チェック
-オーバーレイのスクリプトでは特定のid属性値のHTMLタグに対して、プレイに合わせた書き換え動作をします。
+オーバーレイのスクリプトでは特定のid属性値のHTMLタグに対して、プレイに合わせた書き換え動作を行います。
 
-HTML内のid属性値は起動時にチェックし、存在しない場合は書き換え動作をしないため、HTMLやCSSを改造して好きなレイアウトや表示項目にすることが出来ます。
+通常のオーバーレイはHTML内に書き換え対象のidが存在しないとエラーが発生し動作しません。
+本オーバーレイでは起動時にHTML内のidをチェックし、存在しない場合は書き換え動作をしないため、HTMLやCSSを改造して好きなレイアウトや表示項目にすることが出来ます。
 
 初心者向けに改造方法の記事を書きました。 [HTMLを知らない人にも分かる、オーバーレイの改造の仕方を説明してみる](https://note.com/rynan/n/n9a4207b7aed5)
 
@@ -164,7 +168,7 @@ file:///C:/TOOL/beat-saber-overlay/simple.html?modifiers=bsr
 
 | id属性値 | 動作 |
 ----|----
-| overlay | プレイ開始時にclass="hidden"を削除、終了時に付与します。 |
+| overlay | プレイ開始時にclass="hidden"を削除してオーバーレイを表示し、終了時にhiddenを付与して表示を消します。 |
 | rank | スコアのランク(SS,S,A,B,C・・・)に書き換えます。 |
 | percentage | スコアの精度(xx.x%)に書き換えます。 |
 | combo | コンボ数に書き換えます。 |
@@ -201,7 +205,7 @@ file:///C:/TOOL/beat-saber-overlay/simple.html?modifiers=bsr
 
 ## modifiersオプションの追加
 modifiersフォルダにCSSファイルを追加すると、CSSファイル名でmodifiersオプションを指定して読み込める様になります。
-独自スタイルのCSSを作成した場合に任意のCSSファイルを作成することで、オリジナルのOverlayのファイル群を直接改造する必要がなくなるため、アップデートに追従しやすくなったり、他人に配布が容易になります。
+独自スタイルのCSSを作成した場合に任意のCSSファイルを作成することで、オリジナルのOverlayのファイル群を直接改造する必要がなくなるため、改造内容を差分として配布することが可能となります。これにより、アップデートに追従しやすくなり、他人に配布が容易になります。
 
 ## 外部スクリプト起動用オプション配列
 スコアに応じて色を変更するなど、動的にオーバーレイを変化させるにはJavascriptを作成する必要があります。
